@@ -92,7 +92,7 @@
   }
 
   .footer-link {
-    @apply text-base no-underline text-primaryCTAColor hover:text-primaryCTAColorHover pl-xxs;
+    @apply text-base no-underline text-primaryCTAColor hover:text-primaryCTAColorHover pl-xxs first:p-0;
   }
 }
 
