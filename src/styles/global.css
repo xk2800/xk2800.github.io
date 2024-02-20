@@ -94,6 +94,10 @@
   .footer-link {
     @apply text-base no-underline text-primaryCTAColor hover:text-primaryCTAColorHover pl-xxs first:p-0;
   }
+
+  .sticky-mobile-titles {
+    @apply sticky mx-[-1.5rem] px-[1.5rem] top-0 z-20 w-screen text-lg font-medium lg:text-xl py-xxs lg:hidden backdrop-blur bg-backgroundColor/75;
+  }
 }
 
 a:hover svg {
