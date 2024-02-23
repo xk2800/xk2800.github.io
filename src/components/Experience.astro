@@ -1,0 +1,25 @@
+---
+interface Props {
+  date: string;
+  title: string;
+  company: string;
+  description: string;
+  skills: string[];
+}
+
+const { date, title, company, description, skills } = Astro.props;
+
+import { Badge } from "@/components/ui/badge";
+---
+
+<div class='experiences-load'>
+  <div class='text-sm basis-3/4 lg:text-base text-subTextColor'>
+    {date}
+  </div>
+  <div>
+    <p class='text-base font-medium lg:text-lg'>{title}</p>
+    <p class='text-sm lg:text-base text-subTextColor'>{company}</p>
+    <p class='text-xs lg:text-sm text-subTextColor mb-xxxxs'>{description}</p>
+    {skills.map((skill, index) => <Badge key={index}>{skill}</Badge>)}
+  </div>
+</div>
