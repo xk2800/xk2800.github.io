@@ -16,13 +16,17 @@ import Project from "../components/Project.astro";
     <div class='grid grid-cols-1 lg:grid-cols-2'>
       <!-- About -->
       <div>
-        <p class='text-xs lg:text-sm'>Hi. my name</p>
+        <p class='text-xs lg:text-sm'>Hi, my name</p>
         <p class='text-xl font-bold lg:text-2xl'>Xavier Khew</p>
         <p class='text-base font-medium lg:text-lg'>
-          Creative Technologist Associate at Accenture Song
+          Creative Technologist Associate <br class='hidden md:block' /> at Accenture
+          Song
         </p>
         <p class='text-sm lg:text-base text-subTextColor'>
-          I build interactive and pixel perfect things that live on the web.
+          I build interactive and pixel perfect things <br
+            class='hidden md:block'
+          />
+          that live on the web.
         </p>
       </div>
 
