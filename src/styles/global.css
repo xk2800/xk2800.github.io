@@ -109,3 +109,13 @@ a svg {
   /* transform: translateX(5px); */
   transition: 0.15s;
 }
+
+a:hover.icon-left svg {
+  transform: translateX(-5px);
+  transition: 0.15s;
+}
+
+a.icon-left svg {
+  /* transform: translateX(5px); */
+  transition: 0.15s;
+}
