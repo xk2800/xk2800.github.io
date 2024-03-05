@@ -14,258 +14,255 @@ const siteLink = "wip-website";
 ---
 
 <Layout title={pageTabTitle}>
-  <main class='container py-xxl'>
-    <div class='grid grid-cols-1 lg:grid-cols-2'>
-      <!-- About -->
-      <div>
-        <p class='text-xs lg:text-sm'>Hi, my name</p>
-        <p class='text-xl font-bold lg:text-2xl'>Xavier Khew</p>
-        <p class='text-base font-medium lg:text-lg'>
-          Creative Technologist Associate <br class='hidden md:block' /> at Accenture
-          Song
-        </p>
-        <p class='text-sm lg:text-base text-subTextColor'>
-          I build interactive and pixel perfect things <br
-            class='hidden md:block'
-          />
-          that live on the web.
-        </p>
-      </div>
-
-      <div class='lg:pb-0 lg:pt-0 pt-s pb-xxl'>
-        <div class='sticky-mobile-titles'>About</div>
-        <p class='text-sm lg:text-base'>
-          Hey there! My name is Xavier from sunny
-          <a
-            href='https://en.wikipedia.org/wiki/Subang_Jaya'
-            target='_blank'
-            rel='noopener noreferrer'>Subang Jaya, Malaysia</a
-          >
-          and I enjoy developing things that live on the internet. My interest in
-          web development started back in 2015 when I stumbled upon an HTML & CSS
-          tutorial on YouTube - it turns out that hacking together a front end sparked
-          my passion. Aside from software, I have an interest in tech hardware as
-          well. Facing technical issues? I'm your guy!
-        </p>
-        <p class='text-sm lg:text-base py-xs'>
-          Fast-forward to today, I'm a Creative Technologist at Entropia - part
-          of Accenture Song. During my university days, I've had the privilege
-          of working on project s during my studies where I developed a number
-          of projects from its design phase to production phase.
-        </p>
-        <p class='text-sm lg:text-base'>
-          <span class='font-bold'>
-            When I'm not in front of a computer screen,
-          </span>I'm probably out enjoying views that my city has to offer, out
-          on food hunts, playing badminton, bouldering or patting my cat.
-        </p>
-      </div>
-
-      <!-- Experiences -->
-      <div class='hidden pt-xxl lg:block'>
-        <span class='sticky top-[16px] text-lg font-medium lg:text-xl'>
-          Experiences
-        </span>
-      </div>
-
-      <div class='lg:pt-xxl mb-xxl lg:pb-0'>
-        <div class='sticky-mobile-titles'>Experiences</div>
-        <Experience
-          date='Oct 2021 - Present'
-          title='Creative Technologist Associate'
-          company='Accenture Song'
-          description='Built, styled, and delivered high-quality frontend website while in collaboration with designers, copywriters, and other stakeholders.'
-          skills={[
-            "HTML 5",
-            "CSS",
-            "SCSS",
-            "Javascript",
-            "Bootstrap",
-            "JQuery",
-            "Tailwind CSS",
-            "Vite",
-            "Three JS",
-          ]}
-        />
-      </div>
-
-      <!-- Skills -->
-      <div class='hidden pt-xxl lg:block'>
-        <span class='sticky top-[16px] text-lg font-medium lg:text-xl'
-          >Skills</span
-        >
-      </div>
-
-      <div class='lg:pt-xxl mb-xxl lg:pb-0'>
-        <div class='sticky-mobile-titles'>Skills</div>
-        <AccordionSkills
-          client:load
-          skills={[
-            {
-              name: "Languages",
-              languages: ["HTML 5", "CSS", "Javascript", "PHP", "SQL"],
-            },
-            {
-              name: "Frameworks/Libraries",
-              languages: [
-                "Bootstrap",
-                "SCSS",
-                "Tailwind CSS",
-                "Astro",
-                "Shadcn",
-                "Vite",
-                "JQuery",
-                "GSAP",
-                "Next.js",
-                "React JS",
-                "Node.js",
-                "Three JS",
-                "React Three Fiber (R3F)",
-              ],
-            },
-            {
-              name: "Tools",
-              languages: [
-                "Heroku",
-                "Git/Github/Gitlab",
-                "Chrome DevTools",
-                "Postman",
-                "MySQL",
-              ],
-            },
-            {
-              name: "Design",
-              languages: ["Adobe XD", "Figma"],
-            },
-          ]}
-        />
-      </div>
-
-      <!-- Projects -->
-      <div class='hidden pt-xxl lg:block'>
-        <span class='sticky top-[16px] text-lg font-medium lg:text-xl'>
-          Projects
-        </span>
-      </div>
-
-      <div class='lg:pt-xxl'>
-        <div class='sticky-mobile-titles'>Projects</div>
-        <Project
-          imagePath='/src/assets/tcd-front-end.png'
-          ,
-          altText='Screenshot of Tech Career Days 2021'
-          ,
-          title='Tech Career Days 2021'
-          ,
-          description='A static site for Tech Career Days 2021, a job fair hosted by IT Society MMU Cyberjaya. Used to present relevant information for the event.'
-          ,
-          badges={["HTML 5", "CSS", "Bootstrap", "Javascript"]}
-          ,
-          githubLink='https://github.com/xk2800/TCD2021-website'
-          ,
-          externalLink='https://xk2800.github.io/TCD2021-website/'
-        />
-        <Project
-          imagePath='/src/assets/tcd-resume.png'
-          ,
-          altText='Screenshot of Tech Career Days 2021 Resume Submission Portal'
-          ,
-          title='Tech Career Days 2021 Resume Submission Portal'
-          ,
-          description='A dynamic site for Tech Career Days 2021, a job fair hosted by IT Society MMU Cyberjaya. Used for job seekers to upload their resume where vetting is done by organisers and participating companies are able to view the approved resumes.'
-          ,
-          badges={["HTML 5", "CSS", "Bootstrap", "Javascript", "PHP", "MySQL"]}
-          ,
-          githubLink='https://github.com/xk2800/TCD2021-website'
-        />
-        <Project
-          imagePath='/src/assets/links-site.png'
-          ,
-          altText='Screenshot of Linktree Alternative'
-          ,
-          title='Linktree Alternative'
-          ,
-          description='My own rework and customised approach to Linktree.'
-          ,
-          badges={["Next.js", "Tailwind CSS"]}
-          ,
-          githubLink='https://github.com/xk2800/links-next.js'
-          ,
-          externalLink='https://xavierkhew-links.vercel.app/'
-        />
-        <Project
-          imagePath='/src/assets/fyp.png'
-          ,
-          altText='Screenshot of REXFoodipedia'
-          ,
-          title='REXFoodipedia'
-          ,
-          description='A complete F&B e-commerce platform, offering comprehensive features tailored for customers, staff, and owners. This project, led by me and involving a team of three, focused solely on website development.'
-          ,
-          badges={["Next.js", "CSS", "Bootstrap", "Javascript", "PHP", "MySQL"]}
-          ,
-        />
-        <div class='flex justify-end'>
-          <a
-            href={`${siteLink}/archive`}
-            class='flex items-center text-base lg:text-lg'
-          >
-            <span class='mr-xxxxs'>View Full Project Archives</span>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              width='22'
-              height='22'
-              fill='currentColor'
-              class='bi bi-arrow-right'
-              viewBox='0 0 16 16'
-            >
-              <path
-                fill-rule='evenodd'
-                d='M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8'
-              ></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- What's Next? -->
-    <div class='py-xxl'>
-      <p class='text-xs lg:text-sm'>What's Next?</p>
-      <p class='text-xl lg:text-2xl'>Get In Touch</p>
-      <p class='text-base lg:text-lg mb-xs'>
-        I'm always looking for new opportunities and ready for tech challenges.
-        <br class='hidden md:block' />
-        Drop your message and I'll tell you more about it or say hello and we get
-        acquainted.
+  <div class='grid grid-cols-1 lg:grid-cols-2'>
+    <!-- About -->
+    <div>
+      <p class='text-xs lg:text-sm'>Hi, my name</p>
+      <p class='text-xl font-bold lg:text-2xl'>Xavier Khew</p>
+      <p class='text-base font-medium lg:text-lg'>
+        Creative Technologist Associate <br class='hidden md:block' /> at Accenture
+        Song
       </p>
-      <Button>
-        <a href='mailto:contact@xavierkhew.com' class='no-underline'>
-          Say Hello
-        </a>
-      </Button>
+      <p class='text-sm lg:text-base text-subTextColor'>
+        I build interactive and pixel perfect things <br
+          class='hidden md:block'
+        />
+        that live on the web.
+      </p>
     </div>
 
-    <!-- footer -->
-    <div class='md:flex md:items-center md:justify-between'>
-      <div class='text-center'>
-        Designed & Built with &#10084;&#65039; by Xavier K.
-        <br /> in Subang Jaya &#169 <script type='text/javascript'>
-          document.write(new Date().getFullYear());
-        </script>
-      </div>
-      <div class='text-center mt-s md:text-right'>
-        <a class='footer-link' href='https://github.com/xk2800'>Github</a>
-        <a class='footer-link' href='https://www.linkedin.com/in/xavier-khew/'>
-          LinkedIn
+    <div class='lg:pb-0 lg:pt-0 pt-s pb-xxl'>
+      <div class='sticky-mobile-titles'>About</div>
+      <p class='text-sm lg:text-base'>
+        Hey there! My name is Xavier from sunny
+        <a
+          href='https://en.wikipedia.org/wiki/Subang_Jaya'
+          target='_blank'
+          rel='noopener noreferrer'>Subang Jaya, Malaysia</a
+        >
+        and I enjoy developing things that live on the internet. My interest in web
+        development started back in 2015 when I stumbled upon an HTML & CSS tutorial
+        on YouTube - it turns out that hacking together a front end sparked my passion.
+        Aside from software, I have an interest in tech hardware as well. Facing
+        technical issues? I'm your guy!
+      </p>
+      <p class='text-sm lg:text-base py-xs'>
+        Fast-forward to today, I'm a Creative Technologist at Entropia - part of
+        Accenture Song. During my university days, I've had the privilege of
+        working on project s during my studies where I developed a number of
+        projects from its design phase to production phase.
+      </p>
+      <p class='text-sm lg:text-base'>
+        <span class='font-bold'>
+          When I'm not in front of a computer screen,
+        </span>I'm probably out enjoying views that my city has to offer, out on
+        food hunts, playing badminton, bouldering or patting my cat.
+      </p>
+    </div>
+
+    <!-- Experiences -->
+    <div class='hidden pt-xxl lg:block'>
+      <span class='sticky top-[16px] text-lg font-medium lg:text-xl'>
+        Experiences
+      </span>
+    </div>
+
+    <div class='lg:pt-xxl mb-xxl lg:pb-0'>
+      <div class='sticky-mobile-titles'>Experiences</div>
+      <Experience
+        date='Oct 2021 - Present'
+        title='Creative Technologist Associate'
+        company='Accenture Song'
+        description='Built, styled, and delivered high-quality frontend website while in collaboration with designers, copywriters, and other stakeholders.'
+        skills={[
+          "HTML 5",
+          "CSS",
+          "SCSS",
+          "Javascript",
+          "Bootstrap",
+          "JQuery",
+          "Tailwind CSS",
+          "Vite",
+          "Three JS",
+        ]}
+      />
+    </div>
+
+    <!-- Skills -->
+    <div class='hidden pt-xxl lg:block'>
+      <span class='sticky top-[16px] text-lg font-medium lg:text-xl'
+        >Skills</span
+      >
+    </div>
+
+    <div class='lg:pt-xxl mb-xxl lg:pb-0'>
+      <div class='sticky-mobile-titles'>Skills</div>
+      <AccordionSkills
+        client:load
+        skills={[
+          {
+            name: "Languages",
+            languages: ["HTML 5", "CSS", "Javascript", "PHP", "SQL"],
+          },
+          {
+            name: "Frameworks/Libraries",
+            languages: [
+              "Bootstrap",
+              "SCSS",
+              "Tailwind CSS",
+              "Astro",
+              "Shadcn",
+              "Vite",
+              "JQuery",
+              "GSAP",
+              "Next.js",
+              "React JS",
+              "Node.js",
+              "Three JS",
+              "React Three Fiber (R3F)",
+            ],
+          },
+          {
+            name: "Tools",
+            languages: [
+              "Heroku",
+              "Git/Github/Gitlab",
+              "Chrome DevTools",
+              "Postman",
+              "MySQL",
+            ],
+          },
+          {
+            name: "Design",
+            languages: ["Adobe XD", "Figma"],
+          },
+        ]}
+      />
+    </div>
+
+    <!-- Projects -->
+    <div class='hidden pt-xxl lg:block'>
+      <span class='sticky top-[16px] text-lg font-medium lg:text-xl'>
+        Projects
+      </span>
+    </div>
+
+    <div class='lg:pt-xxl'>
+      <div class='sticky-mobile-titles'>Projects</div>
+      <Project
+        imagePath='/src/assets/tcd-front-end.png'
+        ,
+        altText='Screenshot of Tech Career Days 2021'
+        ,
+        title='Tech Career Days 2021'
+        ,
+        description='A static site for Tech Career Days 2021, a job fair hosted by IT Society MMU Cyberjaya. Used to present relevant information for the event.'
+        ,
+        badges={["HTML 5", "CSS", "Bootstrap", "Javascript"]}
+        ,
+        githubLink='https://github.com/xk2800/TCD2021-website'
+        ,
+        externalLink='https://xk2800.github.io/TCD2021-website/'
+      />
+      <Project
+        imagePath='/src/assets/tcd-resume.png'
+        ,
+        altText='Screenshot of Tech Career Days 2021 Resume Submission Portal'
+        ,
+        title='Tech Career Days 2021 Resume Submission Portal'
+        ,
+        description='A dynamic site for Tech Career Days 2021, a job fair hosted by IT Society MMU Cyberjaya. Used for job seekers to upload their resume where vetting is done by organisers and participating companies are able to view the approved resumes.'
+        ,
+        badges={["HTML 5", "CSS", "Bootstrap", "Javascript", "PHP", "MySQL"]}
+        ,
+        githubLink='https://github.com/xk2800/TCD2021-website'
+      />
+      <Project
+        imagePath='/src/assets/links-site.png'
+        ,
+        altText='Screenshot of Linktree Alternative'
+        ,
+        title='Linktree Alternative'
+        ,
+        description='My own rework and customised approach to Linktree.'
+        ,
+        badges={["Next.js", "Tailwind CSS"]}
+        ,
+        githubLink='https://github.com/xk2800/links-next.js'
+        ,
+        externalLink='https://xavierkhew-links.vercel.app/'
+      />
+      <Project
+        imagePath='/src/assets/fyp.png'
+        ,
+        altText='Screenshot of REXFoodipedia'
+        ,
+        title='REXFoodipedia'
+        ,
+        description='A complete F&B e-commerce platform, offering comprehensive features tailored for customers, staff, and owners. This project, led by me and involving a team of three, focused solely on website development.'
+        ,
+        badges={["Next.js", "CSS", "Bootstrap", "Javascript", "PHP", "MySQL"]}
+        ,
+      />
+      <div class='flex justify-end'>
+        <a
+          href={`${siteLink}/archive`}
+          class='flex items-center text-base lg:text-lg'
+        >
+          <span class='mr-xxxxs'>View Full Project Archives</span>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='22'
+            height='22'
+            fill='currentColor'
+            class='bi bi-arrow-right'
+            viewBox='0 0 16 16'
+          >
+            <path
+              fill-rule='evenodd'
+              d='M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8'
+            ></path>
+          </svg>
         </a>
       </div>
     </div>
+  </div>
 
-    <p class='text-[14px] text-subTextColor mt-xs'>
-      Designed in Figma, coded in Visual Studio Code. Built using Astro,
-      Tailwind CSS and Shadcn. <br /> Icons from Boostrap Icons. Deployed on Github
-      Pages. All text are set in Lexend Deca typeface
+  <!-- What's Next? -->
+  <div class='py-xxl'>
+    <p class='text-xs lg:text-sm'>What's Next?</p>
+    <p class='text-xl lg:text-2xl'>Get In Touch</p>
+    <p class='text-base lg:text-lg mb-xs'>
+      I'm always looking for new opportunities and ready for tech challenges.
+      <br class='hidden md:block' />
+      Drop your message and I'll tell you more about it or say hello and we get acquainted.
     </p>
-  </main>
+    <Button>
+      <a href='mailto:contact@xavierkhew.com' class='no-underline'>
+        Say Hello
+      </a>
+    </Button>
+  </div>
+
+  <!-- footer -->
+  <div class='md:flex md:items-center md:justify-between'>
+    <div class='text-center'>
+      Designed & Built with &#10084;&#65039; by Xavier K.
+      <br /> in Subang Jaya &#169 <script type='text/javascript'>
+        document.write(new Date().getFullYear());
+      </script>
+    </div>
+    <div class='text-center mt-s md:text-right'>
+      <a class='footer-link' href='https://github.com/xk2800'>Github</a>
+      <a class='footer-link' href='https://www.linkedin.com/in/xavier-khew/'>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+
+  <p class='text-[14px] text-subTextColor mt-xs'>
+    Designed in Figma, coded in Visual Studio Code. Built using Astro, Tailwind
+    CSS and Shadcn. <br /> Icons from Boostrap Icons. Deployed on Github Pages. All
+    text are set in Lexend Deca typeface
+  </p>
 </Layout>
