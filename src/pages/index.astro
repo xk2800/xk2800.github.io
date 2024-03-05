@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { AccordionSkills } from "../components/SkillsList";
 import Experience from "../components/Experience.astro";
 import Project from "../components/Project.astro";
+
+const siteLink = "wip-website";
 ---
 
 <Layout title={pageTabTitle}>
@@ -203,8 +205,11 @@ import Project from "../components/Project.astro";
           badges={["Next.js", "CSS", "Bootstrap", "Javascript", "PHP", "MySQL"]}
           ,
         />
-        <div class='flex justify-end hidden'>
-          <a href='' class='flex items-center text-base lg:text-lg'>
+        <div class='flex justify-end'>
+          <a
+            href={`${siteLink}/archive`}
+            class='flex items-center text-base lg:text-lg'
+          >
             <span class='mr-xxxxs'>View Full Project Archives</span>
             <svg
               xmlns='http://www.w3.org/2000/svg'
