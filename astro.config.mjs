@@ -6,7 +6,7 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://xavierkhew.com',
-  base: '/wip-website',
+  // base: '/wip-website',
   integrations: [
     react(),
     tailwind({
