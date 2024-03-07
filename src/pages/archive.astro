@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 
 const pageTabTitle = "Project Archive | Xavier Khew";
 
-const siteLink = "wip-website";
+const siteLink = "";
 
 import {
   Table,
@@ -17,139 +17,98 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const invoices = [
+const archiveList = [
   {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
-    skills: ["HTML", "CSS", "JavaScript"],
+    logicYear: "2023",
+    printYear: "2023",
+    project: "Hartalega NGX",
+    description: "Digital clone of the physical factory in Sepang, Malaysia",
+    madeAt: "Accenture Song",
+    builtWith: [
+      "HTML",
+      "Animate.css",
+      "SCSS",
+      "Bootstrap 5",
+      "GSAP",
+      "Javascript",
+      "JQuery",
+      "Three JS",
+      "Vite",
+    ],
   },
   {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
+    logicYear: "2022",
+    printYear: "2022",
+    project: "RHB Cards",
+    description:
+      "Website Revamp for cards product segment\n**Gold Award for Excellence in Relationship Marketing in Marketing Interactive, Marketing Excellence Awards 2023**",
+    madeAt: "Accenture Song",
+    builtWith: ["HTML", "CSS", "SCSS", "Bootstrap 4", "JavaScript", "Slick"],
   },
   {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
+    logicYear: "2022",
+    printYear: "2022",
+    project: "TM Blog",
+    description: "Corporate website revamp",
+    madeAt: "Accenture Song",
+    builtWith: [
+      "HTML",
+      "CSS",
+      "SCSS",
+      "Bootstrap 4",
+      "JavaScript",
+      "JQuery",
+      "Moment.js",
+      "Slick",
+    ],
   },
   {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
+    logicYear: "2022",
+    printYear: "2022",
+    project: "TM Brand Centre",
+    description: "Corporate brand centre website for TM, built from scratch	",
+    madeAt: "Accenture Song",
+    builtWith: ["HTML", "CSS", "SCSS", "Bootstrap 4", "JQuery", "Slick"],
   },
   {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
+    logicYear: "2022",
+    printYear: "2022",
+    project: "Unifi Business",
+    description: "Corporate website revamp",
+    madeAt: "Accenture Song",
+    builtWith: ["HTML", "CSS", "Bootstrap 4", "Javascript", "JQuery", "Slick"],
   },
   {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
+    logicYear: "2021-2023",
+    printYear: "2021-2023",
+    project: "Eucerin",
+    description: "Developing bi-weekly EDMs and maintaining existing website",
+    madeAt: "Accenture Song",
+    builtWith: ["HTML", "CSS", "Bootstrap 3", "Javascript"],
   },
   {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
+    logicYear: "2021",
+    printYear: "2021",
+    project: "Desaru Coast",
+    description: "Resort website revamp	",
+    madeAt: "Accenture Song",
+    builtWith: ["HTML", "CSS", "Bootstrap 4", "Javascript", "Slick"],
   },
   {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
-  },
-  {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
-  },
-  {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
+    logicYear: "2021",
+    printYear: "2021",
+    project: "Eve Holdings",
+    description: "Property developer website revamp",
+    madeAt: "Accenture Song",
+    builtWith: [
+      "HTML",
+      "CSS",
+      "Bootstrap 4",
+      "Javascript",
+      "JQuery",
+      "GSAP",
+      "Slick",
+    ],
   },
 ];
 ---
@@ -175,35 +134,71 @@ const invoices = [
     <span class='ms-xxxxs'>Xavier Khew</span>
   </a>
 
-  <span class='text-lg font-medium lg:text-xl'> Other Things I've Built</span>
+  <div class='text-lg font-medium lg:text-xl pb-xs'>
+    Other Things I've Built
+  </div>
 
   <Table>
     <TableHeader>
       <TableRow>
-        <TableHead class='w-[100px]'>Invoice</TableHead>
-        <TableHead>Status</TableHead>
-        <TableHead>Method</TableHead>
-        <TableHead class='text-right'>Amount</TableHead>
+        <TableHead>Year</TableHead>
+        <TableHead>Project</TableHead>
+        <TableHead className='hidden md:table-cell'>Description</TableHead>
+        <TableHead className='hidden md:table-cell'>Made at</TableHead>
+        <TableHead>Built with</TableHead>
       </TableRow>
     </TableHeader>
     <TableBody>
       {
-        invoices.map((invoice) => (
-          <TableRow key={invoice.invoice}>
-            <TableCell class='font-medium'>{invoice.invoice}</TableCell>
-            <TableCell>{invoice.paymentStatus}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell>
-              {invoice.skills ? (
-                invoice.skills.map((skill, index) => (
-                  <Badge key={index}>{skill}</Badge>
-                ))
-              ) : (
-                <span>No Skills</span>
-              )}
-            </TableCell>
-          </TableRow>
-        ))
+        archiveList
+          .map((invoice) => ({
+            ...invoice,
+            year: parseInt(invoice.logicYear),
+          })) // Extract year from invoice
+          .sort((a, b) => b.year - a.year) // Sort archiveList by year in descending order
+          .map((archive) => (
+            <TableRow key={archive.year}>
+              <TableCell>{archive.printYear}</TableCell>
+              <TableCell>{archive.project}</TableCell>
+              <TableCell className='hidden md:table-cell'>
+                {/* Render the description with formatting */}
+                {archive.description.split("\n").map((line, index) => (
+                  <p>
+                    {line.includes("**") ? (
+                      <strong>
+                        {line.replace(/\*\*(.*?)\*\*/g, (_, p1) => p1)}
+                      </strong>
+                    ) : line.includes("[") && line.includes("]") ? (
+                      line.split("[").map((part, index) => {
+                        if (index === 0) return part;
+                        const [text, url] = part.split("](");
+                        return (
+                          <>
+                            <a href={url.replace(")", "")}>{text}</a>
+                            {index < line.split("[").length - 1 ? "[" : ""}
+                          </>
+                        );
+                      })
+                    ) : (
+                      line
+                    )}
+                  </p>
+                ))}
+              </TableCell>
+              <TableCell className='hidden md:table-cell'>
+                {archive.madeAt}
+              </TableCell>
+              <TableCell>
+                {archive.builtWith ? (
+                  archive.builtWith.map((skill, index) => (
+                    <Badge key={index}>{skill}</Badge>
+                  ))
+                ) : (
+                  <span>No Data</span>
+                )}
+              </TableCell>
+            </TableRow>
+          ))
       }
     </TableBody>
   </Table>

@@ -73,7 +73,7 @@
     @apply border-border;
   }
   html {
-    @apply font-lexendDeca;
+    @apply font-lexendDeca leading-[1.4];
   }
   body {
     @apply bg-backgroundColor text-baseTextColor;
