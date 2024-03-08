@@ -7,7 +7,7 @@ import {
 
 export function AccordionSkills({ skills }) {
   return (
-    <Accordion type='multiple' collapsible className='w-full'>
+    <Accordion type='multiple' collapsible='true' className='w-full'>
       {skills.map((skill, index) => (
         <AccordionItem key={index} value={`item-${index + 1}`}>
           <AccordionTrigger>{skill.name}</AccordionTrigger>
