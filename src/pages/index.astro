@@ -1,9 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "@/styles/global.css";
-import { Badge } from "@/components/ui/badge";
+import { ViewTransitions } from "astro:transitions";
 
 const pageTabTitle = "Xavier Khew";
+const currentYear = new Date().getFullYear();
 
 import { Button } from "@/components/ui/button";
 import { AccordionSkills } from "../components/SkillsList";
@@ -206,10 +207,11 @@ const siteLink = "";
       />
       <div class='flex justify-end'>
         <a
-          href={`${siteLink}/archive`}
+          href={`/archive/`}
           class='flex items-center text-base lg:text-lg'
+          transition:animate='slide'
         >
-          <span class='mr-xxxxs'>View Full Project Archives</span>
+          <span class='mr-xxxxs'> View Full Project Archives</span>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             width='22'
@@ -248,9 +250,7 @@ const siteLink = "";
   <div class='md:flex md:items-center md:justify-between'>
     <div class='text-center'>
       Designed & Built with &#10084;&#65039; by Xavier K.
-      <br /> in Subang Jaya &#169 <script type='text/javascript'>
-        document.write(new Date().getFullYear());
-      </script>
+      <br /> in Subang Jaya &#169 {currentYear}
     </div>
     <div class='text-center mt-s md:text-right'>
       <a class='footer-link' href='https://github.com/xk2800'>Github</a>

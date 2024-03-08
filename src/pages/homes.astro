@@ -4,6 +4,7 @@ import "@/styles/global.css";
 import { Badge } from "@/components/ui/badge";
 
 const pageTabTitle = "Xavier Khew";
+const currentYear = new Date().getFullYear();
 
 import { Button } from "@/components/ui/button";
 import { AccordionSkills } from "../components/SkillsList";
@@ -245,9 +246,7 @@ import Project from "../components/Project.astro";
     <div class='md:flex md:items-center md:justify-between'>
       <div class='text-center'>
         Designed & Built with &#10084;&#65039; by Xavier K.
-        <br /> in Subang Jaya &#169 <script type='text/javascript'>
-          document.write(new Date().getFullYear());
-        </script>
+        <br /> in Subang Jaya &#169 {currentYear}
       </div>
       <div class='text-center mt-s md:text-right'>
         <a class='footer-link' href='https://github.com/xk2800'>Github</a>
