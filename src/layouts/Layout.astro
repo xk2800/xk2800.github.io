@@ -23,7 +23,7 @@ const { title } = Astro.props;
       description='Xavier is a Creative Technologist and this is his portfolio.'
       openGraph={{
         basic: {
-          title: `{title}`,
+          title: title,
           type: "website",
           image: "/logo.png",
         },
@@ -40,7 +40,7 @@ const { title } = Astro.props;
             name: "twitter:image",
             content: "/logo.png",
           },
-          { name: "twitter:title", content: `{title}` },
+          { name: "twitter:title", content: title },
           {
             name: "twitter:description",
             content:
