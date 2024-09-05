@@ -1,0 +1,55 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import "@/styles/global.css";
+
+const pageTabTitle = "Links | Xavier Khew";
+const currentYear = new Date().getFullYear();
+
+import { Button } from "@/components/ui/button";
+---
+
+<Layout title={pageTabTitle}>
+  <div class="text-center">
+    <div class="inline-block">
+      <p class='text-xs text-left lg:text-sm'>Hi, my name</p>
+      <p class='text-xl text-left font-bold lg:text-2xl' transition:animate='slide'>
+        Xavier Khew
+      </p>
+      <div class="text-base text-left font-medium lg:text-lg">
+        <p>Want to know more about me?</p>
+        <p>Check out one or all of these links to know more.</p>
+      </div>
+
+      <div class="text-center pt-xs">
+        <a href='xavierkhew.com' target="_blank" rel="noopener noreferrer" class='no-underline block mx-auto mt-xs w-[95%]'> <!--  md:w-[60%] lg:w-[50%] xl:w-[35%] -->
+          <Button className='w-full'>
+            Website
+          </Button>
+        </a>
+        <a href='https://www.linkedin.com/in/xavier-khew/' target="_blank" rel="noopener noreferrer" class='no-underline block mx-auto mt-xs w-[95%]'>
+          <Button className='w-full'>
+            LinkedIn
+          </Button>
+        </a>
+        <a href='https://github.com/xk2800' target="_blank" rel="noopener noreferrer" class='no-underline block mx-auto mt-xs w-[95%]'>
+          <Button className='w-full'>
+            Github
+          </Button>
+        </a>
+        <a href='mailto:contact.xavierk@gmail.com' target="_blank" rel="noopener noreferrer" class='no-underline block mx-auto mt-xs w-[95%]'>
+          <Button className='w-full'>
+            Email
+          </Button>
+        </a>
+      </div>
+    
+      <!-- footer -->
+      <div class='text-right mt-xl'>
+        <div class="inline-block">
+          Designed & Built with &#10084;&#65039; <br class="xs:hidden"/>by Xavier K.
+          <br /> in Subang Jaya &#169 {currentYear}
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

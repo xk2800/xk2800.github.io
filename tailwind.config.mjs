@@ -23,6 +23,10 @@ export default {
       '2xl': '3rem', // 48px desktop
     },
     extend: {
+      screens: {
+        'xs': '334px',
+        // => @media (min-width: 992px) { ... }
+      },
       colors: {
         backgroundColor: '#F3F4F6',
         baseTextColor: '#181818',
