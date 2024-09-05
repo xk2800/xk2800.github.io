@@ -32,7 +32,7 @@ import { Badge } from "@/components/ui/badge";
     <div class='flex gap-x-4 mt-xxxs'>
       {
         githubLink && (
-          <a href={githubLink} target='_blank' rel='noopener noreferrer'>
+          <a href={githubLink} target='_blank' rel='noopener noreferrer' aria-label='Github'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='21'
@@ -48,7 +48,7 @@ import { Badge } from "@/components/ui/badge";
       }
       {
         externalLink && (
-          <a href={externalLink} target='_blank' rel='noopener noreferrer'>
+          <a href={externalLink} target='_blank' rel='noopener noreferrer' aria-label='External Link'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='21'
