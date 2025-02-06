@@ -16,13 +16,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 const archiveList = [
   {
     logicYear: "2023",
     printYear: "2023",
     project: "Hartalega NGX",
-    description: "Digital clone of the physical factory in Sepang, Malaysia\n**Silver Award for Excellence in B2B Marketing &** \n**Bronze for Excellence in Interactive Marketing/AR & VR in Marketing Interactive, Marketing Excellence Awards 2024**",
+    description: "Developed a digital clone of their physical factory in Malaysia, improving client sales by 80% and increasing click-through rates by 68%. Managed the project lifecycle, timelines, and stakeholder expectations. Led a team of developers while contributing to hands-on coding and communication with clients. Led a groundbreaking project that gained national recognition in the healthcare industry as the first to develop and launch an immersive factory tour.\n**Silver Award for Excellence in B2B Marketing &** \n**Bronze for Excellence in Interactive Marketing/AR & VR in Marketing Interactive, Marketing Excellence Awards 2024**",
     madeAt: "Accenture Song",
     builtWith: [
       "HTML",
@@ -41,7 +42,7 @@ const archiveList = [
     printYear: "2022",
     project: "RHB Cards",
     description:
-      "Website Revamp for cards product segment\n**Gold Award for Excellence in Relationship Marketing in Marketing Interactive, Marketing Excellence Awards 2023**",
+      "Revamped the debit, credit, prepaid cards, and rewards segments, resulting in a 90% increase in user engagement and a 55% boost in click-through rates. Coordinated with clients and stakeholders to manage expectations throughout the project.\n**Gold Award for Excellence in Relationship Marketing in Marketing Interactive, Marketing Excellence Awards 2023**",
     madeAt: "Accenture Song",
     builtWith: ["HTML", "CSS", "SCSS", "Bootstrap 4", "JavaScript", "Slick"],
   },
@@ -49,7 +50,7 @@ const archiveList = [
     logicYear: "2022",
     printYear: "2022",
     project: "TM Blog",
-    description: "Corporate website revamp",
+    description: "Created a corporate blog for showcasing leadership articles and engaging the public.",
     madeAt: "Accenture Song",
     builtWith: [
       "HTML",
@@ -66,7 +67,7 @@ const archiveList = [
     logicYear: "2022",
     printYear: "2022",
     project: "TM Brand Centre",
-    description: "Corporate brand centre website for TM, built from scratch	",
+    description: "Built a corporate brand centre website to serve as a reference point for internal and external vendors regarding brand guidelines.",
     madeAt: "Accenture Song",
     builtWith: ["HTML", "CSS", "SCSS", "Bootstrap 4", "JQuery", "Slick"],
   },
@@ -74,7 +75,7 @@ const archiveList = [
     logicYear: "2022",
     printYear: "2022",
     project: "Unifi Business",
-    description: "Corporate website revamp",
+    description: "Revamped the business product segment website, focusing on user-friendly information architecture and engaging micro-interactions.",
     madeAt: "Accenture Song",
     builtWith: ["HTML", "CSS", "Bootstrap 4", "Javascript", "JQuery", "Slick"],
   },
@@ -82,7 +83,7 @@ const archiveList = [
     logicYear: "2021-2023",
     printYear: "2021-2023",
     project: "Eucerin",
-    description: "Developing bi-weekly EDMs and maintaining existing website",
+    description: "Developed and distributed weekly EDMs for registered loyalty program customers. Maintained and enhanced the existing loyalty website.",
     madeAt: "Accenture Song",
     builtWith: ["HTML", "CSS", "Bootstrap 3", "Javascript"],
   },
@@ -90,7 +91,7 @@ const archiveList = [
     logicYear: "2021",
     printYear: "2021",
     project: "Desaru Coast",
-    description: "Resort website revamp	",
+    description: "Revamped the website to improve visual appeal and user flow, leading to an 83% retention rate, a 74% increase in click-through rates, and a 30% boost in booking conversions.",
     madeAt: "Accenture Song",
     builtWith: ["HTML", "CSS", "Bootstrap 4", "Javascript", "Slick"],
   },
@@ -98,7 +99,7 @@ const archiveList = [
     logicYear: "2021",
     printYear: "2021",
     project: "Eve Holdings",
-    description: "Property developer website revamp",
+    description: "Improved the UX of the existing website while preserving micro-interactions.",
     madeAt: "Accenture Song",
     builtWith: [
       "HTML",
@@ -139,14 +140,14 @@ const archiveList = [
     Other Things I've Built
   </div>
 
-  <Table>
+  <Table className='hidden md:table'>
     <TableHeader>
       <TableRow>
         <TableHead>Year</TableHead>
         <TableHead>Project</TableHead>
         <TableHead className='hidden md:table-cell'>Description</TableHead>
         <TableHead className='hidden md:table-cell'>Made at</TableHead>
-        <TableHead>Built with</TableHead>
+        <TableHead className="md:w-[150px] lg:w-[240px] xl:w-[280px]">Built with</TableHead>
       </TableRow>
     </TableHeader>
     <TableBody>
@@ -203,4 +204,78 @@ const archiveList = [
       }
     </TableBody>
   </Table>
+
+  <div class="grid gap-6 grid-cols-1">
+    {archiveList
+      .map((invoice) => ({
+        ...invoice,
+        year: parseInt(invoice.logicYear),
+      }))
+      .sort((a, b) => b.year - a.year)
+      .map((archive) => (
+        <Card key={archive.year} className="flex flex-col md:hidden bg-transparent border border-[#36363652] rounded-xl shadow-none">
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <h3 className="font-semibold">Project: {archive.project}</h3>
+              <span className="text-muted-foreground">Year: {archive.printYear}</span>
+            </div>
+          </CardHeader>
+          <CardContent className="flex-1">
+            <div className="space-y-4">
+              <div className="text-sm">
+                Description:
+                {archive.description.split("\n").map((line, index) => (
+                  <p key={index} className="mb-2">
+                    {line.includes("**") ? (
+                      <strong>
+                        {line.replace(/\*\*(.*?)\*\*/g, (_, p1) => p1)}
+                      </strong>
+                    ) : line.includes("[") && line.includes("]") ? (
+                      line.split("[").map((part, index) => {
+                        if (index === 0) return part;
+                        const [text, url] = part.split("](");
+                        return (
+                          <React.Fragment key={index}>
+                            <a 
+                              href={url.replace(")", "")}
+                              className="text-blue-500 hover:underline"
+                            >
+                              {text}
+                            </a>
+                            {index < line.split("[").length - 1 ? "[" : ""}
+                          </React.Fragment>
+                        );
+                      })
+                    ) : (
+                      line
+                    )}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </CardContent>
+          <CardFooter className="flex-col items-start gap-6">
+            {archive.madeAt && (
+                <div className="text-sm text-muted-foreground">
+                  Made at: {archive.madeAt}
+                </div>
+              )}
+              <div className="flex flex-wrap gap-2">
+                <p>Built with:</p>
+                {archive.builtWith ? (
+                  archive.builtWith.map((skill, index) => (
+                    <Badge key={index}>
+                      {skill}
+                    </Badge>
+                  ))
+                ) : (
+                  <span className="text-muted-foreground">No Data</span>
+                )}
+              </div>
+          </CardFooter>
+        </Card>
+      ))}
+  </div>
+
+  
 </Layout>
