@@ -1,0 +1,69 @@
+---
+// BlobBackground.astro
+---
+
+<div class="min-h-screen w-full relative overflow-hidden1 bg-backgroundColor">
+  <!-- Background blur effect -->
+  <div class="absolute inset-0 bg-backgroundColor backdrop-blur-3xl"></div>
+  
+  <!-- Animated blob - hidden when reduced motion is preferred -->
+  <div
+    id="blob"
+    class="fixed size-40 lg:size-96 rounded-full bg-gradient-to-r bg-primaryCTAColor/70 opacity-30 blur-3xl transition-all duration-100 ease-in-out motion-safe:block motion-reduce:hidden"
+  ></div>
+  
+  <!-- Content container -->
+  <div class="relative z-10">
+    <slot />
+  </div>
+</div>
+
+<script>
+  // Check if user prefers reduced motion
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Only run animation if reduced motion is not preferred
+  if (!prefersReducedMotion) {
+    let scrollFraction = 0;
+    
+    const config = {
+      baseSpeed: 1200,
+      amplitude: 4,
+      scrollSpeed: 60
+    };
+    
+    function updateBlobPosition(e) {
+      const blob = document.getElementById('blob');
+      if (!blob) return;
+
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      scrollFraction = docHeight ? window.scrollY / docHeight : 0;
+
+      const time = Date.now() / config.baseSpeed;
+      
+      const xOffset = config.amplitude * Math.sin(time);
+      const yOffset = config.amplitude * Math.cos(time);
+      
+      const baseX = 30 + (scrollFraction * config.scrollSpeed);
+      const baseY = 50;
+      
+      const finalX = baseX + xOffset;
+      const finalY = baseY + yOffset;
+      
+      blob.style.left = `${finalX}%`;
+      blob.style.top = `${finalY}%`;
+      blob.style.transform = 'translate(-50%, -50%)';
+    }
+
+    window.addEventListener('scroll', () => {
+      requestAnimationFrame(updateBlobPosition);
+    });
+
+    function animate() {
+      updateBlobPosition(null);
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  }
+</script>
