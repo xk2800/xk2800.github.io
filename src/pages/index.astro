@@ -23,8 +23,7 @@ const siteLink = "";
         Xavier Khew
       </p>
       <p class='text-base font-medium lg:text-lg'>
-        Creative Technologist Associate <br class='hidden md:block' /> at Accenture
-        Song
+        Frontend Developer & Creative Technologist
       </p>
       <p class='text-sm lg:text-base text-subTextColor'>
         I build interactive and pixel perfect things <br
@@ -49,13 +48,13 @@ const siteLink = "";
         Aside from software, I have an interest in tech hardware as well. Facing
         technical issues? I'm your guy!
       </p>
-      <p class='text-sm lg:text-base py-xs'>
+      <!-- <p class='text-sm lg:text-base py-xs'>
         Fast-forward to today, I'm a Creative Technologist at
         Accenture Song. During my university days, I've had the privilege of
         working on projects during my studies where I developed a number of
         projects from its design phase to production phase.
-      </p>
-      <p class='text-sm lg:text-base'>
+      </p> -->
+      <p class='text-sm lg:text-base py-xs'>
         <span class='font-bold'>
           When I'm not in front of a computer screen,
         </span>I'm probably out enjoying views that my city has to offer, out on
@@ -73,7 +72,8 @@ const siteLink = "";
     <div class='lg:pt-xxl mb-xxl lg:pb-0'>
       <div class='sticky-mobile-titles'>Experiences</div>
       <Experience
-        date='Oct 2021 - Present'
+        startDate='Oct 2021'
+        endDate='Feb 2024'
         title='Creative Technologist Associate'
         company='Accenture Song'
         description='Built, styled, and delivered high-quality and result driven frontend website while in collaboration with designers, copywriters, and other stakeholders.'
@@ -111,22 +111,23 @@ const siteLink = "";
           {
             name: "Frameworks/Libraries",
             languages: [
-              "Bootstrap",
-              "SCSS",
-              "Tailwind CSS",
-              "Shadcn/UI",
+              "Angular",
               "Astro",
-              "Vite",
-              "JQuery",
-              "GSAP",
-              "Next.js",
-              "React JS",
-              "Node.js",
+              "Bootstrap",
               "Express",
               "Framer Motion",
-              "Angular",
-              "Three JS",
+              "GSAP",
+              "JQuery",
+              "Next.js",
+              "Node.js",
+              "React JS",
               "React Three Fiber (R3F)",
+              "SCSS",
+              "Shadcn/UI",
+              "Tailwind CSS",
+              "Typescript",
+              "Three JS",
+              "Vite",
             ],
           },
           {
@@ -158,6 +159,15 @@ const siteLink = "";
 
     <div class='lg:pt-xxl'>
       <div class='sticky-mobile-titles'>Projects</div>
+      <Project
+        imagePath='/src/assets/potify-profiler.png',
+        altText='Screenshot of Spotify Profiler',
+        title='Spotify Profiler (Work in progress)',
+        description='Web app for visualizing personalized Spotify data. View your top artists, currently playing, saved playlists and more features coming soon.',
+        badges={["Next.js", "Tailwind CSS", "Shadcn/UI", "Typescript", "Spotify API"]},
+        githubLink='https://github.com/xk2800/spotify-nextjs',
+        externalLink='https://spot-profile.xavierkhew.com/'
+      />
       <Project
         imagePath='/src/assets/tcd-front-end.png',
         altText='Screenshot of Tech Career Days 2021',

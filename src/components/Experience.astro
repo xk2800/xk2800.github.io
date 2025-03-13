@@ -1,20 +1,21 @@
 ---
 interface Props {
-  date: string;
+  startDate: string;
+  endDate: string;
   title: string;
   company: string;
   description: string;
   skills: string[];
 }
 
-const { date, title, company, description, skills } = Astro.props;
+const { startDate, endDate, title, company, description, skills } = Astro.props;
 
 import { Badge } from "@/components/ui/badge";
 ---
 
 <div class='experiences-load'>
-  <div class='text-sm basis-3/4 lg:text-base text-subTextColor'>
-    {date}
+  <div class='text-xs basis-3/4 lg:text-base text-subTextColor pt-1'>
+    <p class="text-xs">{startDate} - {endDate}</p>
   </div>
   <div>
     <p class='text-base font-medium lg:text-lg'>{title}</p>
