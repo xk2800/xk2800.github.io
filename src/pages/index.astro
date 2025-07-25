@@ -23,7 +23,9 @@ const siteLink = "";
         Xavier Khew
       </p>
       <p class='text-base font-medium lg:text-lg leading-6'>
-        Frontend Developer & Creative Technologist, <br> <span class="text-sm">occasionally a Vibe Coder.</span>
+        <!-- Frontend Developer & Creative Technologist, -->
+        Software Engineer & Creative Technologist
+        <br> <span class="text-sm">occasionally a Vibe Coder.</span>
       </p>
       <p class='text-sm lg:text-base text-subTextColor'>
         I build interactive and pixel perfect things <br
@@ -35,7 +37,7 @@ const siteLink = "";
 
     <div class='lg:pb-0 lg:pt-0 pt-s pb-xxl'>
       <div class='sticky-mobile-titles'>About</div>
-      <p class='text-sm lg:text-base'>
+      <p class='text-sm lg:text-base pb-xxs'>
         Hey there! My name is Xavier from sunny
         <a
           href='https://en.wikipedia.org/wiki/Subang_Jaya'
@@ -48,13 +50,22 @@ const siteLink = "";
         Aside from software, I have an interest in tech hardware as well. Facing
         technical issues? I'm your guy!
       </p>
-      <!-- <p class='text-sm lg:text-base py-xs'>
-        Fast-forward to today, I'm a Creative Technologist at
-        Accenture Song. During my university days, I've had the privilege of
-        working on projects during my studies where I developed a number of
-        projects from its design phase to production phase.
-      </p> -->
-      <p class='text-sm lg:text-base py-xs'>
+      <p class='text-sm lg:text-base pb-xxs'>
+        Fast-forward to today, I'm a Software Engineer at 
+        <a
+          href='https://upstackstudio.com/'
+          target='_blank'
+          rel='noopener noreferrer'
+        >Upstack Studio</a>,
+        collaborating with like-minded people in tech and engineering. 
+        Previously, I was a Creative Technologist at Accenture Song,
+        where I had the opportunity to be a part of many of projects. 
+      </p>
+      <p class='text-sm lg:text-base pb-xxs'>
+      During my university days, I've had the privilege of working on 
+        projects during my studies where I developed a number of
+        projects from its design phase to production phase.</p>
+      <p class='text-sm lg:text-base py-xxs'>
         <span class='font-bold'>
           When I'm not in front of a computer screen,
         </span>I'm probably out enjoying views that my city has to offer, out on
@@ -76,7 +87,7 @@ const siteLink = "";
         endDate='PRESENT'
         title='Software Engineer II'
         company='Upstack Studio'
-        description='Thinking...'
+        description='I developed the frontend of mobile applications for new projects, maintain and enhance existing codebases, and explore the integration of Generative AI to improve engineering workflows.'
         skills={[
           "React Native",
           "Next.js",
@@ -87,7 +98,7 @@ const siteLink = "";
         endDate='Feb 2025'
         title='Creative Technologist Associate'
         company='Accenture Song'
-        description='Built, styled, and delivered high-quality and result driven frontend website while in collaboration with designers, copywriters, and other stakeholders.'
+        description='I built and delivered high-quality, results-driven frontend websites, collaborating closely with designers, copywriters, and stakeholders to create engaging digital experiences.'
         skills={[
           "HTML 5",
           "CSS",
@@ -146,8 +157,10 @@ const siteLink = "";
           {
             name: "Tools",
             languages: [
+              "AI Prompting",
               "Git/Github/Gitlab",
               "Chrome DevTools",
+              "Cursor",
               "Cypress",
               "Postman",
               "Postman API Testing",
@@ -173,9 +186,18 @@ const siteLink = "";
     <div class='lg:pt-xxl'>
       <div class='sticky-mobile-titles'>Projects</div>
       <Project
+        imagePath='/src/assets/climb-safer.png',
+        altText='Screenshot of Weight Difference Rule Climbing Calculator',
+        title='Weight Difference Rule Climbing Calculator',
+        description='Web app to calculate and show if a climber and belayer pairing is safe or not based on the weight difference rule observed by climbers. Works offline and can be installed on device like a native app. Used Cursor to generate some of the functionality and logic ideation.',
+        badges={["Next.js", "Tailwind CSS", "Shadcn/UI", "Typescript", "Zod", "Umami", "Log Rocket", "Cursor", "AI", 'Dokploy']},
+        githubLink='https://github.com/xk2800/weight-difference-rule-climbing',
+        externalLink='https://climbsafe.thingsontheweb.my/'
+      />
+      <Project
         imagePath='/src/assets/potify-profiler.png',
         altText='Screenshot of Spotify Profiler',
-        title='Spotify Profiler (Work in progress)',
+        title='Spotify Profiler',
         description='Web app for visualizing personalized Spotify data. View your top artists, currently playing, saved playlists and more features coming soon.',
         badges={["Next.js", "Tailwind CSS", "Shadcn/UI", "Typescript", "Spotify API"]},
         githubLink='https://github.com/xk2800/spotify-nextjs',
