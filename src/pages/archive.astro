@@ -3,6 +3,8 @@ import Credit from "../components/Credit.astro";
 import Layout from "../layouts/Layout.astro";
 import "@/styles/global.css";
 import Chip from "../components/Chip.astro";
+import { ArrowLeft, Award, ChevronDown, ChevronUp } from "lucide-react";
+
 
 const pageTabTitle = "Project Archive | Xavier Khew";
 
@@ -95,11 +97,11 @@ const cols =
   <div class='mx-auto max-w-5xl'>
     <a
       href='/'
-      class='rise icon-left group inline-flex w-fit items-center gap-2 text-xs font-medium text-subTextColor no-underline hover:text-baseTextColor'
+      class='rise group sweep-first inline-flex w-fit items-center gap-2 text-sm font-medium text-baseTextColor no-underline transition-transform duration-150 ease-out active:scale-[0.98]'
       style='--i:0' transition:animate='slide'
     >
-      <span aria-hidden='true' class='transition-transform duration-150 group-hover:-translate-x-1'>←</span>
-      Xavier Khew
+      <span aria-hidden='true' class='relative inline-block transition-transform duration-150 ease-out group-hover:-translate-x-0.5'><ArrowLeft className='!transform-none !transition-none' /><span class='sweep-arrow'><ArrowLeft className='!transform-none !transition-none' /></span></span>
+      <span class='sweep-text'>Xavier Khew</span>
     </a>
 
     <h1 style='--i:1' class='rise mt-8 text-xl font-semibold tracking-tight text-baseTextCTAColor lg:text-2xl'>Project archive</h1>
@@ -134,17 +136,19 @@ const cols =
                   </span>
                   {item.awards.length > 0 && (
                     <span class='ml-2 inline-flex items-center gap-1 text-[0.8rem] font-medium text-primaryCTAColor'>
-                      ★ {item.awards.length === 1 ? "Award" : `${item.awards.length} awards`}
+                      <Award className='h-4 w-4' /> {item.awards.length === 1 ? "Award" : `${item.awards.length} awards`}
                     </span>
                   )}
                 </span>
                 <span class='hidden text-xs text-subTextColor md:block'>{item.madeAt}</span>
-                <span class='hidden truncate text-xs text-subTextColor md:block'>{item.builtWith.join(" · ")}</span>
+                <span class='hidden text-xs leading-relaxed text-subTextColor md:block'>{item.builtWith.join(" · ")}</span>
                 <span
                   aria-hidden='true'
-                  class='chevron self-center text-xs text-subTextColor transition-[transform,color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-0.5 group-hover:text-baseTextColor'
+                  class='chevron grid self-center text-subTextColor transition-colors duration-200 group-hover:text-baseTextColor'
                 >
-                  ▾
+                  <ChevronDown className='down col-start-1 row-start-1 h-4 w-4' />
+                  <ChevronUp className='up col-start-1 row-start-1 h-4 w-4' />
+                  <ChevronUp className='up-red col-start-1 row-start-1 h-4 w-4' />
                 </span>
               </button>
 
@@ -152,13 +156,13 @@ const cols =
                 <div class='acc-inner'>
                   <div class='grid grid-cols-1 gap-6 pb-8 md:grid-cols-[6rem_minmax(0,1fr)]'>
                     <span class='hidden md:block' aria-hidden='true' />
-                    <div class='min-w-0 max-w-2xl'>
-                      <p class='text-sm leading-relaxed text-subTextColor'>{item.description}</p>
+                    <div class='min-w-0'>
+                      <p class='max-w-2xl text-sm leading-relaxed text-subTextColor'>{item.description}</p>
                       {item.awards.length > 0 && (
                         <ul class='mt-5 space-y-2'>
                           {item.awards.map((a) => (
-                            <li class='flex gap-2.5 text-xs font-medium text-baseTextColor'>
-                              <span class='text-primaryCTAColor' aria-hidden='true'>★</span>
+                            <li class='flex items-center gap-2.5 text-xs font-medium text-baseTextColor'>
+                              <span class='flex shrink-0 text-primaryCTAColor' aria-hidden='true'><Award className='h-4 w-4' /></span>
                               {a}
                             </li>
                           ))}
@@ -193,7 +197,13 @@ const cols =
 </Layout>
 
 <style is:global>
-  [data-open] .chevron { transform: rotate(180deg); color: #9b111a; }
+  /* Crossfade between down/up chevrons: same spot, no pivot */
+  .chevron svg { transition: opacity 200ms var(--ease-out-strong), transform 200ms var(--ease-out-strong), filter 200ms var(--ease-out-strong), clip-path 250ms var(--ease-out-strong); }
+  .chevron .up, .chevron .up-red, [data-open] .chevron .down { opacity: 0; transform: scale(0.8); filter: blur(2px); }
+  [data-open] .chevron .up, [data-open] .chevron .up-red { opacity: 1; transform: none; filter: none; }
+  /* Red copy of the up chevron, swept in left to right over the grey one */
+  .chevron .up-red { color: #9b111a; clip-path: inset(0 100% 0 0); }
+  [data-open] .chevron .up-red { clip-path: inset(0); }
 </style>
 
 <script>

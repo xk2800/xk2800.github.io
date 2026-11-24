@@ -293,3 +293,11 @@ a.icon-left svg {
     transition: none;
   }
 }
+
+/* Arrow-first variant (arrow before the text): arrow reveals, then the text sweeps */
+.sweep-first:hover .sweep-arrow {
+  transition-delay: 0s;
+}
+.sweep-first:hover .sweep-text {
+  transition-delay: 0.15s;
+}
