@@ -2,6 +2,7 @@
 import Credit from "../components/Credit.astro";
 import Layout from "../layouts/Layout.astro";
 import "@/styles/global.css";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 
 const email = "contact@xavierkhew.com";
 
@@ -17,11 +18,11 @@ const routes = [
   <div class='mx-auto flex min-h-[calc(100vh-12rem)] max-w-5xl flex-col'>
     <a
       href='/'
-      class='rise icon-left group inline-flex w-fit items-center gap-2 self-start text-xs font-medium text-subTextColor no-underline hover:text-baseTextColor'
-      style='--i:0'
+      class='rise group sweep-first inline-flex w-fit items-center gap-2 self-start text-sm font-medium text-baseTextColor no-underline transition-transform duration-150 ease-out active:scale-[0.98]'
+      style='--i:0' transition:animate='slide'
     >
-      <span aria-hidden='true' class='transition-transform duration-150 group-hover:-translate-x-1'>←</span>
-      Xavier Khew
+      <span aria-hidden='true' class='relative inline-block transition-transform duration-150 ease-out group-hover:-translate-x-0.5'><ArrowLeft className='!transform-none !transition-none' /><span class='sweep-arrow'><ArrowLeft className='!transform-none !transition-none' /></span></span>
+      <span class='sweep-text'>Xavier Khew</span>
     </a>
 
     <div class='mt-16 grid grid-cols-1 gap-x-16 gap-y-12 lg:mt-24 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]'>
@@ -60,11 +61,11 @@ const routes = [
                   </span>
                   <span
                     aria-hidden='true'
-                    class={`shrink-0 text-subTextColor transition-[transform,color] duration-150 ease-out group-hover:text-primaryCTAColor ${
+                    class={`flex shrink-0 text-subTextColor transition-[transform,color] duration-150 ease-out group-hover:text-primaryCTAColor ${
                       r.external ? "group-hover:-translate-y-0.5 group-hover:translate-x-0.5" : "group-hover:translate-x-1"
                     }`}
                   >
-                    {r.external ? "↗" : "→"}
+                    {r.external ? <ArrowUpRight className='!transform-none !transition-none' /> : <ArrowRight className='!transform-none !transition-none' />}
                   </span>
                 </a>
               </li>
