@@ -1,8 +1,8 @@
 ---
+import Credit from "../components/Credit.astro";
 import Layout from "../layouts/Layout.astro";
 import "@/styles/global.css";
 
-const currentYear = new Date().getFullYear();
 const email = "contact@xavierkhew.com";
 
 const routes = [
@@ -77,7 +77,7 @@ const routes = [
     <div class='mt-auto pt-24'>
     <footer class='border-t border-baseTextColor/10 pt-8 text-xs text-subTextColor'>
       <div class='flex flex-wrap items-center justify-between gap-4'>
-        <p>Designed & built by Xavier Khew in Subang Jaya · © {currentYear}</p>
+        <Credit />
         <div class='flex items-center gap-5'>
           <a class='footer-link' href='https://github.com/xk2800'>Github</a>
           <a class='footer-link' href='https://www.linkedin.com/in/xavier-khew/'>LinkedIn</a>

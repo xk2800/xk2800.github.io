@@ -15,6 +15,7 @@ export default {
       },
     },
     fontSize: {
+      '2xs': '0.75rem', // 12px mobile
       xs: '1rem', // 18px mobile
       sm: '1.125rem', // 18px desktop // 20px mobile
       base: '1.25rem', // 20px desktop // 22px mobile

@@ -1,8 +1,10 @@
 ---
+import Credit from "../components/Credit.astro";
 import Layout from "../layouts/Layout.astro";
 import "@/styles/global.css";
 import { Image } from "astro:assets";
 import Chip from "../components/Chip.astro";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 
 import climbSafer from "../assets/climb-safer.png";
 import spotifyProfiler from "../assets/potify-profiler.png";
@@ -13,7 +15,6 @@ import v1Portfolio from "../assets/v1.portfolio.png";
 import fyp from "../assets/fyp.png";
 
 const pageTabTitle = "Xavier Khew";
-const currentYear = new Date().getFullYear();
 const email = "contact@xavierkhew.com";
 
 const sections = [
@@ -138,9 +139,9 @@ const skillGroups = [
 ];
 
 const linkClass =
-  "font-medium text-baseTextColor underline decoration-baseTextColor/30 underline-offset-4 hover:text-primaryCTAColor hover:decoration-primaryCTAColor";
+  "squiggle-link font-medium text-baseTextColor no-underline";
 const pill =
-  "rounded-full px-5 py-2.5 text-xs font-medium no-underline transition-[transform,background-color,border-color] duration-150 ease-out active:scale-[0.97]";
+  "inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-5 py-2.5 text-xs font-medium no-underline transition-[transform,background-color,border-color] duration-150 ease-out active:scale-[0.97]";
 ---
 
 <Layout title={pageTabTitle}>
@@ -226,7 +227,7 @@ const pill =
           {
             experiences.map((exp) => (
               <li class='grid grid-cols-1 gap-1 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6'>
-                <p class='pt-1 text-xs tabular-nums text-subTextColor'>{exp.start} — {exp.end}</p>
+                <p class='pt-1 text-xs tabular-nums text-subTextColor'><span class='whitespace-nowrap'>{exp.start} —</span> <span class='whitespace-nowrap'>{exp.end}</span></p>
                 <div class='min-w-0'>
                   <h3 class='text-base font-medium leading-snug text-baseTextCTAColor lg:text-lg'>
                     {exp.title}<span class='text-subTextColor'> · {exp.company}</span>
@@ -269,7 +270,7 @@ const pill =
                   {p.stack.map((s) => <li><Chip>{s}</Chip></li>)}
                 </ul>
                 <div class='mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium'>
-                  {p.live && <a href={p.live} target='_blank' rel='noopener noreferrer' class='group inline-flex items-center gap-1.5 text-primaryCTAColor no-underline hover:text-primaryCTAColorHover'>Visit site <span aria-hidden='true' class='transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5'>↗</span></a>}
+                  {p.live && <a href={p.live} target='_blank' rel='noopener noreferrer' class='group inline-flex items-center gap-1.5 text-primaryCTAColor no-underline hover:text-primaryCTAColorHover'>Visit site <span aria-hidden='true' class='inline-block transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5'><ArrowUpRight className='!transform-none !transition-none' /></span></a>}
                   {p.source && <a href={p.source} target='_blank' rel='noopener noreferrer' class='group inline-flex items-center gap-1.5 text-baseTextColor no-underline hover:text-primaryCTAColor'><svg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16' class='transition-transform duration-150 ease-out group-hover:-rotate-12'><path d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8'/></svg>Source</a>}
                 </div>
               </article>
@@ -282,7 +283,7 @@ const pill =
           {
             more.map((p) => (
               <li class='grid grid-cols-1 gap-4 py-6 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-6'>
-                <div class='group overflow-hidden rounded-lg border border-baseTextColor/10 bg-white'>
+                <div class='group self-start overflow-hidden rounded-lg border border-baseTextColor/10 bg-white'>
                   <Image
                     src={p.image}
                     alt={p.alt}
@@ -294,7 +295,7 @@ const pill =
                   <p class='mt-1 text-xs leading-relaxed text-subTextColor'>{p.description}</p>
                   <p class='mt-2 text-xs text-subTextColor'>{p.stack.join(" · ")}</p>
                   <div class='mt-3 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium'>
-                    {p.live && <a href={p.live} target='_blank' rel='noopener noreferrer' class='group inline-flex items-center gap-1.5 text-primaryCTAColor no-underline hover:text-primaryCTAColorHover'>Visit site <span aria-hidden='true' class='transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5'>↗</span></a>}
+                    {p.live && <a href={p.live} target='_blank' rel='noopener noreferrer' class='group inline-flex items-center gap-1.5 text-primaryCTAColor no-underline hover:text-primaryCTAColorHover'>Visit site <span aria-hidden='true' class='inline-block transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5'><ArrowUpRight className='!transform-none !transition-none' /></span></a>}
                     {p.source && <a href={p.source} target='_blank' rel='noopener noreferrer' class='group inline-flex items-center gap-1.5 text-baseTextColor no-underline hover:text-primaryCTAColor'><svg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16' class='transition-transform duration-150 ease-out group-hover:-rotate-12'><path d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8'/></svg>Source</a>}
                     {!p.live && !p.source && <span class='text-subTextColor'>Private project — no public link</span>}
                   </div>
@@ -304,8 +305,8 @@ const pill =
           }
         </ul>
 
-        <a href='/archive/' class='group mt-8 inline-flex items-center gap-2 text-sm font-medium text-baseTextColor no-underline transition-[transform,color] duration-150 ease-out hover:text-primaryCTAColor active:scale-[0.98]' transition:animate='slide'>
-          View full project archive <span aria-hidden='true' class='transition-transform duration-150 ease-out group-hover:translate-x-1'>→</span>
+        <a href='/archive/' class='group mt-8 inline-flex items-center gap-2 text-sm font-medium text-baseTextColor no-underline transition-transform duration-150 ease-out active:scale-[0.98]' transition:animate='slide'>
+          <span class='sweep-text'>View full project archive</span> <span aria-hidden='true' class='relative inline-block transition-transform duration-150 ease-out group-hover:translate-x-0.5'><ArrowRight className='!transform-none !transition-none' /><span class='sweep-arrow'><ArrowRight className='!transform-none !transition-none' /></span></span>
         </a>
       </section>
 
@@ -316,7 +317,7 @@ const pill =
           {
             skillGroups.map((g) => (
               <div class='grid grid-cols-1 gap-1 py-4 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6'>
-                <dt class='text-xs font-medium text-baseTextColor'>{g.name}</dt>
+                <dt class='min-w-0 break-words text-xs font-medium text-baseTextColor' set:html={g.name.replace("/", "/<wbr>")} />
                 <dd class='text-xs leading-relaxed text-subTextColor'>{g.items.join(", ")}</dd>
               </div>
             ))
@@ -333,7 +334,7 @@ const pill =
         </p>
         <div class='mt-8 flex flex-wrap items-center gap-3'>
           <a href={`mailto:${email}`} class={`${pill} group bg-primaryCTAColor text-backgroundColor hover:bg-primaryCTAColorHover`}>
-            Say hello <span aria-hidden='true' class='inline-block transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5'>↗</span>
+            Say hello <span aria-hidden='true' class='inline-block transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5'><ArrowUpRight className='!transform-none !transition-none' /></span>
           </a>
           <button
             type='button'
@@ -342,14 +343,14 @@ const pill =
             class={`${pill} inline-flex items-center gap-2 border border-baseTextColor/15 hover:border-baseTextColor/40 data-[copied]:border-primaryCTAColor/50`}
           >
             <span class='swap-in inline-flex' id='copy-icon' aria-hidden='true'></span>
-            <span aria-live='polite' class='swap-in inline-flex' id='copy-label'>{email}</span>
+            <span class='-my-1 -ml-2 inline-flex overflow-hidden py-1 pl-2' style='-webkit-mask-image:linear-gradient(to right,transparent,#000 0.5rem);mask-image:linear-gradient(to right,transparent,#000 0.5rem)'><span aria-live='polite' class='inline-flex' id='copy-label'>{email}</span></span>
           </button>
         </div>
       </section>
 
       <!-- footer -->
       <footer class='mt-24 border-t border-baseTextColor/10 pt-8 text-xs text-subTextColor'>
-        <p>Designed & built by Xavier Khew in Subang Jaya · © {currentYear}</p>
+        <Credit />
         <p class='mt-4 max-w-xl leading-relaxed'>
           Designed in Figma, coded in Visual Studio Code. Built using Astro, Tailwind CSS and Shadcn. Icons from
           Boostrap Icons. Deployed on Github Pages. All text are set in Lexend Deca typeface.
@@ -465,18 +466,53 @@ const pill =
     if (copy && icon && label) {
       const email = copy.dataset.email ?? "";
       icon.innerHTML = COPY;
-      let timer: number | undefined;
-      copy.addEventListener("click", () => {
+      let timer: number | undefined; // reset timer
+      const reduce = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+      // the label's wrapper clips it, so one label-width moves it fully out of view
+      const offLeft = () => label.offsetWidth + 8; // + the wrapper's 8px fade zone
+      let busy = false;
+      // Label slides out to the left, then the new one slides in from the left; width glides in between
+      const swap = async (copied: boolean) => {
+        busy = true;
+        const quick = reduce();
+        if (!quick) {
+          copy.style.overflow = "hidden";
+          await label.animate(
+            [{ transform: "translateX(0)" }, { transform: `translateX(${-offLeft()}px)` }],
+            { duration: 200, easing: "cubic-bezier(0.7, 0, 0.84, 0)", fill: "forwards" },
+          ).finished;
+        }
+        const from = copy.offsetWidth;
+        copy.style.width = "";
+        copy.toggleAttribute("data-copied", copied);
+        replay(icon, copied ? CHECK : COPY);
+        label.textContent = copied ? "Copied" : email;
+        const to = copy.offsetWidth;
+        label.getAnimations().forEach((a) => a.cancel());
+        if (quick) {
+          busy = false;
+          return;
+        }
+        copy.style.width = `${from}px`;
+        copy.style.transitionProperty = "width, transform, background-color, border-color";
+        copy.style.transitionDuration = "250ms";
+        void copy.offsetWidth; // flush so the width transition starts from `from`
+        copy.style.width = `${to}px`;
+        label.animate(
+          [{ transform: `translateX(${-offLeft()}px)` }, { transform: "translateX(0)" }],
+          { duration: 300, easing: "cubic-bezier(0.23, 1, 0.32, 1)" },
+        );
+        setTimeout(() => {
+          copy.removeAttribute("style");
+          busy = false;
+        }, 310);
+      };
+      copy.addEventListener("click", async () => {
+        if (busy) return;
         navigator.clipboard?.writeText(email).catch(() => {});
-        copy.toggleAttribute("data-copied", true);
-        replay(icon, CHECK);
-        replay(label, "Copied");
         clearTimeout(timer);
-        timer = window.setTimeout(() => {
-          copy.toggleAttribute("data-copied", false);
-          replay(icon, COPY);
-          replay(label, email);
-        }, 1800);
+        await swap(true);
+        timer = window.setTimeout(() => swap(false), 1800);
       });
     }
   });

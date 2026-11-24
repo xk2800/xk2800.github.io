@@ -1,9 +1,9 @@
 ---
+import Credit from "../../components/Credit.astro";
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/global.css";
 
 const pageTabTitle = "Links | Xavier Khew";
-const currentYear = new Date().getFullYear();
 const email = "contact.xavierk@gmail.com";
 
 const github =
@@ -124,7 +124,7 @@ const arrow =
     </section>
 
     <footer class='mt-auto pt-16 text-xs text-subTextColor'>
-      <p>Designed & built by Xavier Khew in Subang Jaya · © {currentYear}</p>
+      <Credit />
     </footer>
   </div>
 </Layout>
