@@ -1,308 +1,407 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "@/styles/global.css";
-import { ViewTransitions } from "astro:transitions";
+import { Image } from "astro:assets";
+import Chip from "../components/Chip.astro";
+
+import climbSafer from "../assets/climb-safer.png";
+import spotifyProfiler from "../assets/potify-profiler.png";
+import tcdFrontEnd from "../assets/tcd-front-end.png";
+import tcdResume from "../assets/tcd-resume.png";
+import linksSite from "../assets/links-site.png";
+import v1Portfolio from "../assets/v1.portfolio.png";
+import fyp from "../assets/fyp.png";
 
 const pageTabTitle = "Xavier Khew";
 const currentYear = new Date().getFullYear();
+const email = "contact@xavierkhew.com";
 
-import { Button } from "@/components/ui/button";
-import { AccordionSkills } from "../components/SkillsList";
-import Experience from "../components/Experience.astro";
-import Project from "../components/Project.astro";
+const sections = [
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "skills", label: "Skills" },
+  { id: "contact", label: "Contact" },
+];
 
-const siteLink = "";
+const experiences = [
+  {
+    start: "Apr 2025",
+    end: "Present",
+    title: "Software Engineer II",
+    company: "Upstack Studio",
+    description:
+      "I developed the frontend of mobile applications for new projects, maintain and enhance existing codebases, and explore the integration of Generative AI to improve engineering workflows.",
+    skills: ["React Native", "Next.js"],
+  },
+  {
+    start: "Oct 2021",
+    end: "Feb 2025",
+    title: "Creative Technologist Associate",
+    company: "Accenture Song",
+    description:
+      "I built and delivered high-quality, results-driven frontend websites, collaborating closely with designers, copywriters, and stakeholders to create engaging digital experiences.",
+    skills: ["HTML 5", "CSS", "SCSS", "Javascript", "React JS", "Bootstrap", "JQuery", "Tailwind CSS", "Vite", "Three JS"],
+  },
+];
+
+const projects = [
+  {
+    title: "Weight Difference Rule Climbing Calculator",
+    description:
+      "Web app to calculate and show if a climber and belayer pairing is safe or not based on the weight difference rule observed by climbers. Works offline and can be installed on device like a native app. Used Cursor to generate some of the functionality and logic ideation.",
+    image: climbSafer,
+    alt: "Screenshot of Weight Difference Rule Climbing Calculator",
+    stack: ["Next.js", "Tailwind CSS", "Shadcn/UI", "Typescript", "Zod", "Umami", "Log Rocket", "Cursor", "AI", "Dokploy"],
+    live: "https://climbsafe.thingsontheweb.my/",
+    source: "https://github.com/xk2800/weight-difference-rule-climbing",
+    featured: true,
+  },
+  {
+    title: "Spotify Profiler",
+    description:
+      "Web app for visualizing personalized Spotify data. View your top artists, currently playing, saved playlists and more features coming soon.",
+    image: spotifyProfiler,
+    alt: "Screenshot of Spotify Profiler",
+    stack: ["Next.js", "Tailwind CSS", "Shadcn/UI", "Typescript", "Spotify API"],
+    live: "https://spot-profile.xavierkhew.com/",
+    source: "https://github.com/xk2800/spotify-nextjs",
+    featured: true,
+  },
+  {
+    title: "Tech Career Days 2021",
+    description:
+      "A static site for Tech Career Days 2021, a job fair hosted by IT Society MMU Cyberjaya. Used to present relevant information for the event.",
+    image: tcdFrontEnd,
+    alt: "Screenshot of Tech Career Days 2021",
+    stack: ["HTML 5", "CSS", "Bootstrap", "Javascript"],
+    live: "https://xk2800.github.io/TCD2021-website/",
+    source: "https://github.com/xk2800/TCD2021-website",
+  },
+  {
+    title: "Tech Career Days 2021 Resume Submission Portal",
+    description:
+      "A dynamic site for Tech Career Days 2021, a job fair hosted by IT Society MMU Cyberjaya. Used for job seekers to upload their resume where vetting is done by organisers and participating companies are able to view the approved resumes.",
+    image: tcdResume,
+    alt: "Screenshot of Tech Career Days 2021 Resume Submission Portal",
+    stack: ["HTML 5", "CSS", "Bootstrap", "Javascript", "PHP", "MySQL"],
+    source: "https://github.com/xk2800/Tech-Career-Days-2021-Web-Application",
+  },
+  {
+    title: "Linktree Alternative",
+    description: "My own rework and customised approach to Linktree.",
+    image: linksSite,
+    alt: "Screenshot of Linktree Alternative",
+    stack: ["Next.js", "Tailwind CSS"],
+    live: "https://xavierkhew-links.vercel.app/",
+    source: "https://github.com/xk2800/links-next.js",
+  },
+  {
+    title: "xavierkhew.com (v1)",
+    description: "An old portfolio site built on classic tools such as HTML and CSS",
+    image: v1Portfolio,
+    alt: "Screenshot of v1 portfolio",
+    stack: ["HTML 5", "CSS", "Bootstrap 5", "Javascript", "GSAP"],
+    live: "https://v1.xavierkhew.com/",
+    source: "https://github.com/xk2800/v1",
+  },
+  {
+    title: "REXFoodipedia",
+    description:
+      "A complete F&B e-commerce platform, offering comprehensive features tailored for customers, staff, and owners. This project, led by me and involving a team of three, focused solely on website development.",
+    image: fyp,
+    alt: "Screenshot of REXFoodipedia",
+    stack: ["HTML 5", "CSS", "Bootstrap", "Javascript", "PHP", "MySQL"],
+  },
+];
+const featured = projects.filter((p) => p.featured);
+const more = projects.filter((p) => !p.featured);
+
+const skillGroups = [
+  { name: "Languages", items: ["HTML 5", "CSS", "Javascript", "PHP", "SQL"] },
+  {
+    name: "Frameworks/Libraries",
+    items: [
+      "Angular", "Astro", "Bootstrap", "Express", "Expo", "Framer Motion", "GSAP", "JQuery", "Next.js",
+      "Node.js", "React JS", "React Native", "React Three Fiber (R3F)", "SCSS", "Shadcn/UI", "Tailwind CSS",
+      "Typescript", "Three JS", "Vite",
+    ],
+  },
+  {
+    name: "Tools",
+    items: [
+      "AI Prompting", "Git/Github/Gitlab", "Chrome DevTools", "Cursor", "Cypress", "Postman",
+      "Postman API Testing", "MongoDB", "MySQL",
+    ],
+  },
+  { name: "Design", items: ["Adobe XD", "Figma"] },
+];
+
+const linkClass =
+  "font-medium text-baseTextColor underline decoration-baseTextColor/30 underline-offset-4 hover:text-primaryCTAColor hover:decoration-primaryCTAColor";
+const pill =
+  "rounded-full px-5 py-2.5 text-xs font-medium no-underline transition-colors duration-150";
 ---
 
 <Layout title={pageTabTitle}>
-  <div class='grid grid-cols-1 lg:grid-cols-2'>
-    <!-- About -->
-    <div>
-      <p class='text-xs lg:text-sm'>Hi, my name</p>
-      <p class='text-xl font-bold lg:text-2xl' transition:animate='slide'>
+  <div class='grid grid-cols-1 gap-x-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]'>
+    <!-- Intro: sticky on desktop so name, nav and contact stay in reach -->
+    <aside class='pb-4 lg:sticky lg:top-[96px] lg:flex lg:h-[calc(100vh-12rem)] lg:flex-col lg:self-start'>
+      <h1 class='text-xl font-semibold tracking-tight text-baseTextCTAColor lg:text-2xl' transition:animate='slide'>
         Xavier Khew
-      </p>
-      <p class='text-base font-medium lg:text-lg leading-6'>
-        <!-- Frontend Developer & Creative Technologist, -->
+      </h1>
+      <p class='mt-3 text-base font-medium lg:text-lg'>
         Software Engineer & Creative Technologist
-        <br> <span class="text-sm">occasionally a Vibe Coder.</span>
       </p>
-      <p class='text-sm lg:text-base text-subTextColor'>
-        I build interactive and pixel perfect things <br
-          class='hidden md:block'
-        />
-        that live on the web.
+      <p class='mt-4 max-w-sm text-sm leading-relaxed text-subTextColor'>
+        I build interactive, pixel-perfect things that live on the web — and, occasionally, vibe-code them.
       </p>
-    </div>
 
-    <div class='lg:pb-0 lg:pt-0 pt-s pb-xxl'>
-      <div class='sticky-mobile-titles'>About</div>
-      <p class='text-sm lg:text-base pb-xxs'>
-        Hey there! My name is Xavier from sunny
-        <a
-          href='https://en.wikipedia.org/wiki/Subang_Jaya'
-          target='_blank'
-          rel='noopener noreferrer'>Subang Jaya, Malaysia</a
-        >
-        and I enjoy developing things that live on the internet. My interest in web
-        development started back in 2015 when I stumbled upon an HTML & CSS tutorial
-        on YouTube - it turns out that hacking together a front end sparked my passion.
-        Aside from software, I have an interest in tech hardware as well. Facing
-        technical issues? I'm your guy!
-      </p>
-      <p class='text-sm lg:text-base pb-xxs'>
-        Fast-forward to today, I'm a Software Engineer at 
-        <a
-          href='https://upstackstudio.com/'
-          target='_blank'
-          rel='noopener noreferrer'
-        >Upstack Studio</a>,
-        collaborating with like-minded people in tech and engineering. 
-        Previously, I was a Creative Technologist at Accenture Song,
-        where I had the opportunity to be a part of many of projects. 
-      </p>
-      <p class='text-sm lg:text-base pb-xxs'>
-      During my university days, I've had the privilege of working on 
-        projects during my studies where I developed a number of
-        projects from its design phase to production phase.</p>
-      <p class='text-sm lg:text-base py-xxs'>
-        <span class='font-bold'>
-          When I'm not in front of a computer screen,
-        </span>I'm probably out enjoying views that my city has to offer, out on
-        food hunts, playing badminton, bouldering, sport climbing or patting my cat.
-      </p>
-    </div>
+      <div class='mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-subTextColor'>
+        <span>Subang Jaya, Malaysia</span>
+        <span class='inline-flex items-center gap-2 text-baseTextColor'>
+          <span class='size-2 rounded-full bg-primaryCTAColor' aria-hidden='true'></span>
+          Open to new opportunities
+        </span>
+      </div>
 
-    <!-- Experiences -->
-    <div class='hidden pt-xxl lg:block'>
-      <span class='sticky top-[16px] text-lg font-medium lg:text-xl'>
-        Experiences
-      </span>
-    </div>
-
-    <div class='lg:pt-xxl mb-xxl lg:pb-0'>
-      <div class='sticky-mobile-titles'>Experiences</div>
-      <Experience
-        startDate='April 2025'
-        endDate='PRESENT'
-        title='Software Engineer II'
-        company='Upstack Studio'
-        description='I developed the frontend of mobile applications for new projects, maintain and enhance existing codebases, and explore the integration of Generative AI to improve engineering workflows.'
-        skills={[
-          "React Native",
-          "Next.js",
-        ]}
-      />
-      <Experience
-        startDate='Oct 2021'
-        endDate='Feb 2025'
-        title='Creative Technologist Associate'
-        company='Accenture Song'
-        description='I built and delivered high-quality, results-driven frontend websites, collaborating closely with designers, copywriters, and stakeholders to create engaging digital experiences.'
-        skills={[
-          "HTML 5",
-          "CSS",
-          "SCSS",
-          "Javascript",
-          "React JS",
-          "Bootstrap",
-          "JQuery",
-          "Tailwind CSS",
-          "Vite",
-          "Three JS",
-        ]}
-      />
-    </div>
-
-    <!-- Skills -->
-    <div class='hidden pt-xxl lg:block'>
-      <span class='sticky top-[16px] text-lg font-medium lg:text-xl'
-        >Skills</span
-      >
-    </div>
-
-    <div class='lg:pt-xxl mb-xxl lg:pb-0'>
-      <div class='sticky-mobile-titles'>Skills</div>
-      <AccordionSkills
-        client:load
-        skills={[
-          {
-            name: "Languages",
-            languages: ["HTML 5", "CSS", "Javascript", "PHP", "SQL"],
-          },
-          {
-            name: "Frameworks/Libraries",
-            languages: [
-              "Angular",
-              "Astro",
-              "Bootstrap",
-              "Express",
-              "Expo",
-              "Framer Motion",
-              "GSAP",
-              "JQuery",
-              "Next.js",
-              "Node.js",
-              "React JS",
-              "React Native",
-              "React Three Fiber (R3F)",
-              "SCSS",
-              "Shadcn/UI",
-              "Tailwind CSS",
-              "Typescript",
-              "Three JS",
-              "Vite",
-            ],
-          },
-          {
-            name: "Tools",
-            languages: [
-              "AI Prompting",
-              "Git/Github/Gitlab",
-              "Chrome DevTools",
-              "Cursor",
-              "Cypress",
-              "Postman",
-              "Postman API Testing",
-              "MongoDB",
-              "MySQL",
-            ],
-          },
-          {
-            name: "Design",
-            languages: ["Adobe XD", "Figma"],
-          },
-        ]}
-      />
-    </div>
-
-    <!-- Projects -->
-    <div class='hidden pt-xxl lg:block'>
-      <span class='sticky top-[16px] text-lg font-medium lg:text-xl'>
-        Projects
-      </span>
-    </div>
-
-    <div class='lg:pt-xxl'>
-      <div class='sticky-mobile-titles'>Projects</div>
-      <Project
-        imagePath='/src/assets/climb-safer.png',
-        altText='Screenshot of Weight Difference Rule Climbing Calculator',
-        title='Weight Difference Rule Climbing Calculator',
-        description='Web app to calculate and show if a climber and belayer pairing is safe or not based on the weight difference rule observed by climbers. Works offline and can be installed on device like a native app. Used Cursor to generate some of the functionality and logic ideation.',
-        badges={["Next.js", "Tailwind CSS", "Shadcn/UI", "Typescript", "Zod", "Umami", "Log Rocket", "Cursor", "AI", 'Dokploy']},
-        githubLink='https://github.com/xk2800/weight-difference-rule-climbing',
-        externalLink='https://climbsafe.thingsontheweb.my/'
-      />
-      <Project
-        imagePath='/src/assets/potify-profiler.png',
-        altText='Screenshot of Spotify Profiler',
-        title='Spotify Profiler',
-        description='Web app for visualizing personalized Spotify data. View your top artists, currently playing, saved playlists and more features coming soon.',
-        badges={["Next.js", "Tailwind CSS", "Shadcn/UI", "Typescript", "Spotify API"]},
-        githubLink='https://github.com/xk2800/spotify-nextjs',
-        externalLink='https://spot-profile.xavierkhew.com/'
-      />
-      <Project
-        imagePath='/src/assets/tcd-front-end.png',
-        altText='Screenshot of Tech Career Days 2021',
-        title='Tech Career Days 2021',
-        description='A static site for Tech Career Days 2021, a job fair hosted by IT Society MMU Cyberjaya. Used to present relevant information for the event.',
-        badges={["HTML 5", "CSS", "Bootstrap", "Javascript"]},
-        githubLink='https://github.com/xk2800/TCD2021-website',
-        externalLink='https://xk2800.github.io/TCD2021-website/'
-      />
-      <Project
-        imagePath='/src/assets/tcd-resume.png',
-        altText='Screenshot of Tech Career Days 2021 Resume Submission Portal',
-        title='Tech Career Days 2021 Resume Submission Portal',
-        description='A dynamic site for Tech Career Days 2021, a job fair hosted by IT Society MMU Cyberjaya. Used for job seekers to upload their resume where vetting is done by organisers and participating companies are able to view the approved resumes.',
-        badges={["HTML 5", "CSS", "Bootstrap", "Javascript", "PHP", "MySQL"]},
-        githubLink='https://github.com/xk2800/Tech-Career-Days-2021-Web-Application'
-      />
-      <Project
-        imagePath='/src/assets/links-site.png',
-        altText='Screenshot of Linktree Alternative',
-        title='Linktree Alternative',
-        description='My own rework and customised approach to Linktree.',
-        badges={["Next.js", "Tailwind CSS"]},
-        githubLink='https://github.com/xk2800/links-next.js',
-        externalLink='https://xavierkhew-links.vercel.app/'
-      />
-      <Project
-        imagePath='/src/assets/v1.portfolio.png',
-        altText='Screenshot of v1 portfolio',
-        title='xavierkhew.com (v1)',
-        description='An old portfolio site built on classic tools such as HTML and CSS',
-        badges={["HTML 5", "CSS", "Bootstrap 5", "Javascript", "GSAP"]},
-        githubLink='https://github.com/xk2800/v1',
-        externalLink='https://v1.xavierkhew.com/'
-      />
-      <Project
-        imagePath='/src/assets/fyp.png',
-        altText='Screenshot of REXFoodipedia',
-        title='REXFoodipedia',
-        description='A complete F&B e-commerce platform, offering comprehensive features tailored for customers, staff, and owners. This project, led by me and involving a team of three, focused solely on website development.',
-        badges={["HTML 5", "CSS", "Bootstrap", "Javascript", "PHP", "MySQL"]},
-      />
-      <div class='flex justify-end'>
-        <a
-          href={`/archive/`}
-          class='flex items-center text-base lg:text-lg'
-          transition:animate='slide'
-        >
-          <span class='mr-xxxxs'> View Full Project Archives</span>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='22'
-            height='22'
-            fill='currentColor'
-            class='bi bi-arrow-right'
-            viewBox='0 0 16 16'
-          >
-            <path
-              fill-rule='evenodd'
-              d='M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8'
-            ></path>
-          </svg>
+      <div class='mt-8 flex flex-wrap gap-3'>
+        <a href={`mailto:${email}`} class={`${pill} bg-primaryCTAColor text-backgroundColor hover:bg-primaryCTAColorHover`}>
+          Say hello
+        </a>
+        <a href='#projects' class={`${pill} border border-baseTextColor/15 hover:border-baseTextColor/40`}>
+          See my work
         </a>
       </div>
+
+      <nav aria-label='Sections' class='mt-14 hidden lg:block'>
+        <ul class='space-y-1'>
+          {
+            sections.map((s) => (
+              <li>
+                <a href={`#${s.id}`} data-nav={s.id} class='nav-link group flex items-center gap-4 py-1.5 text-xs font-medium text-subTextColor no-underline hover:text-baseTextColor'>
+                  <span class='nav-rule h-px w-7 bg-subTextColor/50 transition-[width,background-color] duration-200 group-hover:w-10 group-hover:bg-baseTextColor' aria-hidden='true' />
+                  {s.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class='mt-auto hidden items-center gap-5 pt-10 text-xs lg:flex'>
+        <a class='footer-link' href='https://github.com/xk2800'>Github</a>
+        <a class='footer-link' href='https://www.linkedin.com/in/xavier-khew/'>LinkedIn</a>
+      </div>
+    </aside>
+
+    <div class='min-w-0'>
+      <!-- About -->
+      <section id='about' class='scroll-mt-[96px] pt-8 lg:pt-0'>
+        <h2 class='section-heading'>About</h2>
+        <div class='space-y-4 text-sm leading-relaxed text-subTextColor'>
+          <p>
+            I'm a Software Engineer at
+            <a href='https://upstackstudio.com/' target='_blank' rel='noopener noreferrer' class={linkClass}>Upstack Studio</a>,
+            building the frontend of mobile apps and exploring how Generative AI can improve engineering workflows.
+            Before that I was a Creative Technologist at Accenture Song, where I was part of many projects.
+          </p>
+          <p>
+            It started in 2015 with an HTML & CSS tutorial on YouTube — hacking together a front end turned into a
+            career. I care about hardware too, so if something's broken, I'm your guy.
+          </p>
+          <p>
+            <span class='font-medium text-baseTextColor'>Away from the screen,</span> I'm on food hunts around
+            <a href='https://en.wikipedia.org/wiki/Subang_Jaya' target='_blank' rel='noopener noreferrer' class={linkClass}>Subang Jaya</a>,
+            playing badminton, bouldering, sport climbing, or patting my cat.
+          </p>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id='experience' class='mt-20 scroll-mt-[96px]'>
+        <h2 class='section-heading'>Experience</h2>
+        <ol class='space-y-10'>
+          {
+            experiences.map((exp) => (
+              <li class='grid grid-cols-1 gap-1 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6'>
+                <p class='pt-1 text-xs tabular-nums text-subTextColor'>{exp.start} — {exp.end}</p>
+                <div class='min-w-0'>
+                  <h3 class='text-base font-medium leading-snug text-baseTextCTAColor lg:text-lg'>
+                    {exp.title}<span class='text-subTextColor'> · {exp.company}</span>
+                  </h3>
+                  <p class='mt-2 text-sm leading-relaxed text-subTextColor'>{exp.description}</p>
+                  <ul class='mt-4 flex flex-wrap gap-2' aria-label='Technologies'>
+                    {exp.skills.map((s) => <li><Chip>{s}</Chip></li>)}
+                  </ul>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+
+      <!-- Projects -->
+      <section id='projects' class='mt-20 scroll-mt-[96px]'>
+        <h2 class='section-heading'>Selected projects</h2>
+        <div class='space-y-14'>
+          {
+            featured.map((p) => (
+              <article>
+                <a
+                  href={p.live ?? p.source}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  class='group block overflow-hidden rounded-xl border border-baseTextColor/10 bg-white'
+                  aria-label={`Open ${p.title}`}
+                >
+                  <Image
+                    src={p.image}
+                    alt={p.alt}
+                    class='aspect-video w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]'
+                  />
+                </a>
+                <h3 class='mt-5 text-lg font-medium text-baseTextCTAColor lg:text-xl'>{p.title}</h3>
+                <p class='mt-2 text-sm leading-relaxed text-subTextColor'>{p.description}</p>
+                <ul class='mt-4 flex flex-wrap gap-2' aria-label='Built with'>
+                  {p.stack.map((s) => <li><Chip>{s}</Chip></li>)}
+                </ul>
+                <div class='mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium'>
+                  {p.live && <a href={p.live} target='_blank' rel='noopener noreferrer' class='text-primaryCTAColor no-underline hover:text-primaryCTAColorHover'>Visit site ↗</a>}
+                  {p.source && <a href={p.source} target='_blank' rel='noopener noreferrer' class='text-baseTextColor no-underline hover:text-primaryCTAColor'>Source</a>}
+                </div>
+              </article>
+            ))
+          }
+        </div>
+
+        <h3 class='mb-2 mt-16 text-xs font-medium text-subTextColor'>More projects</h3>
+        <ul class='divide-y divide-baseTextColor/10 border-y border-baseTextColor/10'>
+          {
+            more.map((p) => (
+              <li class='grid grid-cols-1 gap-4 py-6 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-6'>
+                <Image
+                  src={p.image}
+                  alt={p.alt}
+                  class='aspect-[16/10] w-full rounded-lg border border-baseTextColor/10 bg-white object-cover object-top'
+                />
+                <div class='min-w-0'>
+                  <h4 class='text-sm font-medium text-baseTextCTAColor lg:text-base'>{p.title}</h4>
+                  <p class='mt-1 text-xs leading-relaxed text-subTextColor'>{p.description}</p>
+                  <p class='mt-2 text-xs text-subTextColor'>{p.stack.join(" · ")}</p>
+                  <div class='mt-3 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium'>
+                    {p.live && <a href={p.live} target='_blank' rel='noopener noreferrer' class='text-primaryCTAColor no-underline hover:text-primaryCTAColorHover'>Visit site ↗</a>}
+                    {p.source && <a href={p.source} target='_blank' rel='noopener noreferrer' class='text-baseTextColor no-underline hover:text-primaryCTAColor'>Source</a>}
+                    {!p.live && !p.source && <span class='text-subTextColor'>Private project — no public link</span>}
+                  </div>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+
+        <a href='/archive/' class='mt-8 inline-flex items-center gap-2 text-sm font-medium text-baseTextColor no-underline hover:text-primaryCTAColor' transition:animate='slide'>
+          View full project archive <span aria-hidden='true'>→</span>
+        </a>
+      </section>
+
+      <!-- Skills -->
+      <section id='skills' class='mt-20 scroll-mt-[96px]'>
+        <h2 class='section-heading'>Skills</h2>
+        <dl class='divide-y divide-baseTextColor/10 border-y border-baseTextColor/10'>
+          {
+            skillGroups.map((g) => (
+              <div class='grid grid-cols-1 gap-1 py-4 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6'>
+                <dt class='text-xs font-medium text-baseTextColor'>{g.name}</dt>
+                <dd class='text-xs leading-relaxed text-subTextColor'>{g.items.join(", ")}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </section>
+
+      <!-- Contact -->
+      <section id='contact' class='mt-24 scroll-mt-[96px]'>
+        <h2 class='section-heading'>Contact</h2>
+        <p class='text-xl font-semibold tracking-tight text-baseTextCTAColor lg:text-2xl'>Let's build something.</p>
+        <p class='mt-4 max-w-lg text-sm leading-relaxed text-subTextColor'>
+          I'm always looking for new opportunities and ready for tech challenges. Tell me about yours, or just say hello.
+        </p>
+        <div class='mt-8 flex flex-wrap items-center gap-3'>
+          <a href={`mailto:${email}`} class={`${pill} bg-primaryCTAColor text-backgroundColor hover:bg-primaryCTAColorHover`}>
+            Say hello ↗
+          </a>
+          <button
+            type='button'
+            id='copy-email'
+            data-email={email}
+            class={`${pill} border border-baseTextColor/15 hover:border-baseTextColor/40`}
+          >
+            <span aria-live='polite'>{email}</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- footer -->
+      <footer class='mt-24 border-t border-baseTextColor/10 pt-8 text-xs text-subTextColor'>
+        <p>Designed & built by Xavier Khew in Subang Jaya · © {currentYear}</p>
+        <p class='mt-4 max-w-xl leading-relaxed'>
+          Designed in Figma, coded in Visual Studio Code. Built using Astro, Tailwind CSS and Shadcn. Icons from
+          Boostrap Icons. Deployed on Github Pages. All text are set in Lexend Deca typeface.
+        </p>
+      </footer>
     </div>
   </div>
-
-  <!-- What's Next? -->
-  <div class='py-xxl'>
-    <p class='text-xs lg:text-sm'>What's Next?</p>
-    <p class='text-xl lg:text-2xl'>Get In Touch</p>
-    <p class='text-base lg:text-lg mb-xs'>
-      I'm always looking for new opportunities and ready for tech challenges.
-      <br class='hidden md:block' />
-      Drop your message and I'll tell you more about it or say hello and we get acquainted.
-    </p>
-    <a href='mailto:contact@xavierkhew.com' class='no-underline'>
-      <Button>
-        Say Hello
-      </Button>
-    </a>
-  </div>
-
-  <!-- footer -->
-  <div class='md:flex md:items-center md:justify-between'>
-    <div class='text-center'>
-      Designed & Built with &#10084;&#65039; by Xavier K.
-      <br /> in Subang Jaya &#169 {currentYear}
-    </div>
-    <div class='text-center mt-s md:text-right'>
-      <a class='footer-link' href='https://github.com/xk2800'>Github</a>
-      <a class='footer-link' href='https://www.linkedin.com/in/xavier-khew/'>
-        LinkedIn
-      </a>
-    </div>
-  </div>
-
-  <p class='text-[14px] text-subTextColor mt-xs'>
-    Designed in Figma, coded in Visual Studio Code. Built using Astro, Tailwind
-    CSS and Shadcn. <br /> Icons from Boostrap Icons. Deployed on Github Pages. All
-    text are set in Lexend Deca typeface.
-  </p>
 </Layout>
+
+<style is:global>
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #4e4e4e;
+  }
+  .section-heading::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: rgb(24 24 24 / 0.1);
+  }
+  .nav-link[aria-current] { color: #0f0f0f; }
+  .nav-link[aria-current] .nav-rule { width: 3.5rem; background: #9b111a; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+
+<script>
+  // Re-run on every navigation: the router swaps the DOM without a reload.
+  let obs: IntersectionObserver | undefined;
+  document.addEventListener("astro:page-load", () => {
+    obs?.disconnect();
+    const links = document.querySelectorAll<HTMLElement>("[data-nav]");
+    if (!links.length) return;
+    obs = new IntersectionObserver(
+      (entries) => {
+        const top = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (!top) return;
+        links.forEach((l) => l.toggleAttribute("aria-current", l.dataset.nav === top.target.id));
+      },
+      { rootMargin: "-20% 0px -60% 0px" }
+    );
+    links.forEach((l) => {
+      const el = document.getElementById(l.dataset.nav!);
+      if (el) obs!.observe(el);
+    });
+
+    const copy = document.getElementById("copy-email");
+    copy?.addEventListener("click", () => {
+      navigator.clipboard?.writeText(copy.dataset.email ?? "").catch(() => {});
+      const label = copy.querySelector("span")!;
+      label.textContent = "Copied";
+      setTimeout(() => (label.textContent = copy.dataset.email ?? ""), 1800);
+    });
+  });
+</script>

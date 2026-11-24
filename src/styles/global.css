@@ -120,3 +120,65 @@ a.icon-left svg {
   /* transform: translateX(5px); */
   transition: 0.15s;
 }
+
+/* Motion (ported from the Magic Patterns design) */
+:root {
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* .rise: opening content settles in, staggered by --i (50ms a step).
+   `backwards` not `both`, so hover/press transforms still work afterwards. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+.rise {
+  animation: rise 280ms var(--ease-out-strong) backwards;
+  animation-delay: calc(var(--i, 0) * 50ms);
+}
+
+/* Accordion panel: height + opacity via grid rows, content slides down 4px */
+.acc-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 220ms var(--ease-out-strong), opacity 220ms var(--ease-out-strong);
+}
+.acc-panel > .acc-inner {
+  min-height: 0;
+  overflow: hidden;
+  transform: translateY(-4px);
+  transition: transform 220ms var(--ease-out-strong);
+}
+[data-open] > .acc-panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+[data-open] > .acc-panel > .acc-inner {
+  transform: none;
+}
+
+/* Chips fade up one after another when a panel opens */
+@keyframes chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+[data-open] .chip-in {
+  animation: chip-in 200ms var(--ease-out-strong) backwards;
+  animation-delay: calc(80ms + var(--i, 0) * 30ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  [data-open] .chip-in {
+    animation: none;
+  }
+  .acc-panel,
+  .acc-panel > .acc-inner {
+    transition: none;
+  }
+}

@@ -1,281 +1,215 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "@/styles/global.css";
-import { Badge } from "@/components/ui/badge";
+import Chip from "../components/Chip.astro";
 
 const pageTabTitle = "Project Archive | Xavier Khew";
+const currentYear = new Date().getFullYear();
 
-const siteLink = "";
-
-import {
-  Table,
-  TableBody,
-  // TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-
-const archiveList = [
+const archive = [
   {
-    logicYear: "2023",
-    printYear: "2023",
+    year: "2023",
+    sortYear: 2023,
     project: "Hartalega NGX",
-    description: "Developed a digital clone of their physical factory in Malaysia, improving client sales by 80% and increasing click-through rates by 68%. Managed the project lifecycle, timelines, and stakeholder expectations. Led a team of developers while contributing to hands-on coding and communication with clients. Led a groundbreaking project that gained national recognition in the healthcare industry as the first to develop and launch an immersive factory tour.\n**Silver Award for Excellence in B2B Marketing &** \n**Bronze for Excellence in Interactive Marketing/AR & VR in Marketing Interactive, Marketing Excellence Awards 2024**",
-    madeAt: "Accenture Song",
-    builtWith: [
-      "HTML",
-      "Animate.css",
-      "SCSS",
-      "Bootstrap 5",
-      "GSAP",
-      "Javascript",
-      "JQuery",
-      "Three JS",
-      "Vite",
+    description:
+      "A digital twin of their Malaysian factory — the first immersive factory tour in the healthcare industry. Lifted client sales by 80% and click-through by 68%. Led the developers, wrote code, and managed timelines and stakeholders.",
+    awards: [
+      "Silver, Excellence in B2B Marketing — Marketing Excellence Awards 2024",
+      "Bronze, Excellence in Interactive Marketing / AR & VR — Marketing Excellence Awards 2024",
     ],
+    madeAt: "Accenture Song",
+    builtWith: ["HTML", "Animate.css", "SCSS", "Bootstrap 5", "GSAP", "JavaScript", "jQuery", "Three.js", "Vite"],
   },
   {
-    logicYear: "2022",
-    printYear: "2022",
+    year: "2022",
+    sortYear: 2022,
     project: "RHB Cards",
     description:
-      "Revamped the debit, credit, prepaid cards, and rewards segments, resulting in a 90% increase in user engagement and a 55% boost in click-through rates. Coordinated with clients and stakeholders to manage expectations throughout the project.\n**Gold Award for Excellence in Relationship Marketing in Marketing Interactive, Marketing Excellence Awards 2023**",
+      "Revamped the debit, credit, prepaid and rewards segments: 90% more user engagement and a 55% boost in click-through. Managed client and stakeholder expectations throughout.",
+    awards: ["Gold, Excellence in Relationship Marketing — Marketing Excellence Awards 2023"],
     madeAt: "Accenture Song",
     builtWith: ["HTML", "CSS", "SCSS", "Bootstrap 4", "JavaScript", "Slick"],
   },
   {
-    logicYear: "2022",
-    printYear: "2022",
+    year: "2022",
+    sortYear: 2022,
     project: "TM Blog",
-    description: "Created a corporate blog for showcasing leadership articles and engaging the public.",
+    description: "A corporate blog showcasing leadership articles and engaging the public.",
+    awards: [],
     madeAt: "Accenture Song",
-    builtWith: [
-      "HTML",
-      "CSS",
-      "SCSS",
-      "Bootstrap 4",
-      "JavaScript",
-      "JQuery",
-      "Moment.js",
-      "Slick",
-    ],
+    builtWith: ["HTML", "CSS", "SCSS", "Bootstrap 4", "JavaScript", "jQuery", "Moment.js", "Slick"],
   },
   {
-    logicYear: "2022",
-    printYear: "2022",
+    year: "2022",
+    sortYear: 2022,
     project: "TM Brand Centre",
-    description: "Built a corporate brand centre website to serve as a reference point for internal and external vendors regarding brand guidelines.",
+    description: "A brand centre that internal teams and external vendors use as the reference for brand guidelines.",
+    awards: [],
     madeAt: "Accenture Song",
-    builtWith: ["HTML", "CSS", "SCSS", "Bootstrap 4", "JQuery", "Slick"],
+    builtWith: ["HTML", "CSS", "SCSS", "Bootstrap 4", "jQuery", "Slick"],
   },
   {
-    logicYear: "2022",
-    printYear: "2022",
+    year: "2022",
+    sortYear: 2022,
     project: "Unifi Business",
-    description: "Revamped the business product segment website, focusing on user-friendly information architecture and engaging micro-interactions.",
+    description: "Revamped the business product site around clearer information architecture and engaging micro-interactions.",
+    awards: [],
     madeAt: "Accenture Song",
-    builtWith: ["HTML", "CSS", "Bootstrap 4", "Javascript", "JQuery", "Slick"],
+    builtWith: ["HTML", "CSS", "Bootstrap 4", "JavaScript", "jQuery", "Slick"],
   },
   {
-    logicYear: "2021-2023",
-    printYear: "2021-2023",
+    year: "2021–23",
+    sortYear: 2021.5,
     project: "Eucerin",
-    description: "Developed and distributed weekly EDMs for registered loyalty program customers. Maintained and enhanced the existing loyalty website.",
+    description: "Built and sent weekly emails to loyalty programme members, and maintained the loyalty website.",
+    awards: [],
     madeAt: "Accenture Song",
-    builtWith: ["HTML", "CSS", "Bootstrap 3", "Javascript"],
+    builtWith: ["HTML", "CSS", "Bootstrap 3", "JavaScript"],
   },
   {
-    logicYear: "2021",
-    printYear: "2021",
+    year: "2021",
+    sortYear: 2021,
     project: "Desaru Coast",
-    description: "Revamped the website to improve visual appeal and user flow, leading to an 83% retention rate, a 74% increase in click-through rates, and a 30% boost in booking conversions.",
+    description:
+      "Revamped the site’s visuals and user flow: 83% retention, 74% more click-through and 30% more bookings.",
+    awards: [],
     madeAt: "Accenture Song",
-    builtWith: ["HTML", "CSS", "Bootstrap 4", "Javascript", "Slick"],
+    builtWith: ["HTML", "CSS", "Bootstrap 4", "JavaScript", "Slick"],
   },
   {
-    logicYear: "2021",
-    printYear: "2021",
+    year: "2021",
+    sortYear: 2021,
     project: "Eve Holdings",
-    description: "Improved the UX of the existing website while preserving micro-interactions.",
+    description: "Improved the UX of the existing site while keeping its micro-interactions.",
+    awards: [],
     madeAt: "Accenture Song",
-    builtWith: [
-      "HTML",
-      "CSS",
-      "Bootstrap 4",
-      "Javascript",
-      "JQuery",
-      "GSAP",
-      "Slick",
-    ],
+    builtWith: ["HTML", "CSS", "Bootstrap 4", "JavaScript", "jQuery", "GSAP", "Slick"],
   },
-];
+].sort((a, b) => b.sortYear - a.sortYear);
+
+const cols =
+  "grid-cols-[4.5rem_minmax(0,1fr)_1.5rem] md:grid-cols-[6rem_minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1.6fr)_1.5rem]";
 ---
 
 <Layout title={pageTabTitle}>
-  <a
-    href={`/${siteLink}`}
-    class='flex items-center text-base lg:text-lg icon-left w-fit'
-    transition:animate='slide'
-  >
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      width='22'
-      height='22'
-      fill='currentColor'
-      class='bi bi-arrow-left'
-      viewBox='0 0 16 16'
+  <div class='mx-auto max-w-5xl'>
+    <a
+      href='/'
+      class='rise icon-left group inline-flex w-fit items-center gap-2 text-xs font-medium text-subTextColor no-underline hover:text-baseTextColor'
+      style='--i:0' transition:animate='slide'
     >
-      <path
-        fill-rule='evenodd'
-        d='M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8'
-      ></path>
-    </svg>
-    <span class='ms-xxxxs'>Xavier Khew</span>
-  </a>
+      <span aria-hidden='true' class='transition-transform duration-150 group-hover:-translate-x-1'>←</span>
+      Xavier Khew
+    </a>
 
-  <div class='text-lg font-medium lg:text-xl pb-xs'>
-    Other Things I've Built
-  </div>
+    <h1 style='--i:1' class='rise mt-8 text-xl font-semibold tracking-tight text-baseTextCTAColor lg:text-2xl'>Project archive</h1>
+    <p style='--i:2' class='rise mt-3 max-w-xl text-sm leading-relaxed text-subTextColor'>
+      Client work from my years at Accenture Song. Open a project for the outcome, awards and full stack.
+    </p>
 
-  <Table className='hidden md:table'>
-    <TableHeader>
-      <TableRow>
-        <TableHead>Year</TableHead>
-        <TableHead>Project</TableHead>
-        <TableHead className='hidden md:table-cell'>Description</TableHead>
-        <TableHead className='hidden md:table-cell'>Made at</TableHead>
-        <TableHead className="md:w-[150px] lg:w-[240px] xl:w-[280px]">Built with</TableHead>
-      </TableRow>
-    </TableHeader>
-    <TableBody>
+    <!-- Column labels (desktop) -->
+    <div style='--i:3' class={`rise mt-12 hidden gap-6 border-b border-baseTextColor/15 pb-3 text-xs font-medium text-subTextColor md:grid ${cols}`}>
+      <span>Year</span>
+      <span>Project</span>
+      <span>Made at</span>
+      <span>Built with</span>
+      <span class='sr-only'>Toggle</span>
+    </div>
+
+    <ul class='mt-8 border-t border-baseTextColor/15 md:mt-0 md:border-t-0'>
       {
-        archiveList
-          .map((invoice) => ({
-            ...invoice,
-            year: parseInt(invoice.logicYear),
-          })) // Extract year from invoice
-          .sort((a, b) => b.year - a.year) // Sort archiveList by year in descending order
-          .map((archive) => (
-            <TableRow key={archive.year}>
-              <TableCell>{archive.printYear}</TableCell>
-              <TableCell>{archive.project}</TableCell>
-              <TableCell className='hidden md:table-cell'>
-                {/* Render the description with formatting */}
-                {archive.description.split("\n").map((line, index) => (
-                  <p>
-                    {line.includes("**") ? (
-                      <strong>
-                        {line.replace(/\*\*(.*?)\*\*/g, (_, p1) => p1)}
-                      </strong>
-                    ) : line.includes("[") && line.includes("]") ? (
-                      line.split("[").map((part, index) => {
-                        if (index === 0) return part;
-                        const [text, url] = part.split("](");
-                        return (
-                          <>
-                            <a href={url.replace(")", "")}>{text}</a>
-                            {index < line.split("[").length - 1 ? "[" : ""}
-                          </>
-                        );
-                      })
-                    ) : (
-                      line
-                    )}
-                  </p>
-                ))}
-              </TableCell>
-              <TableCell className='hidden md:table-cell'>
-                {archive.madeAt}
-              </TableCell>
-              <TableCell>
-                {archive.builtWith ? (
-                  archive.builtWith.map((skill, index) => (
-                    <Badge key={index}>{skill}</Badge>
-                  ))
-                ) : (
-                  <span>No Data</span>
-                )}
-              </TableCell>
-            </TableRow>
-          ))
-      }
-    </TableBody>
-  </Table>
+        archive.map((item, i) => (
+          <li class='rise border-b border-baseTextColor/10' style={`--i:${3 + Math.min(i, 6) * 0.6}`}>
+            <div data-acc data-open={i === 0 ? "" : undefined}>
+              <button
+                type='button'
+                aria-expanded={i === 0 ? "true" : "false"}
+                aria-controls={`panel-${i}`}
+                class={`group grid w-full cursor-pointer items-baseline gap-4 py-5 text-left transition-colors duration-150 hover:bg-baseTextColor/[0.03] active:bg-baseTextColor/[0.06] md:gap-6 ${cols}`}
+              >
+                <span class='text-xs tabular-nums text-subTextColor'>{item.year}</span>
+                <span class='min-w-0'>
+                  <span class='text-sm font-medium text-baseTextCTAColor transition-colors duration-150 group-hover:text-primaryCTAColor lg:text-base'>
+                    {item.project}
+                  </span>
+                  {item.awards.length > 0 && (
+                    <span class='ml-2 inline-flex items-center gap-1 text-[0.8rem] font-medium text-primaryCTAColor'>
+                      ★ {item.awards.length === 1 ? "Award" : `${item.awards.length} awards`}
+                    </span>
+                  )}
+                </span>
+                <span class='hidden text-xs text-subTextColor md:block'>{item.madeAt}</span>
+                <span class='hidden truncate text-xs text-subTextColor md:block'>{item.builtWith.join(" · ")}</span>
+                <span
+                  aria-hidden='true'
+                  class='chevron self-center text-xs text-subTextColor transition-[transform,color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-y-0.5 group-hover:text-baseTextColor'
+                >
+                  ▾
+                </span>
+              </button>
 
-  <div class="grid gap-6 grid-cols-1">
-    {archiveList
-      .map((invoice) => ({
-        ...invoice,
-        year: parseInt(invoice.logicYear),
-      }))
-      .sort((a, b) => b.year - a.year)
-      .map((archive) => (
-        <Card key={archive.year} className="flex flex-col md:hidden bg-transparent border border-[#36363652] rounded-xl shadow-none">
-          <CardHeader>
-            <div className="flex justify-between items-center">
-              <h3 className="font-semibold">Project: {archive.project}</h3>
-              <span className="text-muted-foreground">Year: {archive.printYear}</span>
-            </div>
-          </CardHeader>
-          <CardContent className="flex-1">
-            <div className="space-y-4">
-              <div className="text-sm">
-                Description:
-                {archive.description.split("\n").map((line, index) => (
-                  <p key={index} className="mb-2">
-                    {line.includes("**") ? (
-                      <strong>
-                        {line.replace(/\*\*(.*?)\*\*/g, (_, p1) => p1)}
-                      </strong>
-                    ) : line.includes("[") && line.includes("]") ? (
-                      line.split("[").map((part, index) => {
-                        if (index === 0) return part;
-                        const [text, url] = part.split("](");
-                        return (
-                          <React.Fragment key={index}>
-                            <a 
-                              href={url.replace(")", "")}
-                              className="text-blue-500 hover:underline"
-                            >
-                              {text}
-                            </a>
-                            {index < line.split("[").length - 1 ? "[" : ""}
-                          </React.Fragment>
-                        );
-                      })
-                    ) : (
-                      line
-                    )}
-                  </p>
-                ))}
-              </div>
-            </div>
-          </CardContent>
-          <CardFooter className="flex-col items-start gap-6">
-            {archive.madeAt && (
-                <div className="text-sm text-muted-foreground">
-                  Made at: {archive.madeAt}
+              <div id={`panel-${i}`} class='acc-panel' inert={i !== 0}>
+                <div class='acc-inner'>
+                  <div class='grid grid-cols-1 gap-6 pb-8 md:grid-cols-[6rem_minmax(0,1fr)]'>
+                    <span class='hidden md:block' aria-hidden='true' />
+                    <div class='min-w-0 max-w-2xl'>
+                      <p class='text-sm leading-relaxed text-subTextColor'>{item.description}</p>
+                      {item.awards.length > 0 && (
+                        <ul class='mt-5 space-y-2'>
+                          {item.awards.map((a) => (
+                            <li class='flex gap-2.5 text-xs font-medium text-baseTextColor'>
+                              <span class='text-primaryCTAColor' aria-hidden='true'>★</span>
+                              {a}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      <p class='mt-5 text-xs text-subTextColor md:hidden'>Made at {item.madeAt}</p>
+                      <ul class='mt-4 flex flex-wrap gap-2' aria-label='Built with'>
+                        {item.builtWith.map((s, n) => (
+                          <li class='chip-in' style={`--i:${Math.min(n, 6)}`}><Chip>{s}</Chip></li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-              )}
-              <div className="flex flex-wrap gap-2">
-                <p>Built with:</p>
-                {archive.builtWith ? (
-                  archive.builtWith.map((skill, index) => (
-                    <Badge key={index}>
-                      {skill}
-                    </Badge>
-                  ))
-                ) : (
-                  <span className="text-muted-foreground">No Data</span>
-                )}
               </div>
-          </CardFooter>
-        </Card>
-      ))}
-  </div>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
 
-  
+    <footer class='mt-24 border-t border-baseTextColor/10 pt-8 text-xs text-subTextColor'>
+      <div class='flex flex-wrap items-center justify-between gap-4'>
+        <p>Designed & built by Xavier Khew in Subang Jaya · © {currentYear}</p>
+        <div class='flex items-center gap-5'>
+          <a class='footer-link' href='https://github.com/xk2800'>Github</a>
+          <a class='footer-link' href='https://www.linkedin.com/in/xavier-khew/'>LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+  </div>
 </Layout>
+
+<style is:global>
+  [data-open] .chevron { transform: rotate(180deg); color: #9b111a; }
+</style>
+
+<script>
+  // One row open at a time; re-bound on every navigation (router swaps the DOM).
+  document.addEventListener("astro:page-load", () => {
+    const rows = document.querySelectorAll<HTMLElement>("[data-acc]");
+    const set = (row: HTMLElement, open: boolean) => {
+      row.toggleAttribute("data-open", open);
+      row.querySelector("button")!.setAttribute("aria-expanded", String(open));
+      row.querySelector<HTMLElement>(".acc-panel")!.inert = !open;
+    };
+    rows.forEach((row) =>
+      row.querySelector("button")!.addEventListener("click", () => {
+        const open = !row.hasAttribute("data-open");
+        rows.forEach((r) => set(r, r === row && open));
+      })
+    );
+  });
+</script>
