@@ -140,32 +140,33 @@ const skillGroups = [
 const linkClass =
   "font-medium text-baseTextColor underline decoration-baseTextColor/30 underline-offset-4 hover:text-primaryCTAColor hover:decoration-primaryCTAColor";
 const pill =
-  "rounded-full px-5 py-2.5 text-xs font-medium no-underline transition-colors duration-150";
+  "rounded-full px-5 py-2.5 text-xs font-medium no-underline transition-[transform,background-color,border-color] duration-150 ease-out active:scale-[0.97]";
 ---
 
 <Layout title={pageTabTitle}>
+  <div id='scroll-progress' aria-hidden='true' class='fixed inset-x-0 top-0 z-30 h-0.5 origin-left scale-x-0 bg-primaryCTAColor'></div>
   <div class='grid grid-cols-1 gap-x-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]'>
     <!-- Intro: sticky on desktop so name, nav and contact stay in reach -->
     <aside class='pb-4 lg:sticky lg:top-[96px] lg:flex lg:h-[calc(100vh-12rem)] lg:flex-col lg:self-start'>
-      <h1 class='text-xl font-semibold tracking-tight text-baseTextCTAColor lg:text-2xl' transition:animate='slide'>
+      <h1 class='rise text-xl font-semibold tracking-tight text-baseTextCTAColor lg:text-2xl' style='--i:0' transition:animate='slide'>
         Xavier Khew
       </h1>
-      <p class='mt-3 text-base font-medium lg:text-lg'>
+      <p class='rise mt-3 text-base font-medium lg:text-lg' style='--i:1'>
         Software Engineer & Creative Technologist
       </p>
-      <p class='mt-4 max-w-sm text-sm leading-relaxed text-subTextColor'>
+      <p class='rise mt-4 max-w-sm text-sm leading-relaxed text-subTextColor' style='--i:2'>
         I build interactive, pixel-perfect things that live on the web — and, occasionally, vibe-code them.
       </p>
 
-      <div class='mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-subTextColor'>
+      <div class='rise mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-subTextColor' style='--i:3'>
         <span>Subang Jaya, Malaysia</span>
         <span class='inline-flex items-center gap-2 text-baseTextColor'>
-          <span class='size-2 rounded-full bg-primaryCTAColor' aria-hidden='true'></span>
+          <span class='relative inline-flex size-2' aria-hidden='true'><span class='ping-soft absolute inset-0 rounded-full bg-primaryCTAColor'></span><span class='relative size-2 rounded-full bg-primaryCTAColor'></span></span>
           Open to new opportunities
         </span>
       </div>
 
-      <div class='mt-8 flex flex-wrap gap-3'>
+      <div class='rise mt-8 flex flex-wrap gap-3' style='--i:4'>
         <a href={`mailto:${email}`} class={`${pill} bg-primaryCTAColor text-backgroundColor hover:bg-primaryCTAColorHover`}>
           Say hello
         </a>
@@ -174,7 +175,7 @@ const pill =
         </a>
       </div>
 
-      <nav aria-label='Sections' class='mt-14 hidden lg:block'>
+      <nav aria-label='Sections' class='rise mt-14 hidden lg:block' style='--i:5'>
         <ul class='space-y-1'>
           {
             sections.map((s) => (
@@ -189,16 +190,16 @@ const pill =
         </ul>
       </nav>
 
-      <div class='mt-auto hidden items-center gap-5 pt-10 text-xs lg:flex'>
-        <a class='footer-link' href='https://github.com/xk2800'>Github</a>
-        <a class='footer-link' href='https://www.linkedin.com/in/xavier-khew/'>LinkedIn</a>
+      <div class='rise mt-auto hidden items-center gap-5 pt-10 text-xs lg:flex' style='--i:6'>
+        <a class='footer-link transition-transform duration-150 ease-out hover:-translate-y-0.5' href='https://github.com/xk2800'>Github</a>
+        <a class='footer-link transition-transform duration-150 ease-out hover:-translate-y-0.5' href='https://www.linkedin.com/in/xavier-khew/'>LinkedIn</a>
       </div>
     </aside>
 
     <div class='min-w-0'>
       <!-- About -->
-      <section id='about' class='scroll-mt-[96px] pt-8 lg:pt-0'>
-        <h2 class='section-heading'>About</h2>
+      <section id='about' class='rise scroll-mt-[96px] pt-8 lg:pt-0' style='--i:3'>
+        <h2 class='section-heading' data-draw>About</h2>
         <div class='space-y-4 text-sm leading-relaxed text-subTextColor'>
           <p>
             I'm a Software Engineer at
@@ -220,7 +221,7 @@ const pill =
 
       <!-- Experience -->
       <section id='experience' class='mt-20 scroll-mt-[96px]'>
-        <h2 class='section-heading'>Experience</h2>
+        <h2 class='section-heading' data-draw>Experience</h2>
         <ol class='space-y-10'>
           {
             experiences.map((exp) => (
@@ -243,7 +244,7 @@ const pill =
 
       <!-- Projects -->
       <section id='projects' class='mt-20 scroll-mt-[96px]'>
-        <h2 class='section-heading'>Selected projects</h2>
+        <h2 class='section-heading' data-draw>Selected projects</h2>
         <div class='space-y-14'>
           {
             featured.map((p) => (
@@ -252,13 +253,14 @@ const pill =
                   href={p.live ?? p.source}
                   target='_blank'
                   rel='noopener noreferrer'
-                  class='group block overflow-hidden rounded-xl border border-baseTextColor/10 bg-white'
+                  class='group block overflow-hidden rounded-xl border border-baseTextColor/10 bg-white transition-[border-color] duration-200 ease-out hover:border-baseTextColor/25'
                   aria-label={`Open ${p.title}`}
                 >
                   <Image
                     src={p.image}
                     alt={p.alt}
-                    class='aspect-video w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]'
+                    loading='eager'
+                    class='aspect-video w-full object-cover object-top transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.02]'
                   />
                 </a>
                 <h3 class='mt-5 text-lg font-medium text-baseTextCTAColor lg:text-xl'>{p.title}</h3>
@@ -267,8 +269,8 @@ const pill =
                   {p.stack.map((s) => <li><Chip>{s}</Chip></li>)}
                 </ul>
                 <div class='mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium'>
-                  {p.live && <a href={p.live} target='_blank' rel='noopener noreferrer' class='text-primaryCTAColor no-underline hover:text-primaryCTAColorHover'>Visit site ↗</a>}
-                  {p.source && <a href={p.source} target='_blank' rel='noopener noreferrer' class='text-baseTextColor no-underline hover:text-primaryCTAColor'>Source</a>}
+                  {p.live && <a href={p.live} target='_blank' rel='noopener noreferrer' class='group inline-flex items-center gap-1.5 text-primaryCTAColor no-underline hover:text-primaryCTAColorHover'>Visit site <span aria-hidden='true' class='transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5'>↗</span></a>}
+                  {p.source && <a href={p.source} target='_blank' rel='noopener noreferrer' class='group inline-flex items-center gap-1.5 text-baseTextColor no-underline hover:text-primaryCTAColor'><svg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16' class='transition-transform duration-150 ease-out group-hover:-rotate-12'><path d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8'/></svg>Source</a>}
                 </div>
               </article>
             ))
@@ -280,18 +282,20 @@ const pill =
           {
             more.map((p) => (
               <li class='grid grid-cols-1 gap-4 py-6 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-6'>
-                <Image
-                  src={p.image}
-                  alt={p.alt}
-                  class='aspect-[16/10] w-full rounded-lg border border-baseTextColor/10 bg-white object-cover object-top'
-                />
+                <div class='group overflow-hidden rounded-lg border border-baseTextColor/10 bg-white'>
+                  <Image
+                    src={p.image}
+                    alt={p.alt}
+                    class='aspect-[16/10] w-full object-cover object-top transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03]'
+                  />
+                </div>
                 <div class='min-w-0'>
                   <h4 class='text-sm font-medium text-baseTextCTAColor lg:text-base'>{p.title}</h4>
                   <p class='mt-1 text-xs leading-relaxed text-subTextColor'>{p.description}</p>
                   <p class='mt-2 text-xs text-subTextColor'>{p.stack.join(" · ")}</p>
                   <div class='mt-3 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium'>
-                    {p.live && <a href={p.live} target='_blank' rel='noopener noreferrer' class='text-primaryCTAColor no-underline hover:text-primaryCTAColorHover'>Visit site ↗</a>}
-                    {p.source && <a href={p.source} target='_blank' rel='noopener noreferrer' class='text-baseTextColor no-underline hover:text-primaryCTAColor'>Source</a>}
+                    {p.live && <a href={p.live} target='_blank' rel='noopener noreferrer' class='group inline-flex items-center gap-1.5 text-primaryCTAColor no-underline hover:text-primaryCTAColorHover'>Visit site <span aria-hidden='true' class='transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5'>↗</span></a>}
+                    {p.source && <a href={p.source} target='_blank' rel='noopener noreferrer' class='group inline-flex items-center gap-1.5 text-baseTextColor no-underline hover:text-primaryCTAColor'><svg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16' class='transition-transform duration-150 ease-out group-hover:-rotate-12'><path d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8'/></svg>Source</a>}
                     {!p.live && !p.source && <span class='text-subTextColor'>Private project — no public link</span>}
                   </div>
                 </div>
@@ -300,14 +304,14 @@ const pill =
           }
         </ul>
 
-        <a href='/archive/' class='mt-8 inline-flex items-center gap-2 text-sm font-medium text-baseTextColor no-underline hover:text-primaryCTAColor' transition:animate='slide'>
-          View full project archive <span aria-hidden='true'>→</span>
+        <a href='/archive/' class='group mt-8 inline-flex items-center gap-2 text-sm font-medium text-baseTextColor no-underline transition-[transform,color] duration-150 ease-out hover:text-primaryCTAColor active:scale-[0.98]' transition:animate='slide'>
+          View full project archive <span aria-hidden='true' class='transition-transform duration-150 ease-out group-hover:translate-x-1'>→</span>
         </a>
       </section>
 
       <!-- Skills -->
       <section id='skills' class='mt-20 scroll-mt-[96px]'>
-        <h2 class='section-heading'>Skills</h2>
+        <h2 class='section-heading' data-draw>Skills</h2>
         <dl class='divide-y divide-baseTextColor/10 border-y border-baseTextColor/10'>
           {
             skillGroups.map((g) => (
@@ -322,22 +326,23 @@ const pill =
 
       <!-- Contact -->
       <section id='contact' class='mt-24 scroll-mt-[96px]'>
-        <h2 class='section-heading'>Contact</h2>
+        <h2 class='section-heading' data-draw>Contact</h2>
         <p class='text-xl font-semibold tracking-tight text-baseTextCTAColor lg:text-2xl'>Let's build something.</p>
         <p class='mt-4 max-w-lg text-sm leading-relaxed text-subTextColor'>
           I'm always looking for new opportunities and ready for tech challenges. Tell me about yours, or just say hello.
         </p>
         <div class='mt-8 flex flex-wrap items-center gap-3'>
-          <a href={`mailto:${email}`} class={`${pill} bg-primaryCTAColor text-backgroundColor hover:bg-primaryCTAColorHover`}>
-            Say hello ↗
+          <a href={`mailto:${email}`} class={`${pill} group bg-primaryCTAColor text-backgroundColor hover:bg-primaryCTAColorHover`}>
+            Say hello <span aria-hidden='true' class='inline-block transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5'>↗</span>
           </a>
           <button
             type='button'
             id='copy-email'
             data-email={email}
-            class={`${pill} border border-baseTextColor/15 hover:border-baseTextColor/40`}
+            class={`${pill} inline-flex items-center gap-2 border border-baseTextColor/15 hover:border-baseTextColor/40 data-[copied]:border-primaryCTAColor/50`}
           >
-            <span aria-live='polite'>{email}</span>
+            <span class='swap-in inline-flex' id='copy-icon' aria-hidden='true'></span>
+            <span aria-live='polite' class='swap-in inline-flex' id='copy-label'>{email}</span>
           </button>
         </div>
       </section>
@@ -377,31 +382,102 @@ const pill =
 </style>
 
 <script>
+  const COPY = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
+  const CHECK = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="#9b111a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>';
+
   // Re-run on every navigation: the router swaps the DOM without a reload.
   let obs: IntersectionObserver | undefined;
+  let reveal: IntersectionObserver | undefined;
+  let scrollCtl: AbortController | undefined;
+
+  const replay = (el: HTMLElement, html: string) => {
+    el.innerHTML = html;
+    el.classList.remove("swap-in");
+    void el.offsetWidth; // restart the animation
+    el.classList.add("swap-in");
+  };
+
   document.addEventListener("astro:page-load", () => {
     obs?.disconnect();
-    const links = document.querySelectorAll<HTMLElement>("[data-nav]");
-    if (!links.length) return;
-    obs = new IntersectionObserver(
-      (entries) => {
-        const top = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-        if (!top) return;
-        links.forEach((l) => l.toggleAttribute("aria-current", l.dataset.nav === top.target.id));
-      },
-      { rootMargin: "-20% 0px -60% 0px" }
-    );
-    links.forEach((l) => {
-      const el = document.getElementById(l.dataset.nav!);
-      if (el) obs!.observe(el);
-    });
+    reveal?.disconnect();
+    scrollCtl?.abort();
 
+    // Scroll progress bar (smoothed toward the real position)
+    const bar = document.getElementById("scroll-progress");
+    if (bar) {
+      scrollCtl = new AbortController();
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let shown = 0, raf = 0;
+      const target = () => {
+        const max = document.documentElement.scrollHeight - innerHeight;
+        return max > 0 ? Math.min(1, scrollY / max) : 0;
+      };
+      const tick = () => {
+        const t = target();
+        shown = reduce ? t : shown + (t - shown) * 0.25;
+        bar.style.transform = `scaleX(${shown})`;
+        raf = Math.abs(t - shown) > 0.001 ? requestAnimationFrame(tick) : 0;
+      };
+      addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true, signal: scrollCtl.signal });
+      tick();
+    }
+
+    // Reveal cards and draw section rules the first time they scroll into view
+    reveal = new IntersectionObserver(
+      (entries) => entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("in");
+        reveal!.unobserve(e.target);
+      }),
+      { rootMargin: "0px 0px 20% 0px" } // fire before the card enters view, so no blank gap
+    );
+    document.querySelectorAll(".reveal, [data-draw]").forEach((el) => reveal!.observe(el));
+
+    // Section heading glows when arriving via a #hash
+    const target = document.getElementById(location.hash.slice(1));
+    const heading = target?.querySelector<HTMLElement>(".section-heading");
+    if (heading) {
+      heading.classList.add("flash");
+      heading.addEventListener("animationend", () => heading.classList.remove("flash"), { once: true });
+    }
+
+    // Active section in the nav
+    const links = document.querySelectorAll<HTMLElement>("[data-nav]");
+    if (links.length) {
+      obs = new IntersectionObserver(
+        (entries) => {
+          const top = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+          if (!top) return;
+          links.forEach((l) => l.toggleAttribute("aria-current", l.dataset.nav === top.target.id));
+        },
+        { rootMargin: "-20% 0px -60% 0px" }
+      );
+      links.forEach((l) => {
+        const el = document.getElementById(l.dataset.nav!);
+        if (el) obs!.observe(el);
+      });
+    }
+
+    // Copy email, with an icon/label swap
     const copy = document.getElementById("copy-email");
-    copy?.addEventListener("click", () => {
-      navigator.clipboard?.writeText(copy.dataset.email ?? "").catch(() => {});
-      const label = copy.querySelector("span")!;
-      label.textContent = "Copied";
-      setTimeout(() => (label.textContent = copy.dataset.email ?? ""), 1800);
-    });
+    const icon = document.getElementById("copy-icon");
+    const label = document.getElementById("copy-label");
+    if (copy && icon && label) {
+      const email = copy.dataset.email ?? "";
+      icon.innerHTML = COPY;
+      let timer: number | undefined;
+      copy.addEventListener("click", () => {
+        navigator.clipboard?.writeText(email).catch(() => {});
+        copy.toggleAttribute("data-copied", true);
+        replay(icon, CHECK);
+        replay(label, "Copied");
+        clearTimeout(timer);
+        timer = window.setTimeout(() => {
+          copy.toggleAttribute("data-copied", false);
+          replay(icon, COPY);
+          replay(label, email);
+        }, 1800);
+      });
+    }
   });
 </script>

@@ -1,0 +1,97 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "@/styles/global.css";
+
+const currentYear = new Date().getFullYear();
+const email = "contact@xavierkhew.com";
+
+const routes = [
+  { label: "Home", hint: "Who I am and what I do", href: "/" },
+  { label: "Selected projects", hint: "The work I’m proudest of", href: "/#projects" },
+  { label: "Project archive", hint: "Every client project from Accenture Song", href: "/archive/" },
+  { label: "Say hello", hint: "Looking for something specific? Just ask", href: `mailto:${email}`, external: true },
+];
+---
+
+<Layout title='Page not found | Xavier Khew'>
+  <div class='mx-auto flex min-h-[calc(100vh-12rem)] max-w-5xl flex-col'>
+    <a
+      href='/'
+      class='rise icon-left group inline-flex w-fit items-center gap-2 self-start text-xs font-medium text-subTextColor no-underline hover:text-baseTextColor'
+      style='--i:0'
+    >
+      <span aria-hidden='true' class='transition-transform duration-150 group-hover:-translate-x-1'>←</span>
+      Xavier Khew
+    </a>
+
+    <div class='mt-16 grid grid-cols-1 gap-x-16 gap-y-12 lg:mt-24 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]'>
+      <!-- What happened -->
+      <div class='min-w-0'>
+        <p class='rise text-xs text-subTextColor' style='--i:1'>Error 404</p>
+        <h1 class='rise mt-3 text-2xl font-semibold tracking-tight text-baseTextCTAColor' style='--i:2'>Off route.</h1>
+        <p class='rise mt-5 max-w-sm text-sm leading-relaxed text-subTextColor' style='--i:3'>
+          There's nothing at this address — the link may be old, or the page moved when the site was rebuilt.
+        </p>
+        <p
+          class='rise mt-6 inline-flex max-w-full items-center rounded-md border border-baseTextColor/10 bg-white px-3 py-1.5 font-mono text-xs text-baseTextColor'
+          style='--i:4'
+        >
+          <span id='dead-path' class='truncate'>xavierkhew.com</span>
+          <span class='caret ml-0.5 h-4 w-[2px] shrink-0 bg-primaryCTAColor' aria-hidden='true'></span>
+        </p>
+      </div>
+
+      <!-- Where to go instead -->
+      <nav aria-label='Where to go instead' class='min-w-0'>
+        <h2 class='rise mb-2 text-xs font-medium text-subTextColor' style='--i:3'>Climb back on</h2>
+        <ul class='divide-y divide-baseTextColor/10 border-y border-baseTextColor/10'>
+          {
+            routes.map((r, i) => (
+              <li class='rise' style={`--i:${4 + i}`}>
+                <a
+                  href={r.href}
+                  class='group flex w-full items-center justify-between gap-6 py-5 text-left no-underline transition-transform duration-150 ease-out active:translate-x-0.5'
+                >
+                  <span class='min-w-0'>
+                    <span class='block text-base font-medium text-baseTextCTAColor transition-[color,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-1 group-hover:text-primaryCTAColor lg:text-lg'>
+                      {r.label}
+                    </span>
+                    <span class='mt-0.5 block text-xs text-subTextColor'>{r.hint}</span>
+                  </span>
+                  <span
+                    aria-hidden='true'
+                    class={`shrink-0 text-subTextColor transition-[transform,color] duration-150 ease-out group-hover:text-primaryCTAColor ${
+                      r.external ? "group-hover:-translate-y-0.5 group-hover:translate-x-0.5" : "group-hover:translate-x-1"
+                    }`}
+                  >
+                    {r.external ? "↗" : "→"}
+                  </span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <div class='mt-auto pt-24'>
+    <footer class='border-t border-baseTextColor/10 pt-8 text-xs text-subTextColor'>
+      <div class='flex flex-wrap items-center justify-between gap-4'>
+        <p>Designed & built by Xavier Khew in Subang Jaya · © {currentYear}</p>
+        <div class='flex items-center gap-5'>
+          <a class='footer-link' href='https://github.com/xk2800'>Github</a>
+          <a class='footer-link' href='https://www.linkedin.com/in/xavier-khew/'>LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // The page is static, so show the address the visitor actually tried.
+  document.addEventListener("astro:page-load", () => {
+    const el = document.getElementById("dead-path");
+    if (el) el.textContent = location.host + location.pathname;
+  });
+</script>

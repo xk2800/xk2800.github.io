@@ -4,63 +4,164 @@ import "@/styles/global.css";
 
 const pageTabTitle = "Links | Xavier Khew";
 const currentYear = new Date().getFullYear();
+const email = "contact.xavierk@gmail.com";
 
-import { Button } from "@/components/ui/button";
+const github =
+  "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8";
+const linkedin =
+  "M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z";
+
+const socials = [
+  { label: "LinkedIn", handle: "in/xavier-khew", href: "https://www.linkedin.com/in/xavier-khew/", path: linkedin },
+  { label: "GitHub", handle: "@xk2800", href: "https://github.com/xk2800", path: github },
+];
+
+const pill =
+  "group flex h-14 items-center gap-3 rounded-[50px] border border-baseTextColor/10 bg-white pr-5 pl-5 no-underline transition-[transform,border-color] duration-150 ease-out hover:border-primaryCTAColor/40 active:scale-[0.98]";
+const arrow =
+  "shrink-0 text-xs text-subTextColor transition-[transform,color] duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primaryCTAColor";
 ---
 
 <Layout title={pageTabTitle}>
-  <div class="text-center">
-    <div class="inline-block">
-      <p class='text-xs text-left lg:text-sm'>Hi, my name</p>
-      <p class='text-xl text-left font-bold lg:text-2xl' transition:animate='slide'>
-        Xavier Khew
+  <div class='mx-auto flex min-h-[calc(100vh-12rem)] max-w-md flex-col'>
+    <!-- Who this is -->
+    <header class='rise' style='--i:0'>
+      <p class='text-xs text-subTextColor'>Hi, my name is</p>
+      <h1 class='mt-1 text-xl font-semibold tracking-tight text-baseTextCTAColor lg:text-2xl'>Xavier Khew</h1>
+      <p class='mt-2 text-base font-medium'>Software Engineer & Creative Technologist</p>
+      <div class='mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-subTextColor'>
+        <span>Subang Jaya, Malaysia</span>
+        <span class='inline-flex items-center gap-2 text-baseTextColor'>
+          <span class='relative inline-flex size-2' aria-hidden='true'>
+            <span class='ping-soft absolute inset-0 rounded-full bg-primaryCTAColor'></span>
+            <span class='relative size-2 rounded-full bg-primaryCTAColor'></span>
+          </span>
+          Open to new opportunities
+        </span>
+      </div>
+    </header>
+
+    <!-- The one place most visitors should go -->
+    <nav aria-label='Find me elsewhere' class='mt-10'>
+      <a
+        href='https://xavierkhew.com'
+        target='_blank'
+        rel='noopener noreferrer'
+        style='--i:1'
+        class='rise group flex items-center justify-between gap-4 rounded-[50px] bg-primaryCTAColor py-4 pr-5 pl-7 text-backgroundColor no-underline transition-[transform,background-color] duration-150 ease-out hover:bg-primaryCTAColorHover active:scale-[0.98]'
+      >
+        <span class='min-w-0'>
+          <span class='block text-base font-medium lg:text-lg'>Website</span>
+          <span class='block truncate text-xs text-backgroundColor/80'>Projects, experience & more</span>
+        </span>
+        <span class='grid size-10 shrink-0 place-items-center rounded-full bg-backgroundColor/15 transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:bg-backgroundColor/25'>
+          <span aria-hidden='true' class='transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5'>↗</span>
+        </span>
+      </a>
+
+      <ul class='mt-3 space-y-3'>
+        {
+          socials.map((s, i) => (
+            <li class='rise' style={`--i:${2 + i}`}>
+              <a href={s.href} target='_blank' rel='noopener noreferrer' class={pill}>
+                <svg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' viewBox='0 0 16 16' class='shrink-0 text-baseTextColor transition-colors duration-150 group-hover:text-primaryCTAColor'>
+                  <path d={s.path} />
+                </svg>
+                <span class='shrink-0 text-sm font-medium text-baseTextCTAColor lg:text-base'>{s.label}</span>
+                <span class='ml-auto min-w-0 truncate text-xs text-subTextColor'>{s.handle}</span>
+                <span aria-hidden='true' class={arrow}>↗</span>
+              </a>
+            </li>
+          ))
+        }
+        <li class='rise flex gap-2' style={`--i:${2 + socials.length}`}>
+          <div class='min-w-0 flex-1'>
+            <a href={`mailto:${email}`} class={pill}>
+              <svg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='currentColor' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24' class='shrink-0 text-baseTextColor transition-colors duration-150 group-hover:text-primaryCTAColor'>
+                <rect width='20' height='16' x='2' y='4' rx='2'></rect><path d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'></path>
+              </svg>
+              <span class='shrink-0 text-sm font-medium text-baseTextCTAColor lg:text-base'>Email</span>
+              <span class='ml-auto min-w-0 truncate text-xs text-subTextColor'>{email}</span>
+              <span aria-hidden='true' class={arrow}>↗</span>
+            </a>
+          </div>
+          <button
+            type='button'
+            id='copy-btn'
+            data-email={email}
+            aria-label='Copy email address'
+            class='grid size-14 shrink-0 place-items-center rounded-full border border-baseTextColor/10 bg-white text-subTextColor transition-[transform,background-color,border-color,color] duration-150 ease-out hover:border-primaryCTAColor/40 hover:text-primaryCTAColor active:scale-95 data-[copied]:border-primaryCTAColor data-[copied]:bg-primaryCTAColor data-[copied]:text-backgroundColor'
+          >
+            <span id='copy-icon' class='swap-in inline-flex' aria-hidden='true'></span>
+          </button>
+        </li>
+      </ul>
+      <p aria-live='polite' class='mt-2 h-5 pr-1 text-right text-xs text-primaryCTAColor'>
+        <span id='copy-note' class='inline-block -translate-y-1 opacity-0 transition-[opacity,transform] duration-150 ease-out'>Copied to clipboard</span>
       </p>
-      <div class="text-base text-left font-medium lg:text-lg">
-        <p>Want to know more about me?</p>
-        <p>Check out one or all of these links to know more.</p>
-      </div>
+    </nav>
 
-      <div class="text-center pt-xs">
-        <a href='https://xavierkhew.com' target="_blank" rel="noopener noreferrer" class='no-underline block mx-auto mt-xs w-[95%]'> <!--  md:w-[60%] lg:w-[50%] xl:w-[35%] -->
-          <Button className='w-full'>
-            Website
-          </Button>
-        </a>
-        <a href='https://www.linkedin.com/in/xavier-khew/' target="_blank" rel="noopener noreferrer" class='no-underline block mx-auto mt-xs w-[95%]'>
-          <Button className='w-full'>
-            LinkedIn
-          </Button>
-        </a>
-        <a href='https://github.com/xk2800' target="_blank" rel="noopener noreferrer" class='no-underline block mx-auto mt-xs w-[95%]'>
-          <Button className='w-full'>
-            Github
-          </Button>
-        </a>
-        <a href='mailto:contact.xavierk@gmail.com' target="_blank" rel="noopener noreferrer" class='no-underline block mx-auto mt-xs w-[95%]'>
-          <Button className='w-full'>
-            Email
-          </Button>
-        </a>
-      </div>
+    <!-- Referral: kept apart and labelled so it never reads as a personal link -->
+    <section aria-labelledby='referral' class='rise mt-8 border-t border-baseTextColor/10 pt-8' style={`--i:${3 + socials.length}`}>
+      <h2 id='referral' class='text-xs font-medium text-subTextColor'>Referral</h2>
+      <a
+        href='https://hetzner.cloud/?ref=MwAWq1Jt8TPU'
+        target='_blank'
+        rel='noopener noreferrer sponsored'
+        class='group mt-3 flex items-center justify-between gap-4 rounded-[50px] border border-baseTextColor/10 bg-white py-3.5 pr-5 pl-7 no-underline transition-[transform,border-color] duration-150 ease-out hover:border-primaryCTAColor/40 active:scale-[0.98]'
+      >
+        <span class='min-w-0'>
+          <span class='block text-sm font-medium text-baseTextCTAColor transition-colors duration-150 group-hover:text-primaryCTAColor lg:text-base'>
+            Get $20 of Hetzner Cloud credits
+          </span>
+          <span class='block truncate text-xs text-subTextColor'>Applied when you sign up with my link</span>
+        </span>
+        <span aria-hidden='true' class={arrow}>↗</span>
+      </a>
+      <p class='mt-3 px-1 text-[0.8rem] leading-relaxed text-subTextColor'>
+        Referral link — I may receive a small credit too, at no cost to you.
+      </p>
+    </section>
 
-      <div class="text-center pt-m">
-        <div class="text-base text-left font-medium lg:text-lg">
-          <p>My Referral Links</p>
-        </div>
-        <a href='https://hetzner.cloud/?ref=MwAWq1Jt8TPU' target="_blank" rel="noopener noreferrer" class='no-underline block mx-auto mt-xs w-[95%]'> <!--  md:w-[60%] lg:w-[50%] xl:w-[35%] -->
-          <Button className='w-full'>
-            Get $20 of Hetzner Cloud Credits <br> with my link
-          </Button>
-        </a>
-      </div>
-    
-      <!-- footer -->
-      <div class='text-right mt-xl'>
-        <div class="inline-block">
-          Designed & Built with &#10084;&#65039; <br class="xs:hidden"/>by Xavier K.
-          <br /> in Subang Jaya &#169 {currentYear}
-        </div>
-      </div>
-    </div>
+    <footer class='mt-auto pt-16 text-xs text-subTextColor'>
+      <p>Designed & built by Xavier Khew in Subang Jaya · © {currentYear}</p>
+    </footer>
   </div>
 </Layout>
+
+<script>
+  const COPY = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
+  const CHECK = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>';
+
+  const swap = (el: HTMLElement, html: string) => {
+    el.innerHTML = html;
+    el.classList.remove("swap-in");
+    void el.offsetWidth; // restart the animation
+    el.classList.add("swap-in");
+  };
+
+  document.addEventListener("astro:page-load", () => {
+    const btn = document.getElementById("copy-btn");
+    const icon = document.getElementById("copy-icon");
+    const note = document.getElementById("copy-note");
+    if (!btn || !icon || !note) return;
+    icon.innerHTML = COPY;
+    let timer: number | undefined;
+    btn.addEventListener("click", () => {
+      navigator.clipboard?.writeText(btn.dataset.email ?? "").catch(() => {}); // blocked: mailto still works
+      btn.toggleAttribute("data-copied", true);
+      btn.setAttribute("aria-label", "Email address copied");
+      note.classList.replace("-translate-y-1", "translate-y-0");
+      note.classList.replace("opacity-0", "opacity-100");
+      swap(icon, CHECK);
+      clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        btn.toggleAttribute("data-copied", false);
+        btn.setAttribute("aria-label", "Copy email address");
+        note.classList.replace("translate-y-0", "-translate-y-1");
+        note.classList.replace("opacity-100", "opacity-0");
+        swap(icon, COPY);
+      }, 1800);
+    });
+  });
+</script>

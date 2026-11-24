@@ -182,3 +182,37 @@ a.icon-left svg {
     transition: none;
   }
 }
+
+/* Home motion */
+@keyframes ping-soft {
+  0% { transform: scale(1); opacity: 0.45; }
+  70%, 100% { transform: scale(2.6); opacity: 0; }
+}
+.ping-soft { animation: ping-soft 2.4s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
+/* A section heading you were sent to (URL hash) glows brand red, then settles */
+@keyframes flash { 0%, 45% { color: #9b111a; } }
+.flash { animation: flash 1.4s ease-out 0.2s backwards; }
+
+/* Icon / label swap (Copy -> Copied) */
+@keyframes swap-in { from { opacity: 0; transform: scale(0.8); } }
+.swap-in { animation: swap-in 150ms var(--ease-out-strong); }
+
+/* Reveal on first scroll into view; rules draw from the left. Only hidden when JS can run. */
+.reveal { transition: opacity 280ms var(--ease-out-strong), transform 280ms var(--ease-out-strong); }
+.section-heading::after { transform-origin: left; transition: transform 300ms var(--ease-out-strong) 50ms; }
+@media (scripting: enabled) {
+  .reveal:not(.in) { opacity: 0; transform: translateY(12px); }
+  .section-heading:not(.in)::after { transform: scaleX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ping-soft, .flash, .swap-in { animation: none; }
+  .reveal:not(.in) { opacity: 1; transform: none; }
+  .reveal, .section-heading::after { transition: none; }
+}
+
+/* Blinking cursor after the dead URL on the 404 */
+@keyframes caret { 50% { opacity: 0; } }
+.caret { animation: caret 1.1s steps(1) infinite; }
+@media (prefers-reduced-motion: reduce) { .caret { animation: none; } }
