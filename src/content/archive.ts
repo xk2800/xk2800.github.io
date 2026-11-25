@@ -1,6 +1,26 @@
 // Project archive page. Order doesn't matter: sorted by sortYear below, newest first.
 export const archive = [
   {
+    year: "2026",
+    sortYear: 2026,
+    project: "Daikin Go Daikin",
+    description:
+      "An IOT based mobile application used to control Daikin air conditioners, book service appointments. I lead the frontend development of their app redesign and implemented new features to improve user experience.",
+    awards: [],
+    madeAt: "Upstack Studio",
+    builtWith: ["React Native", "Bitrise", "Swift", "Kotlin", "Java"],
+  },
+  {
+    year: "2025",
+    sortYear: 2025,
+    project: "Daikin Technical Community",
+    description:
+      "An IOT based mobile application used by Daikin technicians to manage service appointments and provide technical support. I lead the frontend migration and integration of features from an existing app that is due to be deprecated, and implemented new upgrades to improve user experience and app performance.",
+    awards: [],
+    madeAt: "Upstack Studio",
+    builtWith: ["React Native", "Bitrise"],
+  },
+  {
     year: "2023",
     sortYear: 2023,
     project: "Hartalega NGX",
