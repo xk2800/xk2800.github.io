@@ -6,191 +6,21 @@ import { Image } from "astro:assets";
 import Chip from "../components/Chip.astro";
 import { ArrowUpRight, ArrowRight, MapPin } from "lucide-react";
 
-import climbSafer from "../assets/climb-safer.png";
-import spotifyProfiler from "../assets/potify-profiler.png";
-import tcdFrontEnd from "../assets/tcd-front-end.png";
-import tcdResume from "../assets/tcd-resume.png";
-import linksSite from "../assets/links-site.png";
-import v1Portfolio from "../assets/v1.portfolio.png";
-import fyp from "../assets/fyp.png";
+import { email, headline, blurb } from "../content/contact";
+import { sections } from "../content/nav";
+import { experiences } from "../content/experience";
+import { projects } from "../content/projects";
+import { skillGroups } from "../content/skills";
+import { compiledContent } from "../content/about.md";
 
 const pageTabTitle = "Xavier Khew";
-const email = "contact@xavierkhew.com";
+// about.md links open in a new tab, like the rest of the site
+const aboutHtml = (await compiledContent()).replaceAll("<a ", '<a target="_blank" rel="noopener noreferrer" ');
 
-const sections = [
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
-  { id: "skills", label: "Skills" },
-  { id: "contact", label: "Contact" },
-];
-
-const experiences = [
-  {
-    start: "Apr 2025",
-    end: "Present",
-    title: "Software Engineer II",
-    company: "Upstack Studio",
-    description:
-      "I developed the frontend of mobile applications for new projects, maintain and enhance existing codebases, and explore the integration of Generative AI to improve engineering workflows.",
-    skills: ["React Native", "Next.js"],
-  },
-  {
-    start: "Oct 2021",
-    end: "Feb 2025",
-    title: "Creative Technologist Associate",
-    company: "Accenture Song",
-    description:
-      "I built and delivered high-quality, results-driven frontend websites, collaborating closely with designers, copywriters, and stakeholders to create engaging digital experiences.",
-    skills: [
-      "HTML 5",
-      "CSS",
-      "SCSS",
-      "Javascript",
-      "React JS",
-      "Bootstrap",
-      "JQuery",
-      "Tailwind CSS",
-      "Vite",
-      "Three JS",
-    ],
-  },
-];
-
-const projects = [
-  {
-    title: "Weight Difference Rule Climbing Calculator",
-    description:
-      "Web app to calculate and show if a climber and belayer pairing is safe or not based on the weight difference rule observed by climbers. Works offline and can be installed on device like a native app. Used Cursor to generate some of the functionality and logic ideation.",
-    image: climbSafer,
-    alt: "Screenshot of Weight Difference Rule Climbing Calculator",
-    stack: [
-      "Next.js",
-      "Tailwind CSS",
-      "Shadcn/UI",
-      "Typescript",
-      "Zod",
-      "Umami",
-      "Log Rocket",
-      "Cursor",
-      "AI",
-      "Dokploy",
-    ],
-    live: "https://climbsafe.thingsontheweb.my/",
-    source: "https://github.com/xk2800/weight-difference-rule-climbing",
-    featured: true,
-  },
-  {
-    title: "Spotify Profiler",
-    description:
-      "Web app for visualizing personalized Spotify data. View your top artists, currently playing, saved playlists and more features coming soon.",
-    image: spotifyProfiler,
-    alt: "Screenshot of Spotify Profiler",
-    stack: [
-      "Next.js",
-      "Tailwind CSS",
-      "Shadcn/UI",
-      "Typescript",
-      "Spotify API",
-    ],
-    live: "https://spot-profile.xavierkhew.com/",
-    source: "https://github.com/xk2800/spotify-nextjs",
-    featured: true,
-  },
-  {
-    title: "Tech Career Days 2021",
-    description:
-      "A static site for Tech Career Days 2021, a job fair hosted by IT Society MMU Cyberjaya. Used to present relevant information for the event.",
-    image: tcdFrontEnd,
-    alt: "Screenshot of Tech Career Days 2021",
-    stack: ["HTML 5", "CSS", "Bootstrap", "Javascript"],
-    live: "https://xk2800.github.io/TCD2021-website/",
-    source: "https://github.com/xk2800/TCD2021-website",
-  },
-  {
-    title: "Tech Career Days 2021 Resume Submission Portal",
-    description:
-      "A dynamic site for Tech Career Days 2021, a job fair hosted by IT Society MMU Cyberjaya. Used for job seekers to upload their resume where vetting is done by organisers and participating companies are able to view the approved resumes.",
-    image: tcdResume,
-    alt: "Screenshot of Tech Career Days 2021 Resume Submission Portal",
-    stack: ["HTML 5", "CSS", "Bootstrap", "Javascript", "PHP", "MySQL"],
-    source: "https://github.com/xk2800/Tech-Career-Days-2021-Web-Application",
-  },
-  {
-    title: "Linktree Alternative",
-    description: "My own rework and customised approach to Linktree.",
-    image: linksSite,
-    alt: "Screenshot of Linktree Alternative",
-    stack: ["Next.js", "Tailwind CSS"],
-    live: "https://xavierkhew-links.vercel.app/",
-    source: "https://github.com/xk2800/links-next.js",
-  },
-  {
-    title: "xavierkhew.com (v1)",
-    description:
-      "An old portfolio site built on classic tools such as HTML and CSS",
-    image: v1Portfolio,
-    alt: "Screenshot of v1 portfolio",
-    stack: ["HTML 5", "CSS", "Bootstrap 5", "Javascript", "GSAP"],
-    live: "https://v1.xavierkhew.com/",
-    source: "https://github.com/xk2800/v1",
-  },
-  {
-    title: "REXFoodipedia",
-    description:
-      "A complete F&B e-commerce platform, offering comprehensive features tailored for customers, staff, and owners. This project, led by me and involving a team of three, focused solely on website development.",
-    image: fyp,
-    alt: "Screenshot of REXFoodipedia",
-    stack: ["HTML 5", "CSS", "Bootstrap", "Javascript", "PHP", "MySQL"],
-  },
-];
 const featured = projects.filter((p) => p.featured);
 const more = projects.filter((p) => !p.featured);
 
-const skillGroups = [
-  { name: "Languages", items: ["HTML 5", "CSS", "Javascript", "PHP", "SQL"] },
-  {
-    name: "Frameworks/Libraries",
-    items: [
-      "Angular",
-      "Astro",
-      "Bootstrap",
-      "Express",
-      "Expo",
-      "Framer Motion",
-      "GSAP",
-      "JQuery",
-      "Next.js",
-      "Node.js",
-      "React JS",
-      "React Native",
-      "React Three Fiber (R3F)",
-      "SCSS",
-      "Shadcn/UI",
-      "Tailwind CSS",
-      "Typescript",
-      "Three JS",
-      "Vite",
-    ],
-  },
-  {
-    name: "Tools",
-    items: [
-      "AI Prompting",
-      "Git/Github/Gitlab",
-      "Chrome DevTools",
-      "Cursor",
-      "Cypress",
-      "Postman",
-      "Postman API Testing",
-      "MongoDB",
-      "MySQL",
-    ],
-  },
-  { name: "Design", items: ["Adobe XD", "Figma"] },
-];
 
-const linkClass = "squiggle-link font-medium text-baseTextColor no-underline";
 const pill =
   "inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-5 py-2.5 text-xs font-medium no-underline transition-[transform,background-color,border-color] duration-150 ease-out active:scale-[0.97]";
 ---
@@ -310,53 +140,10 @@ const pill =
         <h2 class="section-heading" data-draw>
           About
         </h2>
-        <div class="space-y-4 text-sm leading-relaxed text-subTextColor">
-          <p>
-            Hey there! My name is Xavier from sunny{" "}
-            <a
-              href="https://en.wikipedia.org/wiki/Subang_Jaya"
-              target="_blank"
-              rel="noopener noreferrer"
-              class={linkClass}
-            >
-              Subang Jaya, Malaysia
-            </a>{" "}
-            and I enjoy developing things that live on the internet. My interest
-            in web development started back in 2015 when I stumbled upon an HTML
-            & CSS tutorial on YouTube - it turns out that hacking together a
-            front end sparked my passion. Aside from software, I have an
-            interest in tech hardware as well. Facing technical issues? I'm your
-            guy!
-          </p>
-          <p>
-            Fast-forward to today, I'm a Mid-Level Frontend Developer at{" "}
-            <a
-              href="https://hfm.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class={linkClass}
-            >
-              HFM
-            </a>
-            , collaborating with like-minded people across tech and engineering.
-            Previously, I was a Software Engineer at Upstack Studio, and before
-            that, a Creative Technologist at Accenture Song, where I had the
-            opportunity to work on a wide range of projects.
-          </p>
-          <p>
-            During my university days, I've had the privilege of working on
-            projects during my studies where I developed a number of projects
-            from its design phase to production phase.
-          </p>
-          <p>
-            <span class="font-medium text-baseTextColor">
-              When I'm not in front of a computer screen,
-            </span>{" "}
-            I'm probably out enjoying views that my city has to offer, out on
-            food hunts, playing badminton, bouldering, sport climbing or patting
-            my cat.
-          </p>
-        </div>
+        <div
+          class="space-y-4 text-sm leading-relaxed text-subTextColor [&_strong]:font-medium [&_strong]:text-baseTextColor [&_a]:font-medium [&_a]:text-baseTextColor [&_a]:no-underline about-links"
+          set:html={aboutHtml}
+        />
       </section>
 
       <!-- Experience -->
@@ -586,11 +373,10 @@ const pill =
           Contact
         </h2>
         <p class="text-xl font-semibold tracking-tight text-baseTextCTAColor lg:text-2xl">
-          Let's build something.
+          {headline}
         </p>
         <p class="mt-4 max-w-lg text-sm leading-relaxed text-subTextColor">
-          I'm always looking for new opportunities and ready for tech
-          challenges. Tell me about yours, or just say hello.
+          {blurb}
         </p>
         <div class="mt-8 flex flex-wrap items-center gap-3">
           <a

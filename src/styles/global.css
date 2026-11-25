@@ -218,12 +218,12 @@ a.icon-left svg {
 @media (prefers-reduced-motion: reduce) { .caret { animation: none; } }
 
 /* Inline text link: straight line is swapped for a squiggle, left to right, on hover */
-.squiggle-link {
+.squiggle-link, .about-links a {
   position: relative;
   text-decoration: none;
 }
 /* Red sweeps over the text, left to right; use on a span inside a .group link for hover on the whole link */
-.squiggle-link,
+.squiggle-link, .about-links a,
 .sweep-text {
   color: transparent;
   /* red layer sweeps over the base text colour, left to right */
@@ -234,12 +234,12 @@ a.icon-left svg {
   background-clip: text;
   transition: background-size 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.squiggle-link:hover,
+.squiggle-link:hover, .about-links a:hover,
 .group:hover .sweep-text {
   background-size: 100% 100%, 100% 100%;
 }
-.squiggle-link::before,
-.squiggle-link::after {
+.squiggle-link::before, .about-links a::before,
+.squiggle-link::after, .about-links a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -247,13 +247,13 @@ a.icon-left svg {
   pointer-events: none;
   transition: clip-path 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.squiggle-link::before {
+.squiggle-link::before, .about-links a::before {
   bottom: -3px;
   height: 1px;
   background: rgba(24, 24, 24, 0.3);
   clip-path: inset(0 0 0 0);
 }
-.squiggle-link::after {
+.squiggle-link::after, .about-links a::after {
   bottom: -6px;
   height: 4px;
   background: #9b111a;
@@ -261,17 +261,17 @@ a.icon-left svg {
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='4' viewBox='0 0 8 4'%3E%3Cpath d='M0 2 Q2 0 4 2 T8 2' fill='none' stroke='black' stroke-width='1.2'/%3E%3C/svg%3E") repeat-x left center / 8px 4px;
   clip-path: inset(0 100% 0 0);
 }
-.squiggle-link:hover::before {
+.squiggle-link:hover::before, .about-links a:hover::before {
   clip-path: inset(0 0 0 100%);
 }
-.squiggle-link:hover::after {
+.squiggle-link:hover::after, .about-links a:hover::after {
   clip-path: inset(0 0 0 0);
 }
 @media (prefers-reduced-motion: reduce) {
-  .squiggle-link,
+  .squiggle-link, .about-links a,
   .sweep-text,
-  .squiggle-link::before,
-  .squiggle-link::after {
+  .squiggle-link::before, .about-links a::before,
+  .squiggle-link::after, .about-links a::after {
     transition: none;
   }
 }

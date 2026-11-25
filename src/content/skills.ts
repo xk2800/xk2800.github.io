@@ -1,0 +1,43 @@
+// Skills section. One entry per group.
+export const skillGroups = [
+  { name: "Languages", items: ["HTML 5", "CSS", "Javascript", "PHP", "SQL"] },
+  {
+    name: "Frameworks/Libraries",
+    items: [
+      "Angular",
+      "Astro",
+      "Bootstrap",
+      "Express",
+      "Expo",
+      "Framer Motion",
+      "GSAP",
+      "JQuery",
+      "Next.js",
+      "Node.js",
+      "React JS",
+      "React Native",
+      "React Three Fiber (R3F)",
+      "SCSS",
+      "Shadcn/UI",
+      "Tailwind CSS",
+      "Typescript",
+      "Three JS",
+      "Vite",
+    ],
+  },
+  {
+    name: "Tools",
+    items: [
+      "AI Prompting",
+      "Git/Github/Gitlab",
+      "Chrome DevTools",
+      "Cursor",
+      "Cypress",
+      "Postman",
+      "Postman API Testing",
+      "MongoDB",
+      "MySQL",
+    ],
+  },
+  { name: "Design", items: ["Adobe XD", "Figma"] },
+];
