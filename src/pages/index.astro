@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import "@/styles/global.css";
 import { Image } from "astro:assets";
 import Chip from "../components/Chip.astro";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight, MapPin } from "lucide-react";
 
 import climbSafer from "../assets/climb-safer.png";
 import spotifyProfiler from "../assets/potify-profiler.png";
@@ -42,7 +42,18 @@ const experiences = [
     company: "Accenture Song",
     description:
       "I built and delivered high-quality, results-driven frontend websites, collaborating closely with designers, copywriters, and stakeholders to create engaging digital experiences.",
-    skills: ["HTML 5", "CSS", "SCSS", "Javascript", "React JS", "Bootstrap", "JQuery", "Tailwind CSS", "Vite", "Three JS"],
+    skills: [
+      "HTML 5",
+      "CSS",
+      "SCSS",
+      "Javascript",
+      "React JS",
+      "Bootstrap",
+      "JQuery",
+      "Tailwind CSS",
+      "Vite",
+      "Three JS",
+    ],
   },
 ];
 
@@ -53,7 +64,18 @@ const projects = [
       "Web app to calculate and show if a climber and belayer pairing is safe or not based on the weight difference rule observed by climbers. Works offline and can be installed on device like a native app. Used Cursor to generate some of the functionality and logic ideation.",
     image: climbSafer,
     alt: "Screenshot of Weight Difference Rule Climbing Calculator",
-    stack: ["Next.js", "Tailwind CSS", "Shadcn/UI", "Typescript", "Zod", "Umami", "Log Rocket", "Cursor", "AI", "Dokploy"],
+    stack: [
+      "Next.js",
+      "Tailwind CSS",
+      "Shadcn/UI",
+      "Typescript",
+      "Zod",
+      "Umami",
+      "Log Rocket",
+      "Cursor",
+      "AI",
+      "Dokploy",
+    ],
     live: "https://climbsafe.thingsontheweb.my/",
     source: "https://github.com/xk2800/weight-difference-rule-climbing",
     featured: true,
@@ -64,7 +86,13 @@ const projects = [
       "Web app for visualizing personalized Spotify data. View your top artists, currently playing, saved playlists and more features coming soon.",
     image: spotifyProfiler,
     alt: "Screenshot of Spotify Profiler",
-    stack: ["Next.js", "Tailwind CSS", "Shadcn/UI", "Typescript", "Spotify API"],
+    stack: [
+      "Next.js",
+      "Tailwind CSS",
+      "Shadcn/UI",
+      "Typescript",
+      "Spotify API",
+    ],
     live: "https://spot-profile.xavierkhew.com/",
     source: "https://github.com/xk2800/spotify-nextjs",
     featured: true,
@@ -99,7 +127,8 @@ const projects = [
   },
   {
     title: "xavierkhew.com (v1)",
-    description: "An old portfolio site built on classic tools such as HTML and CSS",
+    description:
+      "An old portfolio site built on classic tools such as HTML and CSS",
     image: v1Portfolio,
     alt: "Screenshot of v1 portfolio",
     stack: ["HTML 5", "CSS", "Bootstrap 5", "Javascript", "GSAP"],
@@ -123,237 +152,489 @@ const skillGroups = [
   {
     name: "Frameworks/Libraries",
     items: [
-      "Angular", "Astro", "Bootstrap", "Express", "Expo", "Framer Motion", "GSAP", "JQuery", "Next.js",
-      "Node.js", "React JS", "React Native", "React Three Fiber (R3F)", "SCSS", "Shadcn/UI", "Tailwind CSS",
-      "Typescript", "Three JS", "Vite",
+      "Angular",
+      "Astro",
+      "Bootstrap",
+      "Express",
+      "Expo",
+      "Framer Motion",
+      "GSAP",
+      "JQuery",
+      "Next.js",
+      "Node.js",
+      "React JS",
+      "React Native",
+      "React Three Fiber (R3F)",
+      "SCSS",
+      "Shadcn/UI",
+      "Tailwind CSS",
+      "Typescript",
+      "Three JS",
+      "Vite",
     ],
   },
   {
     name: "Tools",
     items: [
-      "AI Prompting", "Git/Github/Gitlab", "Chrome DevTools", "Cursor", "Cypress", "Postman",
-      "Postman API Testing", "MongoDB", "MySQL",
+      "AI Prompting",
+      "Git/Github/Gitlab",
+      "Chrome DevTools",
+      "Cursor",
+      "Cypress",
+      "Postman",
+      "Postman API Testing",
+      "MongoDB",
+      "MySQL",
     ],
   },
   { name: "Design", items: ["Adobe XD", "Figma"] },
 ];
 
-const linkClass =
-  "squiggle-link font-medium text-baseTextColor no-underline";
+const linkClass = "squiggle-link font-medium text-baseTextColor no-underline";
 const pill =
   "inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-5 py-2.5 text-xs font-medium no-underline transition-[transform,background-color,border-color] duration-150 ease-out active:scale-[0.97]";
 ---
 
 <Layout title={pageTabTitle}>
-  <div id='scroll-progress' aria-hidden='true' class='fixed inset-x-0 top-0 z-30 h-0.5 origin-left scale-x-0 bg-primaryCTAColor'></div>
-  <div class='grid grid-cols-1 gap-x-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]'>
+  <div
+    id="scroll-progress"
+    aria-hidden="true"
+    class="fixed inset-x-0 top-0 z-30 h-0.5 origin-left scale-x-0 bg-primaryCTAColor"
+  ></div>
+  <div class="grid grid-cols-1 gap-x-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
     <!-- Intro: sticky on desktop so name, nav and contact stay in reach -->
-    <aside class='pb-4 lg:sticky lg:top-[96px] lg:flex lg:h-[calc(100vh-12rem)] lg:flex-col lg:self-start'>
-      <h1 class='rise text-xl font-semibold tracking-tight text-baseTextCTAColor lg:text-2xl' style='--i:0' transition:animate='slide'>
+    <aside class="pb-4 lg:sticky lg:top-[96px] lg:flex lg:h-[calc(100vh-12rem)] lg:flex-col lg:self-start">
+      <h1
+        class="rise text-xl font-semibold tracking-tight text-baseTextCTAColor lg:text-2xl"
+        style="--i:0"
+        transition:animate="slide"
+      >
         Xavier Khew
       </h1>
-      <p class='rise mt-3 text-base font-medium lg:text-lg' style='--i:1'>
+      <p class="rise mt-3 text-base font-medium lg:text-lg" style="--i:1">
         Software Engineer & Creative Technologist
       </p>
-      <p class='rise mt-4 max-w-sm text-sm leading-relaxed text-subTextColor' style='--i:2'>
-        I build interactive, pixel-perfect things that live on the web — and, occasionally, vibe-code them.
+      <p
+        class="rise mt-4 max-w-sm text-sm leading-relaxed text-subTextColor"
+        style="--i:2"
+      >
+        I build interactive, pixel-perfect things that live on the web — and,
+        occasionally, vibe-code them.
       </p>
 
-      <div class='rise mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-subTextColor' style='--i:3'>
-        <span>Subang Jaya, Malaysia</span>
-        <span class='inline-flex items-center gap-2 text-baseTextColor'>
-          <span class='relative inline-flex size-2' aria-hidden='true'><span class='ping-soft absolute inset-0 rounded-full bg-primaryCTAColor'></span><span class='relative size-2 rounded-full bg-primaryCTAColor'></span></span>
+      <div
+        class="rise mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-subTextColor"
+        style="--i:3"
+      >
+        <span class="inline-flex items-center gap-1">
+          <MapPin className="h-4 w-4" /> Subang Jaya, Malaysia
+        </span>
+        <span class="inline-flex items-center gap-2 text-baseTextColor">
+          <span class="relative inline-flex size-2" aria-hidden="true">
+            <span class="ping-soft absolute inset-0 rounded-full bg-primaryCTAColor"></span>
+            <span class="relative size-2 rounded-full bg-primaryCTAColor"></span>
+          </span>
           Open to new opportunities
         </span>
       </div>
 
-      <div class='rise mt-8 flex flex-wrap gap-3' style='--i:4'>
-        <a href={`mailto:${email}`} class={`${pill} bg-primaryCTAColor text-backgroundColor hover:bg-primaryCTAColorHover`}>
+      <div class="rise mt-8 flex flex-wrap gap-3" style="--i:4">
+        <a
+          href={`mailto:${email}`}
+          class={`${pill} bg-primaryCTAColor text-backgroundColor hover:bg-primaryCTAColorHover`}
+        >
           Say hello
         </a>
-        <a href='#projects' class={`${pill} border border-baseTextColor/15 hover:border-baseTextColor/40`}>
+        <a
+          href="#projects"
+          class={`${pill} border border-baseTextColor/15 hover:border-baseTextColor/40`}
+        >
           See my work
         </a>
       </div>
 
-      <nav aria-label='Sections' class='rise mt-14 hidden lg:block' style='--i:5'>
-        <ul class='space-y-1'>
-          {
-            sections.map((s) => (
-              <li>
-                <a href={`#${s.id}`} data-nav={s.id} class='nav-link group flex items-center gap-4 py-1.5 text-xs font-medium text-subTextColor no-underline hover:text-baseTextColor'>
-                  <span class='nav-rule h-px w-7 bg-subTextColor/50 transition-[width,background-color] duration-200 group-hover:w-10 group-hover:bg-baseTextColor' aria-hidden='true' />
-                  {s.label}
-                </a>
-              </li>
-            ))
-          }
+      <nav
+        aria-label="Sections"
+        class="rise mt-14 hidden lg:block"
+        style="--i:5"
+      >
+        <ul class="space-y-1">
+          {sections.map((s) => (
+            <li>
+              <a
+                href={`#${s.id}`}
+                data-nav={s.id}
+                class="nav-link group flex items-center gap-4 py-1.5 text-xs font-medium text-subTextColor no-underline hover:text-baseTextColor"
+              >
+                <span
+                  class="nav-rule h-px w-7 bg-subTextColor/50 transition-[width,background-color] duration-200 group-hover:w-10 group-hover:bg-baseTextColor"
+                  aria-hidden="true"
+                />
+                {s.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </nav>
 
-      <div class='rise mt-auto hidden items-center gap-5 pt-10 text-xs lg:flex' style='--i:6'>
-        <a class='footer-link transition-transform duration-150 ease-out hover:-translate-y-0.5' href='https://github.com/xk2800'><img src='/GitHub_Invertocat_Black.svg' alt='GitHub' class='h-6 w-6' /></a>
-        <a class='footer-link transition-transform duration-150 ease-out hover:-translate-y-0.5' href='https://www.linkedin.com/in/xavier-khew/'><img src='/InBug-Black.png' alt='LinkedIn' class='h-6 w-[1.65rem]' /></a>
+      <div
+        class="rise mt-auto hidden items-center gap-5 pt-10 text-xs lg:flex"
+        style="--i:6"
+      >
+        <a
+          class="footer-link transition-transform duration-150 ease-out hover:-translate-y-0.5"
+          href="https://github.com/xk2800"
+        >
+          <img
+            src="/GitHub_Invertocat_Black.svg"
+            alt="GitHub"
+            class="h-6 w-6"
+          />
+        </a>
+        <a
+          class="footer-link transition-transform duration-150 ease-out hover:-translate-y-0.5"
+          href="https://www.linkedin.com/in/xavier-khew/"
+        >
+          <img src="/InBug-Black.png" alt="LinkedIn" class="h-6 w-[1.65rem]" />
+        </a>
       </div>
     </aside>
 
-    <div class='min-w-0'>
+    <div class="min-w-0">
       <!-- About -->
-      <section id='about' class='rise scroll-mt-[96px] pt-8 lg:pt-0' style='--i:3'>
-        <h2 class='section-heading' data-draw>About</h2>
-        <div class='space-y-4 text-sm leading-relaxed text-subTextColor'>
+      <section
+        id="about"
+        class="rise scroll-mt-[96px] pt-8 lg:pt-0"
+        style="--i:3"
+      >
+        <h2 class="section-heading" data-draw>
+          About
+        </h2>
+        <div class="space-y-4 text-sm leading-relaxed text-subTextColor">
           <p>
-            I'm a Software Engineer at{" "}
-            <a href='https://upstackstudio.com/' target='_blank' rel='noopener noreferrer' class={linkClass}>Upstack Studio</a>,
-            building the frontend of mobile apps and exploring how Generative AI can improve engineering workflows.
-            Before that I was a Creative Technologist at Accenture Song, where I was part of many projects.
+            Hey there! My name is Xavier from sunny{" "}
+            <a
+              href="https://en.wikipedia.org/wiki/Subang_Jaya"
+              target="_blank"
+              rel="noopener noreferrer"
+              class={linkClass}
+            >
+              Subang Jaya, Malaysia
+            </a>{" "}
+            and I enjoy developing things that live on the internet. My interest
+            in web development started back in 2015 when I stumbled upon an HTML
+            & CSS tutorial on YouTube - it turns out that hacking together a
+            front end sparked my passion. Aside from software, I have an
+            interest in tech hardware as well. Facing technical issues? I'm your
+            guy!
           </p>
           <p>
-            It started in 2015 with an HTML & CSS tutorial on YouTube — hacking together a front end turned into a
-            career. I care about hardware too, so if something's broken, I'm your guy.
+            Fast-forward to today, I'm a Mid-Level Frontend Developer at{" "}
+            <a
+              href="https://hfm.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class={linkClass}
+            >
+              HFM
+            </a>
+            , collaborating with like-minded people across tech and engineering.
+            Previously, I was a Software Engineer at Upstack Studio, and before
+            that, a Creative Technologist at Accenture Song, where I had the
+            opportunity to work on a wide range of projects.
           </p>
           <p>
-            <span class='font-medium text-baseTextColor'>Away from the screen,</span> I'm on food hunts around{" "}
-            <a href='https://en.wikipedia.org/wiki/Subang_Jaya' target='_blank' rel='noopener noreferrer' class={linkClass}>Subang Jaya</a>,
-            playing badminton, bouldering, sport climbing, or patting my cat.
+            During my university days, I've had the privilege of working on
+            projects during my studies where I developed a number of projects
+            from its design phase to production phase.
+          </p>
+          <p>
+            <span class="font-medium text-baseTextColor">
+              When I'm not in front of a computer screen,
+            </span>{" "}
+            I'm probably out enjoying views that my city has to offer, out on
+            food hunts, playing badminton, bouldering, sport climbing or patting
+            my cat.
           </p>
         </div>
       </section>
 
       <!-- Experience -->
-      <section id='experience' class='mt-20 scroll-mt-[96px]'>
-        <h2 class='section-heading' data-draw>Experience</h2>
-        <ol class='space-y-10'>
-          {
-            experiences.map((exp) => (
-              <li class='grid grid-cols-1 gap-1 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6'>
-                <p class='pt-1 text-xs tabular-nums text-subTextColor'><span class='whitespace-nowrap'>{exp.start} —</span> <span class='whitespace-nowrap'>{exp.end}</span></p>
-                <div class='min-w-0'>
-                  <h3 class='text-base font-medium leading-snug text-baseTextCTAColor lg:text-lg'>
-                    {exp.title}<span class='text-subTextColor'> · {exp.company}</span>
-                  </h3>
-                  <p class='mt-2 text-sm leading-relaxed text-subTextColor'>{exp.description}</p>
-                  <ul class='mt-4 flex flex-wrap gap-2' aria-label='Technologies'>
-                    {exp.skills.map((s) => <li><Chip>{s}</Chip></li>)}
-                  </ul>
-                </div>
-              </li>
-            ))
-          }
+      <section id="experience" class="mt-20 scroll-mt-[96px]">
+        <h2 class="section-heading" data-draw>
+          Experience
+        </h2>
+        <ol class="space-y-10">
+          {experiences.map((exp) => (
+            <li class="grid grid-cols-1 gap-1 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6">
+              <p class="pt-1 text-xs tabular-nums text-subTextColor">
+                <span class="whitespace-nowrap">{exp.start} —</span>{" "}
+                <span class="whitespace-nowrap">{exp.end}</span>
+              </p>
+              <div class="min-w-0">
+                <h3 class="text-base font-medium leading-snug text-baseTextCTAColor lg:text-lg">
+                  {exp.title}
+                  <span class="text-subTextColor"> · {exp.company}</span>
+                </h3>
+                <p class="mt-2 text-sm leading-relaxed text-subTextColor">
+                  {exp.description}
+                </p>
+                <ul class="mt-4 flex flex-wrap gap-2" aria-label="Technologies">
+                  {exp.skills.map((s) => (
+                    <li>
+                      <Chip>{s}</Chip>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))}
         </ol>
       </section>
 
       <!-- Projects -->
-      <section id='projects' class='mt-20 scroll-mt-[96px]'>
-        <h2 class='section-heading' data-draw>Selected projects</h2>
-        <div class='space-y-14'>
-          {
-            featured.map((p) => (
-              <article>
-                <a
-                  href={p.live ?? p.source}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  class='group block overflow-hidden rounded-xl border border-baseTextColor/10 bg-white transition-[border-color] duration-200 ease-out hover:border-baseTextColor/25'
-                  aria-label={`Open ${p.title}`}
-                >
-                  <Image
-                    src={p.image}
-                    alt={p.alt}
-                    loading='eager'
-                    class='aspect-video w-full object-cover object-top transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.02]'
-                  />
-                </a>
-                <h3 class='mt-5 text-lg font-medium text-baseTextCTAColor lg:text-xl'>{p.title}</h3>
-                <p class='mt-2 text-sm leading-relaxed text-subTextColor'>{p.description}</p>
-                <ul class='mt-4 flex flex-wrap gap-2' aria-label='Built with'>
-                  {p.stack.map((s) => <li><Chip>{s}</Chip></li>)}
-                </ul>
-                <div class='mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium'>
-                  {p.live && <a href={p.live} target='_blank' rel='noopener noreferrer' class='group inline-flex items-center gap-1.5 text-primaryCTAColor no-underline hover:text-primaryCTAColorHover'>Visit site <span aria-hidden='true' class='inline-block transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5'><ArrowUpRight className='!transform-none !transition-none' /></span></a>}
-                  {p.source && <a href={p.source} target='_blank' rel='noopener noreferrer' class='group inline-flex items-center gap-1.5 text-baseTextColor no-underline hover:text-primaryCTAColor'><svg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16' class='transition-transform duration-150 ease-out group-hover:-rotate-12'><path d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8'/></svg>Source</a>}
-                </div>
-              </article>
-            ))
-          }
+      <section id="projects" class="mt-20 scroll-mt-[96px]">
+        <h2 class="section-heading" data-draw>
+          Selected projects
+        </h2>
+        <div class="space-y-14">
+          {featured.map((p) => (
+            <article>
+              <a
+                href={p.live ?? p.source}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group block overflow-hidden rounded-xl border border-baseTextColor/10 bg-white transition-[border-color] duration-200 ease-out hover:border-baseTextColor/25"
+                aria-label={`Open ${p.title}`}
+              >
+                <Image
+                  src={p.image}
+                  alt={p.alt}
+                  loading="eager"
+                  class="aspect-video w-full object-cover object-top transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.02]"
+                />
+              </a>
+              <h3 class="mt-5 text-lg font-medium text-baseTextCTAColor lg:text-xl">
+                {p.title}
+              </h3>
+              <p class="mt-2 text-sm leading-relaxed text-subTextColor">
+                {p.description}
+              </p>
+              <ul class="mt-4 flex flex-wrap gap-2" aria-label="Built with">
+                {p.stack.map((s) => (
+                  <li>
+                    <Chip>{s}</Chip>
+                  </li>
+                ))}
+              </ul>
+              <div class="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium">
+                {p.live && (
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group inline-flex items-center gap-1.5 text-primaryCTAColor no-underline hover:text-primaryCTAColorHover"
+                  >
+                    Visit site{" "}
+                    <span
+                      aria-hidden="true"
+                      class="inline-block transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    >
+                      <ArrowUpRight className="!transform-none !transition-none" />
+                    </span>
+                  </a>
+                )}
+                {p.source && (
+                  <a
+                    href={p.source}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group inline-flex items-center gap-1.5 text-baseTextColor no-underline hover:text-primaryCTAColor"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                      class="transition-transform duration-150 ease-out group-hover:-rotate-12"
+                    >
+                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                    </svg>
+                    Source
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
         </div>
 
-        <h3 class='mb-2 mt-16 text-xs font-medium text-subTextColor'>More projects</h3>
-        <ul class='divide-y divide-baseTextColor/10 border-y border-baseTextColor/10'>
-          {
-            more.map((p) => (
-              <li class='grid grid-cols-1 gap-4 py-6 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-6'>
-                <div class='group self-start overflow-hidden rounded-lg border border-baseTextColor/10 bg-white'>
-                  <Image
-                    src={p.image}
-                    alt={p.alt}
-                    class='aspect-[16/10] w-full object-cover object-top transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03]'
-                  />
+        <h3 class="mb-2 mt-16 text-xs font-medium text-subTextColor">
+          More projects
+        </h3>
+        <ul class="divide-y divide-baseTextColor/10 border-y border-baseTextColor/10">
+          {more.map((p) => (
+            <li class="grid grid-cols-1 gap-4 py-6 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-6">
+              <div class="group self-start overflow-hidden rounded-lg border border-baseTextColor/10 bg-white">
+                <Image
+                  src={p.image}
+                  alt={p.alt}
+                  class="aspect-[16/10] w-full object-cover object-top transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03]"
+                />
+              </div>
+              <div class="min-w-0">
+                <h4 class="text-sm font-medium text-baseTextCTAColor lg:text-base">
+                  {p.title}
+                </h4>
+                <p class="mt-1 text-xs leading-relaxed text-subTextColor">
+                  {p.description}
+                </p>
+                <p class="mt-2 text-xs text-subTextColor">
+                  {p.stack.join(" · ")}
+                </p>
+                <div class="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium">
+                  {p.live && (
+                    <a
+                      href={p.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="group inline-flex items-center gap-1.5 text-primaryCTAColor no-underline hover:text-primaryCTAColorHover"
+                    >
+                      Visit site{" "}
+                      <span
+                        aria-hidden="true"
+                        class="inline-block transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      >
+                        <ArrowUpRight className="!transform-none !transition-none" />
+                      </span>
+                    </a>
+                  )}
+                  {p.source && (
+                    <a
+                      href={p.source}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="group inline-flex items-center gap-1.5 text-baseTextColor no-underline hover:text-primaryCTAColor"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                        class="transition-transform duration-150 ease-out group-hover:-rotate-12"
+                      >
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                      </svg>
+                      Source
+                    </a>
+                  )}
+                  {!p.live && !p.source && (
+                    <span class="text-subTextColor">
+                      Private project — no public link
+                    </span>
+                  )}
                 </div>
-                <div class='min-w-0'>
-                  <h4 class='text-sm font-medium text-baseTextCTAColor lg:text-base'>{p.title}</h4>
-                  <p class='mt-1 text-xs leading-relaxed text-subTextColor'>{p.description}</p>
-                  <p class='mt-2 text-xs text-subTextColor'>{p.stack.join(" · ")}</p>
-                  <div class='mt-3 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium'>
-                    {p.live && <a href={p.live} target='_blank' rel='noopener noreferrer' class='group inline-flex items-center gap-1.5 text-primaryCTAColor no-underline hover:text-primaryCTAColorHover'>Visit site <span aria-hidden='true' class='inline-block transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5'><ArrowUpRight className='!transform-none !transition-none' /></span></a>}
-                    {p.source && <a href={p.source} target='_blank' rel='noopener noreferrer' class='group inline-flex items-center gap-1.5 text-baseTextColor no-underline hover:text-primaryCTAColor'><svg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16' class='transition-transform duration-150 ease-out group-hover:-rotate-12'><path d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8'/></svg>Source</a>}
-                    {!p.live && !p.source && <span class='text-subTextColor'>Private project — no public link</span>}
-                  </div>
-                </div>
-              </li>
-            ))
-          }
+              </div>
+            </li>
+          ))}
         </ul>
 
-        <a href='/archive/' class='group mt-8 inline-flex items-center gap-2 text-sm font-medium text-baseTextColor no-underline transition-transform duration-150 ease-out active:scale-[0.98]' transition:animate='slide'>
-          <span class='sweep-text'>View full project archive</span> <span aria-hidden='true' class='relative inline-block transition-transform duration-150 ease-out group-hover:translate-x-0.5'><ArrowRight className='!transform-none !transition-none' /><span class='sweep-arrow'><ArrowRight className='!transform-none !transition-none' /></span></span>
+        <a
+          href="/archive/"
+          class="group mt-8 inline-flex items-center gap-2 text-sm font-medium text-baseTextColor no-underline transition-transform duration-150 ease-out active:scale-[0.98]"
+          transition:animate="slide"
+        >
+          <span class="sweep-text">View full project archive</span>{" "}
+          <span
+            aria-hidden="true"
+            class="relative inline-block transition-transform duration-150 ease-out group-hover:translate-x-0.5"
+          >
+            <ArrowRight className="!transform-none !transition-none" />
+            <span class="sweep-arrow">
+              <ArrowRight className="!transform-none !transition-none" />
+            </span>
+          </span>
         </a>
       </section>
 
       <!-- Skills -->
-      <section id='skills' class='mt-20 scroll-mt-[96px]'>
-        <h2 class='section-heading' data-draw>Skills</h2>
-        <dl class='divide-y divide-baseTextColor/10 border-y border-baseTextColor/10'>
-          {
-            skillGroups.map((g) => (
-              <div class='grid grid-cols-1 gap-1 py-4 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6'>
-                <dt class='min-w-0 break-words text-xs font-medium text-baseTextColor' set:html={g.name.replace("/", "/<wbr>")} />
-                <dd class='text-xs leading-relaxed text-subTextColor'>{g.items.join(", ")}</dd>
-              </div>
-            ))
-          }
+      <section id="skills" class="mt-20 scroll-mt-[96px]">
+        <h2 class="section-heading" data-draw>
+          Skills
+        </h2>
+        <dl class="divide-y divide-baseTextColor/10 border-y border-baseTextColor/10">
+          {skillGroups.map((g) => (
+            <div class="grid grid-cols-1 gap-1 py-4 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6">
+              <dt
+                class="min-w-0 break-words text-xs font-medium text-baseTextColor"
+                set:html={g.name.replace("/", "/<wbr>")}
+              />
+              <dd class="text-xs leading-relaxed text-subTextColor">
+                {g.items.join(", ")}
+              </dd>
+            </div>
+          ))}
         </dl>
       </section>
 
       <!-- Contact -->
-      <section id='contact' class='mt-24 scroll-mt-[96px]'>
-        <h2 class='section-heading' data-draw>Contact</h2>
-        <p class='text-xl font-semibold tracking-tight text-baseTextCTAColor lg:text-2xl'>Let's build something.</p>
-        <p class='mt-4 max-w-lg text-sm leading-relaxed text-subTextColor'>
-          I'm always looking for new opportunities and ready for tech challenges. Tell me about yours, or just say hello.
+      <section id="contact" class="mt-24 scroll-mt-[96px]">
+        <h2 class="section-heading" data-draw>
+          Contact
+        </h2>
+        <p class="text-xl font-semibold tracking-tight text-baseTextCTAColor lg:text-2xl">
+          Let's build something.
         </p>
-        <div class='mt-8 flex flex-wrap items-center gap-3'>
-          <a href={`mailto:${email}`} class={`${pill} group bg-primaryCTAColor text-backgroundColor hover:bg-primaryCTAColorHover`}>
-            Say hello <span aria-hidden='true' class='inline-block transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5'><ArrowUpRight className='!transform-none !transition-none' /></span>
+        <p class="mt-4 max-w-lg text-sm leading-relaxed text-subTextColor">
+          I'm always looking for new opportunities and ready for tech
+          challenges. Tell me about yours, or just say hello.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a
+            href={`mailto:${email}`}
+            class={`${pill} group bg-primaryCTAColor text-backgroundColor hover:bg-primaryCTAColorHover`}
+          >
+            Say hello{" "}
+            <span
+              aria-hidden="true"
+              class="inline-block transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            >
+              <ArrowUpRight className="!transform-none !transition-none" />
+            </span>
           </a>
           <button
-            type='button'
-            id='copy-email'
+            type="button"
+            id="copy-email"
             data-email={email}
             class={`${pill} inline-flex items-center gap-2 border border-baseTextColor/15 hover:border-baseTextColor/40 data-[copied]:border-primaryCTAColor/50`}
           >
-            <span class='swap-in inline-flex' id='copy-icon' aria-hidden='true'></span>
-            <span class='-my-1 -ml-2 inline-flex overflow-hidden py-1 pl-2' style='-webkit-mask-image:linear-gradient(to right,transparent,#000 0.5rem);mask-image:linear-gradient(to right,transparent,#000 0.5rem)'><span aria-live='polite' class='inline-flex' id='copy-label'>{email}</span></span>
+            <span
+              class="swap-in inline-flex"
+              id="copy-icon"
+              aria-hidden="true"
+            ></span>
+            <span
+              class="-my-1 -ml-2 inline-flex overflow-hidden py-1 pl-2"
+              style="-webkit-mask-image:linear-gradient(to right,transparent,#000 0.5rem);mask-image:linear-gradient(to right,transparent,#000 0.5rem)"
+            >
+              <span aria-live="polite" class="inline-flex" id="copy-label">
+                {email}
+              </span>
+            </span>
           </button>
         </div>
       </section>
 
       <!-- footer -->
-      <footer class='mt-24 border-t border-baseTextColor/10 pt-8 text-xs text-subTextColor'>
+      <footer class="mt-24 border-t border-baseTextColor/10 pt-8 text-xs text-subTextColor">
         <Credit />
-        <p class='mt-4 max-w-xl leading-relaxed'>
-          Designed in Figma, coded in Visual Studio Code. Built using Astro, Tailwind CSS and Shadcn. Icons from
-          Boostrap Icons. Deployed on Github Pages. All text are set in Lexend Deca typeface.
+        <p class="mt-4 max-w-xl leading-relaxed">
+          Designed in Figma, coded in Visual Studio Code. Built using Astro,
+          Tailwind CSS and Shadcn. Icons from Boostrap Icons. Deployed on Github
+          Pages. All text are set in Lexend Deca typeface.
         </p>
       </footer>
     </div>
@@ -376,15 +657,28 @@ const pill =
     flex: 1;
     background: rgb(24 24 24 / 0.1);
   }
-  .nav-link[aria-current] { color: #0f0f0f; }
-  .nav-link[aria-current] .nav-rule { width: 3.5rem; background: #9b111a; }
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  .nav-link[aria-current] {
+    color: #0f0f0f;
+  }
+  .nav-link[aria-current] .nav-rule {
+    width: 3.5rem;
+    background: #9b111a;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 </style>
 
 <script>
-  const COPY = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
-  const CHECK = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="#9b111a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>';
+  const COPY =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
+  const CHECK =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="#9b111a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>';
 
   // Re-run on every navigation: the router swaps the DOM without a reload.
   let obs: IntersectionObserver | undefined;
@@ -408,7 +702,8 @@ const pill =
     if (bar) {
       scrollCtl = new AbortController();
       const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-      let shown = 0, raf = 0;
+      let shown = 0,
+        raf = 0;
       const target = () => {
         const max = document.documentElement.scrollHeight - innerHeight;
         return max > 0 ? Math.min(1, scrollY / max) : 0;
@@ -419,27 +714,40 @@ const pill =
         bar.style.transform = `scaleX(${shown})`;
         raf = Math.abs(t - shown) > 0.001 ? requestAnimationFrame(tick) : 0;
       };
-      addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true, signal: scrollCtl.signal });
+      addEventListener(
+        "scroll",
+        () => {
+          if (!raf) raf = requestAnimationFrame(tick);
+        },
+        { passive: true, signal: scrollCtl.signal },
+      );
       tick();
     }
 
     // Reveal cards and draw section rules the first time they scroll into view
     reveal = new IntersectionObserver(
-      (entries) => entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        e.target.classList.add("in");
-        reveal!.unobserve(e.target);
-      }),
-      { rootMargin: "0px 0px 20% 0px" } // fire before the card enters view, so no blank gap
+      (entries) =>
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add("in");
+          reveal!.unobserve(e.target);
+        }),
+      { rootMargin: "0px 0px 20% 0px" }, // fire before the card enters view, so no blank gap
     );
-    document.querySelectorAll(".reveal, [data-draw]").forEach((el) => reveal!.observe(el));
+    document
+      .querySelectorAll(".reveal, [data-draw]")
+      .forEach((el) => reveal!.observe(el));
 
     // Section heading glows when arriving via a #hash
     const target = document.getElementById(location.hash.slice(1));
     const heading = target?.querySelector<HTMLElement>(".section-heading");
     if (heading) {
       heading.classList.add("flash");
-      heading.addEventListener("animationend", () => heading.classList.remove("flash"), { once: true });
+      heading.addEventListener(
+        "animationend",
+        () => heading.classList.remove("flash"),
+        { once: true },
+      );
     }
 
     // Active section in the nav
@@ -447,11 +755,17 @@ const pill =
     if (links.length) {
       obs = new IntersectionObserver(
         (entries) => {
-          const top = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+          const top = entries
+            .filter((e) => e.isIntersecting)
+            .sort(
+              (a, b) => a.boundingClientRect.top - b.boundingClientRect.top,
+            )[0];
           if (!top) return;
-          links.forEach((l) => l.toggleAttribute("aria-current", l.dataset.nav === top.target.id));
+          links.forEach((l) =>
+            l.toggleAttribute("aria-current", l.dataset.nav === top.target.id),
+          );
         },
-        { rootMargin: "-20% 0px -60% 0px" }
+        { rootMargin: "-20% 0px -60% 0px" },
       );
       links.forEach((l) => {
         const el = document.getElementById(l.dataset.nav!);
@@ -467,7 +781,8 @@ const pill =
       const email = copy.dataset.email ?? "";
       icon.innerHTML = COPY;
       let timer: number | undefined; // reset timer
-      const reduce = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const reduce = () =>
+        matchMedia("(prefers-reduced-motion: reduce)").matches;
       // the label's wrapper clips it, so one label-width moves it fully out of view
       const offLeft = () => label.offsetWidth + 8; // + the wrapper's 8px fade zone
       let busy = false;
@@ -478,8 +793,15 @@ const pill =
         if (!quick) {
           copy.style.overflow = "hidden";
           await label.animate(
-            [{ transform: "translateX(0)" }, { transform: `translateX(${-offLeft()}px)` }],
-            { duration: 200, easing: "cubic-bezier(0.7, 0, 0.84, 0)", fill: "forwards" },
+            [
+              { transform: "translateX(0)" },
+              { transform: `translateX(${-offLeft()}px)` },
+            ],
+            {
+              duration: 200,
+              easing: "cubic-bezier(0.7, 0, 0.84, 0)",
+              fill: "forwards",
+            },
           ).finished;
         }
         const from = copy.offsetWidth;
@@ -494,12 +816,16 @@ const pill =
           return;
         }
         copy.style.width = `${from}px`;
-        copy.style.transitionProperty = "width, transform, background-color, border-color";
+        copy.style.transitionProperty =
+          "width, transform, background-color, border-color";
         copy.style.transitionDuration = "250ms";
         void copy.offsetWidth; // flush so the width transition starts from `from`
         copy.style.width = `${to}px`;
         label.animate(
-          [{ transform: `translateX(${-offLeft()}px)` }, { transform: "translateX(0)" }],
+          [
+            { transform: `translateX(${-offLeft()}px)` },
+            { transform: "translateX(0)" },
+          ],
           { duration: 300, easing: "cubic-bezier(0.23, 1, 0.32, 1)" },
         );
         setTimeout(() => {
