@@ -104,3 +104,9 @@ export async function getProjects() {
     }`,
   );
 }
+
+export async function getSkillGroups() {
+  return client.fetch<{ name: string; items: string[] }[]>(
+    `*[_type == "skillGroup"] | order(orderRank asc) { name, "items": coalesce(items, []) }`,
+  );
+}

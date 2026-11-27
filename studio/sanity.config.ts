@@ -19,6 +19,14 @@ export default defineConfig({
           .items([
             S.documentTypeListItem("experience"),
             orderableDocumentListDeskItem({ type: "project", title: "Projects (drag to reorder)", S, context }),
+            S.listItem()
+              .title("Skills")
+              .id("skillGroup")
+              .child(
+                S.documentTypeList("skillGroup")
+                  .title("Skills")
+                  .defaultOrdering([{ field: "orderRank", direction: "asc" }]),
+              ),
             S.documentTypeListItem("archiveEntry"),
             S.listItem()
               .title("Profile")

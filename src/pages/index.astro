@@ -7,8 +7,7 @@ import Chip from "../components/Chip.astro";
 import { ArrowUpRight, ArrowRight, MapPin } from "lucide-react";
 
 import { sections } from "../content/nav";
-import { getAboutHtml, getContact, getExperiences, getProjects } from "../lib/sanity";
-import { skillGroups } from "../content/skills";
+import { getAboutHtml, getContact, getExperiences, getProjects, getSkillGroups } from "../lib/sanity";
 
 const pageTabTitle = "Xavier Khew";
 const aboutHtml = await getAboutHtml();
@@ -16,6 +15,7 @@ const { email, headline, blurb } = await getContact();
 
 const experiences = await getExperiences();
 const projects = await getProjects();
+const skillGroups = await getSkillGroups();
 const featured = projects.filter((p) => p.featured);
 const more = projects.filter((p) => !p.featured);
 
