@@ -1,0 +1,42 @@
+// Sanity-inspired theme. Mostly Payload's CSS variables, which survive upgrades better than class overrides.
+// Unlayered rules here beat Payload's own, which live in @layer payload-default.
+@import '@fontsource-variable/inter';
+
+:root {
+  --font-body: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --style-radius-s: 3px;
+  --style-radius-m: 3px;
+  --style-radius-l: 5px;
+  --accessibility-outline: 2px solid #2276fc;
+
+  // Cool greys. Light and dark mode are both derived from this scale.
+  --color-base-0: #ffffff;
+  --color-base-50: #f6f6f8;
+  --color-base-100: #eeeff2;
+  --color-base-150: #e4e5e9;
+  --color-base-200: #d6d8df;
+  --color-base-250: #c7cad3;
+  --color-base-300: #b4b8c5;
+  --color-base-350: #a4a9b8;
+  --color-base-400: #9297a9;
+  --color-base-450: #81869a;
+  --color-base-500: #72778c;
+  --color-base-550: #646a7e;
+  --color-base-600: #565b6f;
+  --color-base-650: #494e60;
+  --color-base-700: #3c4153;
+  --color-base-750: #303444;
+  --color-base-800: #252837;
+  --color-base-850: #1b1d28;
+  --color-base-900: #13141b;
+  --color-base-950: #0c0d12;
+  --color-base-1000: #07080b;
+}
+
+// Blue primary buttons (white text passes WCAG AA on both shades)
+.btn--style-primary:not(.btn--disabled) {
+  --color: #ffffff;
+  --bg-color: #1e61cd;
+  --hover-bg: #1a52ad;
+  --hover-color: #ffffff;
+}
