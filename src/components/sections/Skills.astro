@@ -1,0 +1,27 @@
+---
+import { getSkillGroups } from "../../lib/sanity";
+
+// `first`: whether this section sits at the top of the content column
+const { first } = Astro.props;
+const skillGroups = await getSkillGroups();
+---
+
+<section id="skills" class:list={["scroll-mt-[96px]", first ? "rise pt-8 lg:pt-0" : "mt-20"]}
+  style={first ? "--i:3" : undefined}>
+  <h2 class="section-heading" data-draw>
+    Skills
+  </h2>
+  <dl class="divide-y divide-baseTextColor/10 border-y border-baseTextColor/10">
+    {skillGroups.map((g) => (
+      <div class="grid grid-cols-1 gap-1 py-4 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6">
+        <dt
+          class="min-w-0 break-words text-xs font-medium text-baseTextColor"
+          set:html={g.name.replace("/", "/<wbr>")}
+        />
+        <dd class="text-xs leading-relaxed text-subTextColor">
+          {g.items.join(", ")}
+        </dd>
+      </div>
+    ))}
+  </dl>
+</section>

@@ -1,27 +1,28 @@
 ---
 import Credit from "../components/Credit.astro";
+import About from "../components/sections/About.astro";
+import Contact from "../components/sections/Contact.astro";
+import Experience from "../components/sections/Experience.astro";
+import Projects from "../components/sections/Projects.astro";
+import Skills from "../components/sections/Skills.astro";
 import Layout from "../layouts/Layout.astro";
 import "@/styles/global.css";
-import { Image } from "astro:assets";
-import Chip from "../components/Chip.astro";
-import { ArrowUpRight, ArrowRight, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 
-import { sections } from "../content/nav";
-import { getAboutHtml, getContact, getExperiences, getProjects, getSkillGroups } from "../lib/sanity";
+import { pill } from "../lib/pill";
+import { getContact, getNavigation } from "../lib/sanity";
 
 const pageTabTitle = "Xavier Khew";
-const aboutHtml = await getAboutHtml();
-const { email, headline, blurb } = await getContact();
-
-const experiences = await getExperiences();
-const projects = await getProjects();
-const skillGroups = await getSkillGroups();
-const featured = projects.filter((p) => p.featured);
-const more = projects.filter((p) => !p.featured);
-
-
-const pill =
-  "inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-5 py-2.5 text-xs font-medium no-underline transition-[transform,background-color,border-color] duration-150 ease-out active:scale-[0.97]";
+const { email } = await getContact();
+// Sidebar nav and page sections both follow this order (set in Sanity)
+const sections = await getNavigation();
+const sectionComponents = {
+  about: About,
+  experience: Experience,
+  projects: Projects,
+  skills: Skills,
+  contact: Contact,
+};
 ---
 
 <Layout title={pageTabTitle}>
@@ -130,288 +131,10 @@ const pill =
     </aside>
 
     <div class="min-w-0">
-      <!-- About -->
-      <section
-        id="about"
-        class="rise scroll-mt-[96px] pt-8 lg:pt-0"
-        style="--i:3"
-      >
-        <h2 class="section-heading" data-draw>
-          About
-        </h2>
-        <div
-          class="space-y-4 text-sm leading-relaxed text-subTextColor [&_strong]:font-medium [&_strong]:text-baseTextColor [&_a]:font-medium [&_a]:text-baseTextColor [&_a]:no-underline about-links"
-          set:html={aboutHtml}
-        />
-      </section>
-
-      <!-- Experience -->
-      <section id="experience" class="mt-20 scroll-mt-[96px]">
-        <h2 class="section-heading" data-draw>
-          Experience
-        </h2>
-        <ol class="space-y-10">
-          {experiences.map((exp) => (
-            <li class="grid grid-cols-1 gap-1 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6">
-              <p class="pt-1 text-xs tabular-nums text-subTextColor">
-                <span class="whitespace-nowrap">{exp.start} —</span>{" "}
-                <span class="whitespace-nowrap">{exp.end}</span>
-              </p>
-              <div class="min-w-0">
-                <h3 class="text-base font-medium leading-snug text-baseTextCTAColor lg:text-lg">
-                  {exp.title}
-                  <span class="text-subTextColor"> · {exp.company}</span>
-                </h3>
-                <p class="mt-2 text-sm leading-relaxed text-subTextColor">
-                  {exp.description}
-                </p>
-                <ul class="mt-4 flex flex-wrap gap-2" aria-label="Technologies">
-                  {exp.skills.map((s) => (
-                    <li>
-                      <Chip>{s}</Chip>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <!-- Projects -->
-      <section id="projects" class="mt-20 scroll-mt-[96px]">
-        <h2 class="section-heading" data-draw>
-          Selected projects
-        </h2>
-        <div class="space-y-14">
-          {featured.map((p) => (
-            <article>
-              <a
-                href={p.live ?? p.source}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group block overflow-hidden rounded-xl border border-baseTextColor/10 bg-white transition-[border-color] duration-200 ease-out hover:border-baseTextColor/25"
-                aria-label={`Open ${p.title}`}
-              >
-                <Image
-                  {...p.image}
-                  alt={p.alt}
-                  loading="eager"
-                  class="aspect-video w-full object-cover object-top transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.02]"
-                />
-              </a>
-              <h3 class="mt-5 text-lg font-medium text-baseTextCTAColor lg:text-xl">
-                {p.title}
-              </h3>
-              <p class="mt-2 text-sm leading-relaxed text-subTextColor">
-                {p.description}
-              </p>
-              <ul class="mt-4 flex flex-wrap gap-2" aria-label="Built with">
-                {p.stack.map((s) => (
-                  <li>
-                    <Chip>{s}</Chip>
-                  </li>
-                ))}
-              </ul>
-              <div class="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium">
-                {p.live && (
-                  <a
-                    href={p.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="group inline-flex items-center gap-1.5 text-primaryCTAColor no-underline hover:text-primaryCTAColorHover"
-                  >
-                    Visit site{" "}
-                    <span
-                      aria-hidden="true"
-                      class="inline-block transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    >
-                      <ArrowUpRight className="!transform-none !transition-none" />
-                    </span>
-                  </a>
-                )}
-                {p.source && (
-                  <a
-                    href={p.source}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="group inline-flex items-center gap-1.5 text-baseTextColor no-underline hover:text-primaryCTAColor"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      viewBox="0 0 16 16"
-                      class="transition-transform duration-150 ease-out group-hover:-rotate-12"
-                    >
-                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
-                    </svg>
-                    Source
-                  </a>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <h3 class="mb-2 mt-16 text-xs font-medium text-subTextColor">
-          More projects
-        </h3>
-        <ul class="divide-y divide-baseTextColor/10 border-y border-baseTextColor/10">
-          {more.map((p) => (
-            <li class="grid grid-cols-1 gap-4 py-6 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-6">
-              <div class="group self-start overflow-hidden rounded-lg border border-baseTextColor/10 bg-white">
-                <Image
-                  {...p.image}
-                  alt={p.alt}
-                  class="aspect-[16/10] w-full object-cover object-top transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03]"
-                />
-              </div>
-              <div class="min-w-0">
-                <h4 class="text-sm font-medium text-baseTextCTAColor lg:text-base">
-                  {p.title}
-                </h4>
-                <p class="mt-1 text-xs leading-relaxed text-subTextColor">
-                  {p.description}
-                </p>
-                <p class="mt-2 text-xs text-subTextColor">
-                  {p.stack.join(" · ")}
-                </p>
-                <div class="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium">
-                  {p.live && (
-                    <a
-                      href={p.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="group inline-flex items-center gap-1.5 text-primaryCTAColor no-underline hover:text-primaryCTAColorHover"
-                    >
-                      Visit site{" "}
-                      <span
-                        aria-hidden="true"
-                        class="inline-block transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                      >
-                        <ArrowUpRight className="!transform-none !transition-none" />
-                      </span>
-                    </a>
-                  )}
-                  {p.source && (
-                    <a
-                      href={p.source}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="group inline-flex items-center gap-1.5 text-baseTextColor no-underline hover:text-primaryCTAColor"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
-                        class="transition-transform duration-150 ease-out group-hover:-rotate-12"
-                      >
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
-                      </svg>
-                      Source
-                    </a>
-                  )}
-                  {!p.live && !p.source && (
-                    <span class="text-subTextColor">
-                      Private project — no public link
-                    </span>
-                  )}
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-
-        <a
-          href="/archive/"
-          class="group mt-8 inline-flex items-center gap-2 text-sm font-medium text-baseTextColor no-underline transition-transform duration-150 ease-out active:scale-[0.98]"
-          transition:animate="slide"
-        >
-          <span class="sweep-text">View full project archive</span>{" "}
-          <span
-            aria-hidden="true"
-            class="relative inline-block transition-transform duration-150 ease-out group-hover:translate-x-0.5"
-          >
-            <ArrowRight className="!transform-none !transition-none" />
-            <span class="sweep-arrow">
-              <ArrowRight className="!transform-none !transition-none" />
-            </span>
-          </span>
-        </a>
-      </section>
-
-      <!-- Skills -->
-      <section id="skills" class="mt-20 scroll-mt-[96px]">
-        <h2 class="section-heading" data-draw>
-          Skills
-        </h2>
-        <dl class="divide-y divide-baseTextColor/10 border-y border-baseTextColor/10">
-          {skillGroups.map((g) => (
-            <div class="grid grid-cols-1 gap-1 py-4 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6">
-              <dt
-                class="min-w-0 break-words text-xs font-medium text-baseTextColor"
-                set:html={g.name.replace("/", "/<wbr>")}
-              />
-              <dd class="text-xs leading-relaxed text-subTextColor">
-                {g.items.join(", ")}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      <!-- Contact -->
-      <section id="contact" class="mt-24 scroll-mt-[96px]">
-        <h2 class="section-heading" data-draw>
-          Contact
-        </h2>
-        <p class="text-xl font-semibold tracking-tight text-baseTextCTAColor lg:text-2xl">
-          {headline}
-        </p>
-        <p class="mt-4 max-w-lg text-sm leading-relaxed text-subTextColor">
-          {blurb}
-        </p>
-        <div class="mt-8 flex flex-wrap items-center gap-3">
-          <a
-            href={`mailto:${email}`}
-            class={`${pill} group bg-primaryCTAColor text-backgroundColor hover:bg-primaryCTAColorHover`}
-          >
-            Say hello{" "}
-            <span
-              aria-hidden="true"
-              class="inline-block transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            >
-              <ArrowUpRight className="!transform-none !transition-none" />
-            </span>
-          </a>
-          <button
-            type="button"
-            id="copy-email"
-            data-email={email}
-            class={`${pill} inline-flex items-center gap-2 border border-baseTextColor/15 hover:border-baseTextColor/40 data-[copied]:border-primaryCTAColor/50`}
-          >
-            <span
-              class="swap-in inline-flex"
-              id="copy-icon"
-              aria-hidden="true"
-            ></span>
-            <span
-              class="-my-1 -ml-2 inline-flex overflow-hidden py-1 pl-2"
-              style="-webkit-mask-image:linear-gradient(to right,transparent,#000 0.5rem);mask-image:linear-gradient(to right,transparent,#000 0.5rem)"
-            >
-              <span aria-live="polite" class="inline-flex" id="copy-label">
-                {email}
-              </span>
-            </span>
-          </button>
-        </div>
-      </section>
+      {sections.map(({ id }, i) => {
+        const Section = sectionComponents[id];
+        return <Section first={i === 0} />;
+      })}
 
       <!-- footer -->
       <footer class="mt-24 border-t border-baseTextColor/10 pt-8 text-xs text-subTextColor">

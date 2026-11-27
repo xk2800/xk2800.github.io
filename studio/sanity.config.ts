@@ -4,7 +4,7 @@ import { structureTool } from "sanity/structure";
 import { schemaTypes } from "./schemaTypes";
 
 // Types with exactly one document, whose _id equals the type name
-const singletons = ["profile"];
+const singletons = ["profile", "navigation"];
 
 export default defineConfig({
   name: "default",
@@ -17,6 +17,10 @@ export default defineConfig({
         S.list()
           .title("Content")
           .items([
+            S.listItem()
+              .title("Navigation & section order")
+              .id("navigation")
+              .child(S.document().schemaType("navigation").documentId("navigation")),
             S.documentTypeListItem("experience"),
             orderableDocumentListDeskItem({ type: "project", title: "Projects (drag to reorder)", S, context }),
             S.listItem()

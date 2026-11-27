@@ -110,3 +110,18 @@ export async function getSkillGroups() {
     `*[_type == "skillGroup"] | order(orderRank asc) { name, "items": coalesce(items, []) }`,
   );
 }
+
+// One per component in src/components/sections
+const sectionIds = ["about", "experience", "projects", "skills", "contact"] as const;
+
+export async function getNavigation() {
+  const items = await client.fetch<{ id: (typeof sectionIds)[number]; label: string }[] | null>(
+    `*[_id == "navigation"][0].sections[]{ id, label }`,
+  );
+  // Each section must appear exactly once, or the page would silently lose or repeat one
+  const found = (items ?? []).map((i) => i.id).sort().join();
+  if (found !== [...sectionIds].sort().join() || items!.some((i) => !i.label)) {
+    throw new Error(`Sanity "navigation" must list each section once with a label (got: ${found || "nothing"})`);
+  }
+  return items!;
+}

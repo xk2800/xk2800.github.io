@@ -1,0 +1,56 @@
+---
+import { ArrowUpRight } from "lucide-react";
+import { pill } from "../../lib/pill";
+import { getContact } from "../../lib/sanity";
+
+// `first`: whether this section sits at the top of the content column
+const { first } = Astro.props;
+const { email, headline, blurb } = await getContact();
+---
+
+<section id="contact" class:list={["scroll-mt-[96px]", first ? "rise pt-8 lg:pt-0" : "mt-24"]}
+  style={first ? "--i:3" : undefined}>
+  <h2 class="section-heading" data-draw>
+    Contact
+  </h2>
+  <p class="text-xl font-semibold tracking-tight text-baseTextCTAColor lg:text-2xl">
+    {headline}
+  </p>
+  <p class="mt-4 max-w-lg text-sm leading-relaxed text-subTextColor">
+    {blurb}
+  </p>
+  <div class="mt-8 flex flex-wrap items-center gap-3">
+    <a
+      href={`mailto:${email}`}
+      class={`${pill} group bg-primaryCTAColor text-backgroundColor hover:bg-primaryCTAColorHover`}
+    >
+      Say hello{" "}
+      <span
+        aria-hidden="true"
+        class="inline-block transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+      >
+        <ArrowUpRight className="!transform-none !transition-none" />
+      </span>
+    </a>
+    <button
+      type="button"
+      id="copy-email"
+      data-email={email}
+      class={`${pill} inline-flex items-center gap-2 border border-baseTextColor/15 hover:border-baseTextColor/40 data-[copied]:border-primaryCTAColor/50`}
+    >
+      <span
+        class="swap-in inline-flex"
+        id="copy-icon"
+        aria-hidden="true"
+      ></span>
+      <span
+        class="-my-1 -ml-2 inline-flex overflow-hidden py-1 pl-2"
+        style="-webkit-mask-image:linear-gradient(to right,transparent,#000 0.5rem);mask-image:linear-gradient(to right,transparent,#000 0.5rem)"
+      >
+        <span aria-live="polite" class="inline-flex" id="copy-label">
+          {email}
+        </span>
+      </span>
+    </button>
+  </div>
+</section>

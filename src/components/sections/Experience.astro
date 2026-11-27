@@ -1,0 +1,41 @@
+---
+import Chip from "../Chip.astro";
+import { getExperiences } from "../../lib/sanity";
+
+// `first`: whether this section sits at the top of the content column
+const { first } = Astro.props;
+const experiences = await getExperiences();
+---
+
+<section id="experience" class:list={["scroll-mt-[96px]", first ? "rise pt-8 lg:pt-0" : "mt-20"]}
+  style={first ? "--i:3" : undefined}>
+  <h2 class="section-heading" data-draw>
+    Experience
+  </h2>
+  <ol class="space-y-10">
+    {experiences.map((exp) => (
+      <li class="grid grid-cols-1 gap-1 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6">
+        <p class="pt-1 text-xs tabular-nums text-subTextColor">
+          <span class="whitespace-nowrap">{exp.start} —</span>{" "}
+          <span class="whitespace-nowrap">{exp.end}</span>
+        </p>
+        <div class="min-w-0">
+          <h3 class="text-base font-medium leading-snug text-baseTextCTAColor lg:text-lg">
+            {exp.title}
+            <span class="text-subTextColor"> · {exp.company}</span>
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-subTextColor">
+            {exp.description}
+          </p>
+          <ul class="mt-4 flex flex-wrap gap-2" aria-label="Technologies">
+            {exp.skills.map((s) => (
+              <li>
+                <Chip>{s}</Chip>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>

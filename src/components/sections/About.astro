@@ -1,0 +1,21 @@
+---
+import { getAboutHtml } from "../../lib/sanity";
+
+// `first`: whether this section sits at the top of the content column
+const { first } = Astro.props;
+const aboutHtml = await getAboutHtml();
+---
+
+<section
+  id="about"
+  class:list={["scroll-mt-[96px]", first ? "rise pt-8 lg:pt-0" : "mt-20"]}
+  style={first ? "--i:3" : undefined}
+>
+  <h2 class="section-heading" data-draw>
+    About
+  </h2>
+  <div
+    class="space-y-4 text-sm leading-relaxed text-subTextColor [&_strong]:font-medium [&_strong]:text-baseTextColor [&_a]:font-medium [&_a]:text-baseTextColor [&_a]:no-underline about-links"
+    set:html={aboutHtml}
+  />
+</section>
