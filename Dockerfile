@@ -1,7 +1,7 @@
 # Test build of the static site, served by nginx. Content is fetched from Sanity at build time.
 FROM node:24-alpine AS build
 WORKDIR /app
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 RUN npm install -g bun && bun install --frozen-lockfile
 COPY . .
 ARG SANITY_PROJECT_ID
