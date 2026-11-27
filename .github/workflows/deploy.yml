@@ -5,8 +5,13 @@ on:
   # Using a different branch name? Replace `main` with your branch’s name
   push:
     branches: [main]
-  # Allows you to run this workflow manually from the Actions tab on GitHub.
+  # Manual runs from the Actions tab, and the Sanity publish webhook
   workflow_dispatch:
+
+# One deploy at a time; of any runs queued behind it, only the newest is kept
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 # Allow this job to clone the repo and create a page deployment
 permissions:

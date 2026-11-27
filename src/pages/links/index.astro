@@ -1,5 +1,6 @@
 ---
 import Credit from "../../components/Credit.astro";
+import Status from "../../components/Status.astro";
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/global.css";
 import { ArrowUpRight, Link, icons as lucideIcons } from "lucide-react";
@@ -38,13 +39,7 @@ const arrow =
       <p class='mt-2 text-base font-medium'>Software Engineer & Creative Technologist</p>
       <div class='mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-subTextColor'>
         <span>Subang Jaya, Malaysia</span>
-        <span class='inline-flex items-center gap-2 text-baseTextColor'>
-          <span class='relative inline-flex size-2' aria-hidden='true'>
-            <span class='ping-soft absolute inset-0 rounded-full bg-primaryCTAColor'></span>
-            <span class='relative size-2 rounded-full bg-primaryCTAColor'></span>
-          </span>
-          Open to new opportunities
-        </span>
+        <Status />
       </div>
     </header>
 

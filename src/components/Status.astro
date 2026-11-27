@@ -1,0 +1,13 @@
+---
+import { getStatus } from "../lib/sanity";
+
+const { text, dot } = await getStatus();
+---
+
+<span class="inline-flex items-center gap-2 text-baseTextColor">
+  <span class="relative inline-flex size-2" aria-hidden="true">
+    <span class="ping-soft absolute inset-0 rounded-full bg-primaryCTAColor"></span>
+    <span class:list={["relative size-2 rounded-full", dot]}></span>
+  </span>
+  {text}
+</span>

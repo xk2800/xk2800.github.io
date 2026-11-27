@@ -1,5 +1,6 @@
 import { createClient } from "@sanity/client";
 import { escapeHTML, toHTML, uriLooksSafe } from "@portabletext/to-html";
+import { statuses } from "./status";
 
 const projectId = import.meta.env.SANITY_PROJECT_ID;
 if (!projectId) throw new Error("SANITY_PROJECT_ID is not set (see .env.example)");
@@ -89,6 +90,21 @@ export async function getContact() {
     throw new Error('Sanity "profile" document is missing email, headline or blurb');
   }
   return { email: c.email, headline: c.headline, blurb: c.blurb };
+}
+
+export async function getStatus() {
+  const p = await client.fetch<{ status?: string; statusDetail?: string } | null>(
+    `*[_id == "profile"][0]{ status, statusDetail }`,
+  );
+  // "open" until a status is first published in Sanity
+  const key = p?.status || "open";
+  const status = statuses[key];
+  const detail = p?.statusDetail?.trim() ?? "";
+  if (!status || (status.text.includes("%s") && !detail)) {
+    throw new Error(`Sanity "profile" status "${key}" is unknown or missing its detail`);
+  }
+  // Function form: a "$" in the detail stays literal
+  return { dot: status.dot, text: status.text.replace("%s", () => detail) };
 }
 
 type Project = {
