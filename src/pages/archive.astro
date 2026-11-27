@@ -124,7 +124,15 @@ const cols =
                             >
                               <Award className="h-4 w-4" />
                             </span>
-                            {a}
+                            {a.url ? (
+                              <span>
+                                <a class="squiggle-link" href={a.url} target="_blank" rel="noopener noreferrer">
+                                  {a.title}
+                                </a>
+                              </span>
+                            ) : (
+                              a.title
+                            )}
                           </li>
                         ))}
                       </ul>

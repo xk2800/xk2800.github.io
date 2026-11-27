@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 export const archiveEntry = defineType({
   name: "archiveEntry",
@@ -21,7 +21,21 @@ export const archiveEntry = defineType({
     }),
     defineField({ name: "description", type: "text", rows: 4, validation: (r) => r.required() }),
     defineField({ name: "madeAt", type: "string", validation: (r) => r.required() }),
-    defineField({ name: "awards", type: "array", of: [{ type: "string" }] }),
+    defineField({
+      name: "awards",
+      type: "array",
+      of: [
+        defineArrayMember({
+          name: "award",
+          type: "object",
+          fields: [
+            defineField({ name: "title", type: "string", validation: (r) => r.required() }),
+            defineField({ name: "url", title: "URL", type: "url", description: "Optional. Makes the award a link." }),
+          ],
+          preview: { select: { title: "title", subtitle: "url" } },
+        }),
+      ],
+    }),
     defineField({
       name: "builtWith",
       type: "array",

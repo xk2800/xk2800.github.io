@@ -18,6 +18,12 @@ export const experience = defineType({
       type: "date",
       options: { dateFormat: "MMM YYYY" },
       description: "Leave empty for a current role (shows as Present).",
+      // Compare YYYY-MM only: the day is hidden by dateFormat
+      validation: (r) =>
+        r.custom((end, { document }) => {
+          const start = document?.startDate as string | undefined;
+          return !end || !start || end.slice(0, 7) >= start.slice(0, 7) || "End date can't be before start date.";
+        }),
     }),
     defineField({ name: "description", type: "text", rows: 4, validation: (r) => r.required() }),
     defineField({

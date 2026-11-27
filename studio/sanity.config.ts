@@ -21,7 +21,14 @@ export default defineConfig({
               .title("Navigation & section order")
               .id("navigation")
               .child(S.document().schemaType("navigation").documentId("navigation")),
-            S.documentTypeListItem("experience"),
+            S.listItem()
+              .title("Experience")
+              .id("experience")
+              .child(
+                S.documentTypeList("experience")
+                  .title("Experience")
+                  .defaultOrdering([{ field: "startDate", direction: "desc" }]),
+              ),
             orderableDocumentListDeskItem({ type: "project", title: "Projects (drag to reorder)", S, context }),
             S.listItem()
               .title("Skills")

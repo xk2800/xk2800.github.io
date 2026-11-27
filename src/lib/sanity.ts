@@ -60,17 +60,25 @@ type ArchiveEntry = {
   project: string;
   description: string;
   madeAt: string;
-  awards: string[];
+  awards: { title: string; url?: string }[];
   builtWith: string[];
 };
 
 export async function getArchive() {
   // coalesce: Sanity omits empty arrays, the page expects them
-  return client.fetch<ArchiveEntry[]>(
+  const docs = await client.fetch<ArchiveEntry[]>(
     `*[_type == "archiveEntry"] | order(sortYear desc, project asc) {
       year, project, description, madeAt, "awards": coalesce(awards, []), "builtWith": coalesce(builtWith, [])
     }`,
   );
+  return docs.map((d) => ({
+    ...d,
+    // Plain strings are awards not yet migrated (studio/migrations/awards-to-objects)
+    awards: d.awards.map((a) => {
+      if (typeof a === "string") return { title: a };
+      return { title: a.title, url: a.url && uriLooksSafe(a.url) ? a.url : undefined };
+    }),
+  }));
 }
 
 export async function getContact() {
