@@ -133,3 +133,18 @@ export async function getNavigation() {
   }
   return items!;
 }
+
+type LinksPage = {
+  website: { title: string; subtitle: string; url: string };
+  socials: { label: string; handle: string; url: string; icon?: "linkedin" | "github"; lucideIcon?: string }[] | null;
+  email: string;
+  referrals: { title: string; subtitle?: string; url: string; showDisclaimer?: boolean }[] | null;
+};
+
+export async function getLinksPage() {
+  const page = await client.fetch<LinksPage | null>(`*[_id == "linksPage"][0]`);
+  if (!page?.email || !page.website?.url) {
+    throw new Error('Sanity "linksPage" document is missing email or website URL');
+  }
+  return { ...page, socials: page.socials ?? [], referrals: page.referrals ?? [] };
+}

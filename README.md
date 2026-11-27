@@ -100,7 +100,7 @@ The site reads the dataset without a token, so the dataset must be public. Don't
 
 ### Setting up a new Sanity project
 
-The code expects its content to exist already. The build fails if the Profile or Navigation document is missing or incomplete. The files in `studio/seed/` cover only some of the content, so they aren't enough to set up an empty project.
+The code expects its content to exist already. The build fails if the Profile, Navigation or Links page document is missing or incomplete. The files in `studio/seed/` cover only some of the content, so they aren't enough to set up an empty project.
 
 ## Editing content
 

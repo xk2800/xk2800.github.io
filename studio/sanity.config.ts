@@ -4,7 +4,7 @@ import { structureTool } from "sanity/structure";
 import { schemaTypes } from "./schemaTypes";
 
 // Types with exactly one document, whose _id equals the type name
-const singletons = ["profile", "navigation"];
+const singletons = ["profile", "navigation", "linksPage"];
 
 export default defineConfig({
   name: "default",
@@ -43,6 +43,10 @@ export default defineConfig({
               .title("Profile")
               .id("profile")
               .child(S.document().schemaType("profile").documentId("profile")),
+            S.listItem()
+              .title("Links page")
+              .id("linksPage")
+              .child(S.document().schemaType("linksPage").documentId("linksPage")),
           ]),
     }),
   ],
