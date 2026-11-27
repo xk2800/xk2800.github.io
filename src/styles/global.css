@@ -1,6 +1,172 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss' source('../');
+
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@utility container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  /* v4's built-in container caps the width at every breakpoint; undo that below 1400px */
+  @media (width >= --theme(--breakpoint-xs)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+@theme {
+  --text-*: initial;
+  --text-2xs: 0.75rem;
+  --text-xs: 1rem;
+  --text-sm: 1.125rem;
+  --text-base: 1.25rem;
+  --text-lg: 1.375rem;
+  --text-xl: 2.25rem;
+  --text-2xl: 3rem;
+
+  --breakpoint-xs: 334px;
+
+  --color-backgroundColor: #f3f4f6;
+  --color-baseTextColor: #181818;
+  --color-baseTextCTAColor: #0f0f0f;
+  --color-subTextColor: #4e4e4e;
+  --color-subTextColorHover: #6b7280;
+  --color-primaryCTAColor: #9b111a;
+  --color-primaryCTAColorHover: #740c13;
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  --font-lexendDeca: Lexend Deca, sans-serif;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  Named spacing, for padding and margin only (e.g. py-xxl, mb-s).
+  Not --spacing-*: names like xl there would also change widths such as max-w-xl.
+*/
+@theme {
+  --boxspace-xxxxs: 8px;
+  --boxspace-xxxs: 12px;
+  --boxspace-xxs: 16px;
+  --boxspace-xs: 24px;
+  --boxspace-s: 36px;
+  --boxspace-m: 48px;
+  --boxspace-l: 56px;
+  --boxspace-xl: 72px;
+  --boxspace-xxl: 96px;
+  --boxspace-xxxl: 120px;
+}
+
+@utility p-* {
+  padding: --value(--boxspace-*);
+}
+@utility px-* {
+  padding-inline: --value(--boxspace-*);
+}
+@utility py-* {
+  padding-block: --value(--boxspace-*);
+}
+@utility pt-* {
+  padding-top: --value(--boxspace-*);
+}
+@utility pb-* {
+  padding-bottom: --value(--boxspace-*);
+}
+@utility pl-* {
+  padding-left: --value(--boxspace-*);
+}
+@utility pr-* {
+  padding-right: --value(--boxspace-*);
+}
+@utility m-* {
+  margin: --value(--boxspace-*);
+}
+@utility mx-* {
+  margin-inline: --value(--boxspace-*);
+}
+@utility my-* {
+  margin-block: --value(--boxspace-*);
+}
+@utility mt-* {
+  margin-top: --value(--boxspace-*);
+}
+@utility mb-* {
+  margin-bottom: --value(--boxspace-*);
+}
+@utility ml-* {
+  margin-left: --value(--boxspace-*);
+}
+@utility mr-* {
+  margin-right: --value(--boxspace-*);
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 @layer base {
   :root {
@@ -72,6 +238,10 @@
   * {
     @apply border-border;
   }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
   html {
     @apply font-lexendDeca leading-[1.4];
   }
@@ -89,7 +259,7 @@
   }
 
   .projects-load {
-    @apply grid grid-cols-1 gap-6 md:grid-cols-6 mb-xl last:mb-m;
+    @apply grid grid-cols-1 gap-6 md:grid-cols-6 mb-xl last:mb-12;
   }
 
   .footer-link {
@@ -97,28 +267,30 @@
   }
 
   .sticky-mobile-titles {
-    @apply sticky mx-[-1.5rem] px-[1.5rem] top-0 z-20 w-screen text-lg font-medium lg:text-xl py-xxs lg:hidden backdrop-blur bg-transparent;
+    @apply sticky -mx-6 px-6 top-0 z-20 w-screen text-lg font-medium lg:text-xl py-xxs lg:hidden backdrop-blur-sm bg-transparent;
   }
 }
 
-a:hover svg {
-  transform: translateX(5px);
-  transition: 0.15s;
-}
+@layer components {
+  a:hover svg {
+    transform: translateX(5px);
+    transition: 0.15s;
+  }
 
-a svg {
-  /* transform: translateX(5px); */
-  transition: 0.15s;
-}
+  a svg {
+    /* transform: translateX(5px); */
+    transition: 0.15s;
+  }
 
-a:hover.icon-left svg {
-  transform: translateX(-5px);
-  transition: 0.15s;
-}
+  a:hover.icon-left svg {
+    transform: translateX(-5px);
+    transition: 0.15s;
+  }
 
-a.icon-left svg {
-  /* transform: translateX(5px); */
-  transition: 0.15s;
+  a.icon-left svg {
+    /* transform: translateX(5px); */
+    transition: 0.15s;
+  }
 }
 
 /* Motion (ported from the Magic Patterns design) */

@@ -325,7 +325,7 @@ const sectionComponents = {
         }
         copy.style.width = `${from}px`;
         copy.style.transitionProperty =
-          "width, transform, background-color, border-color";
+          "width, transform, translate, scale, rotate, background-color, border-color";
         copy.style.transitionDuration = "250ms";
         void copy.offsetWidth; // flush so the width transition starts from `from`
         copy.style.width = `${to}px`;

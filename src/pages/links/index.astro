@@ -18,9 +18,9 @@ const socials = [
 ];
 
 const pill =
-  "group flex h-14 items-center gap-3 rounded-[50px] border border-baseTextColor/10 bg-white pr-5 pl-5 no-underline transition-[transform,border-color] duration-150 ease-out hover:border-primaryCTAColor/40 active:scale-[0.98]";
+  "group flex h-14 items-center gap-3 rounded-[50px] border border-baseTextColor/10 bg-white pr-5 pl-5 no-underline transition-[transform,translate,scale,rotate,border-color] duration-150 ease-out hover:border-primaryCTAColor/40 active:scale-[0.98]";
 const arrow =
-  "flex shrink-0 text-subTextColor transition-[transform,color] duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primaryCTAColor";
+  "flex shrink-0 text-subTextColor transition-[transform,translate,scale,rotate,color] duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primaryCTAColor";
 ---
 
 <Layout title={pageTabTitle}>
@@ -49,14 +49,14 @@ const arrow =
         target='_blank'
         rel='noopener noreferrer'
         style='--i:1'
-        class='rise group flex items-center justify-between gap-4 rounded-[50px] bg-primaryCTAColor py-4 pr-5 pl-7 text-backgroundColor no-underline transition-[transform,background-color] duration-150 ease-out hover:bg-primaryCTAColorHover active:scale-[0.98]'
+        class='rise group flex items-center justify-between gap-4 rounded-[50px] bg-primaryCTAColor py-4 pr-5 pl-7 text-backgroundColor no-underline transition-[transform,translate,scale,rotate,background-color] duration-150 ease-out hover:bg-primaryCTAColorHover active:scale-[0.98]'
       >
         <span class='min-w-0'>
           <span class='block text-base font-medium lg:text-lg'>Website</span>
           <span class='block truncate text-xs text-backgroundColor/80'>Projects, experience & more</span>
         </span>
-        <span class='grid size-10 shrink-0 place-items-center rounded-full bg-backgroundColor/15 transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:bg-backgroundColor/25'>
-          <span aria-hidden='true' class='transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5'><ArrowUpRight className='!transform-none !transition-none' /></span>
+        <span class='grid size-10 shrink-0 place-items-center rounded-full bg-backgroundColor/15 transition-[transform,translate,scale,rotate,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:bg-backgroundColor/25'>
+          <span aria-hidden='true' class='transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5'><ArrowUpRight className='transform-none! transition-none!' /></span>
         </span>
       </a>
 
@@ -70,7 +70,7 @@ const arrow =
                 </svg>
                 <span class='shrink-0 text-sm font-medium text-baseTextCTAColor lg:text-base'>{s.label}</span>
                 <span class='ml-auto min-w-0 truncate text-xs text-subTextColor'>{s.handle}</span>
-                <span aria-hidden='true' class={arrow}><ArrowUpRight className='!transform-none !transition-none' /></span>
+                <span aria-hidden='true' class={arrow}><ArrowUpRight className='transform-none! transition-none!' /></span>
               </a>
             </li>
           ))
@@ -83,7 +83,7 @@ const arrow =
               </svg>
               <span class='shrink-0 text-sm font-medium text-baseTextCTAColor lg:text-base'>Email</span>
               <span class='ml-auto min-w-0 truncate text-xs text-subTextColor'>{email}</span>
-              <span aria-hidden='true' class={arrow}><ArrowUpRight className='!transform-none !transition-none' /></span>
+              <span aria-hidden='true' class={arrow}><ArrowUpRight className='transform-none! transition-none!' /></span>
             </a>
           </div>
           <button
@@ -91,14 +91,14 @@ const arrow =
             id='copy-btn'
             data-email={email}
             aria-label='Copy email address'
-            class='grid size-14 shrink-0 place-items-center rounded-full border border-baseTextColor/10 bg-white text-subTextColor transition-[transform,background-color,border-color,color] duration-150 ease-out hover:border-primaryCTAColor/40 hover:text-primaryCTAColor active:scale-95 data-[copied]:border-primaryCTAColor data-[copied]:bg-primaryCTAColor data-[copied]:text-backgroundColor'
+            class='grid size-14 shrink-0 place-items-center rounded-full border border-baseTextColor/10 bg-white text-subTextColor transition-[transform,translate,scale,rotate,background-color,border-color,color] duration-150 ease-out hover:border-primaryCTAColor/40 hover:text-primaryCTAColor active:scale-95 data-[copied]:border-primaryCTAColor data-[copied]:bg-primaryCTAColor data-[copied]:text-backgroundColor'
           >
             <span id='copy-icon' class='swap-in inline-flex' aria-hidden='true'></span>
           </button>
         </li>
       </ul>
       <p aria-live='polite' class='mt-2 h-5 pr-1 text-right text-xs text-primaryCTAColor'>
-        <span id='copy-note' class='inline-block -translate-y-1 opacity-0 transition-[opacity,transform] duration-150 ease-out'>Copied to clipboard</span>
+        <span id='copy-note' class='inline-block -translate-y-1 opacity-0 transition-[opacity,transform,translate,scale,rotate] duration-150 ease-out'>Copied to clipboard</span>
       </p>
     </nav>
 
@@ -109,7 +109,7 @@ const arrow =
         href='https://hetzner.cloud/?ref=MwAWq1Jt8TPU'
         target='_blank'
         rel='noopener noreferrer sponsored'
-        class='group mt-3 flex items-center justify-between gap-4 rounded-[50px] border border-baseTextColor/10 bg-white py-3.5 pr-5 pl-7 no-underline transition-[transform,border-color] duration-150 ease-out hover:border-primaryCTAColor/40 active:scale-[0.98]'
+        class='group mt-3 flex items-center justify-between gap-4 rounded-[50px] border border-baseTextColor/10 bg-white py-3.5 pr-5 pl-7 no-underline transition-[transform,translate,scale,rotate,border-color] duration-150 ease-out hover:border-primaryCTAColor/40 active:scale-[0.98]'
       >
         <span class='min-w-0'>
           <span class='block text-sm font-medium text-baseTextCTAColor transition-colors duration-150 group-hover:text-primaryCTAColor lg:text-base'>
@@ -117,7 +117,7 @@ const arrow =
           </span>
           <span class='block truncate text-xs text-subTextColor'>Applied when you sign up with my link</span>
         </span>
-        <span aria-hidden='true' class={arrow}><ArrowUpRight className='!transform-none !transition-none' /></span>
+        <span aria-hidden='true' class={arrow}><ArrowUpRight className='transform-none! transition-none!' /></span>
       </a>
       <p class='mt-3 px-1 text-[0.8rem] leading-relaxed text-subTextColor'>
         Referral link — I may receive a small credit too, at no cost to you.

@@ -21,7 +21,7 @@ const routes = [
       class='rise group sweep-first inline-flex w-fit items-center gap-2 self-start text-sm font-medium text-baseTextColor no-underline transition-transform duration-150 ease-out active:scale-[0.98]'
       style='--i:0' transition:animate='slide'
     >
-      <span aria-hidden='true' class='relative inline-block transition-transform duration-150 ease-out group-hover:-translate-x-0.5'><ArrowLeft className='!transform-none !transition-none' /><span class='sweep-arrow'><ArrowLeft className='!transform-none !transition-none' /></span></span>
+      <span aria-hidden='true' class='relative inline-block transition-transform duration-150 ease-out group-hover:-translate-x-0.5'><ArrowLeft className='transform-none! transition-none!' /><span class='sweep-arrow'><ArrowLeft className='transform-none! transition-none!' /></span></span>
       <span class='sweep-text'>Xavier Khew</span>
     </a>
 
@@ -54,18 +54,18 @@ const routes = [
                   class='group flex w-full items-center justify-between gap-6 py-5 text-left no-underline transition-transform duration-150 ease-out active:translate-x-0.5'
                 >
                   <span class='min-w-0'>
-                    <span class='block text-base font-medium text-baseTextCTAColor transition-[color,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-1 group-hover:text-primaryCTAColor lg:text-lg'>
+                    <span class='block text-base font-medium text-baseTextCTAColor transition-[color,transform,translate,scale,rotate] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-1 group-hover:text-primaryCTAColor lg:text-lg'>
                       {r.label}
                     </span>
                     <span class='mt-0.5 block text-xs text-subTextColor'>{r.hint}</span>
                   </span>
                   <span
                     aria-hidden='true'
-                    class={`flex shrink-0 text-subTextColor transition-[transform,color] duration-150 ease-out group-hover:text-primaryCTAColor ${
+                    class={`flex shrink-0 text-subTextColor transition-[transform,translate,scale,rotate,color] duration-150 ease-out group-hover:text-primaryCTAColor ${
                       r.external ? "group-hover:-translate-y-0.5 group-hover:translate-x-0.5" : "group-hover:translate-x-1"
                     }`}
                   >
-                    {r.external ? <ArrowUpRight className='!transform-none !transition-none' /> : <ArrowRight className='!transform-none !transition-none' />}
+                    {r.external ? <ArrowUpRight className='transform-none! transition-none!' /> : <ArrowRight className='transform-none! transition-none!' />}
                   </span>
                 </a>
               </li>
