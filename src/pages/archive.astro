@@ -7,7 +7,9 @@ import { ArrowLeft, Award, ChevronDown, ChevronUp } from "lucide-react";
 
 const pageTabTitle = "Project Archive | Xavier Khew";
 
-import { archive } from "../content/archive";
+import { getArchive } from "../lib/sanity";
+
+const archive = await getArchive();
 
 const cols =
   "grid-cols-[4.5rem_minmax(0,1fr)_1.5rem] md:grid-cols-[6rem_minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1.6fr)_1.5rem]";

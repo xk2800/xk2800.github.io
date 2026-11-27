@@ -1,4 +1,5 @@
 import { createClient } from "@sanity/client";
+import { escapeHTML, toHTML, uriLooksSafe } from "@portabletext/to-html";
 
 const projectId = import.meta.env.SANITY_PROJECT_ID;
 if (!projectId) throw new Error("SANITY_PROJECT_ID is not set (see .env.example)");
@@ -36,4 +37,48 @@ export async function getExperiences() {
     description: d.description,
     skills: d.skills ?? [],
   }));
+}
+
+export async function getAboutHtml() {
+  const about = await client.fetch(`*[_id == "profile"][0].about`);
+  if (!about?.length) throw new Error('Sanity "profile" document has no About text');
+  return toHTML(about, {
+    components: {
+      marks: {
+        // Links open in a new tab, like the rest of the site
+        link: ({ children, value }) =>
+          value?.href && uriLooksSafe(value.href)
+            ? `<a target="_blank" rel="noopener noreferrer" href="${escapeHTML(value.href)}">${children}</a>`
+            : children,
+      },
+    },
+  });
+}
+
+type ArchiveEntry = {
+  year: string;
+  project: string;
+  description: string;
+  madeAt: string;
+  awards: string[];
+  builtWith: string[];
+};
+
+export async function getArchive() {
+  // coalesce: Sanity omits empty arrays, the page expects them
+  return client.fetch<ArchiveEntry[]>(
+    `*[_type == "archiveEntry"] | order(sortYear desc, project asc) {
+      year, project, description, madeAt, "awards": coalesce(awards, []), "builtWith": coalesce(builtWith, [])
+    }`,
+  );
+}
+
+export async function getContact() {
+  const c = await client.fetch<{ email?: string; headline?: string; blurb?: string } | null>(
+    `*[_id == "profile"][0]{ email, headline, blurb }`,
+  );
+  if (!c?.email || !c.headline || !c.blurb) {
+    throw new Error('Sanity "profile" document is missing email, headline or blurb');
+  }
+  return { email: c.email, headline: c.headline, blurb: c.blurb };
 }
