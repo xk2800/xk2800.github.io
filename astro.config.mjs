@@ -8,6 +8,8 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: 'https://xavierkhew.com',
   // base: '/wip-website',
+  // Lets Astro download and optimize Sanity images at build time
+  image: { domains: ['cdn.sanity.io'] },
   integrations: [
     react(),
     tailwind({

@@ -1,3 +1,4 @@
+import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { schemaTypes } from "./schemaTypes";
@@ -12,11 +13,12 @@ export default defineConfig({
   dataset: process.env.SANITY_STUDIO_DATASET || "production",
   plugins: [
     structureTool({
-      structure: (S) =>
+      structure: (S, context) =>
         S.list()
           .title("Content")
           .items([
             S.documentTypeListItem("experience"),
+            orderableDocumentListDeskItem({ type: "project", title: "Projects (drag to reorder)", S, context }),
             S.documentTypeListItem("archiveEntry"),
             S.listItem()
               .title("Profile")

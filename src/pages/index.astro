@@ -7,8 +7,7 @@ import Chip from "../components/Chip.astro";
 import { ArrowUpRight, ArrowRight, MapPin } from "lucide-react";
 
 import { sections } from "../content/nav";
-import { getAboutHtml, getContact, getExperiences } from "../lib/sanity";
-import { projects } from "../content/projects";
+import { getAboutHtml, getContact, getExperiences, getProjects } from "../lib/sanity";
 import { skillGroups } from "../content/skills";
 
 const pageTabTitle = "Xavier Khew";
@@ -16,6 +15,7 @@ const aboutHtml = await getAboutHtml();
 const { email, headline, blurb } = await getContact();
 
 const experiences = await getExperiences();
+const projects = await getProjects();
 const featured = projects.filter((p) => p.featured);
 const more = projects.filter((p) => !p.featured);
 
@@ -194,7 +194,7 @@ const pill =
                 aria-label={`Open ${p.title}`}
               >
                 <Image
-                  src={p.image}
+                  {...p.image}
                   alt={p.alt}
                   loading="eager"
                   class="aspect-video w-full object-cover object-top transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.02]"
@@ -264,7 +264,7 @@ const pill =
             <li class="grid grid-cols-1 gap-4 py-6 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-6">
               <div class="group self-start overflow-hidden rounded-lg border border-baseTextColor/10 bg-white">
                 <Image
-                  src={p.image}
+                  {...p.image}
                   alt={p.alt}
                   class="aspect-[16/10] w-full object-cover object-top transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03]"
                 />

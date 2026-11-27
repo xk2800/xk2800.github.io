@@ -82,3 +82,25 @@ export async function getContact() {
   }
   return { email: c.email, headline: c.headline, blurb: c.blurb };
 }
+
+type Project = {
+  title: string;
+  featured: boolean;
+  description: string;
+  // Remote image: Astro downloads and optimizes it at build time, and needs the dimensions
+  image: { src: string; width: number; height: number };
+  alt: string;
+  stack: string[];
+  live: string | null;
+  source: string | null;
+};
+
+export async function getProjects() {
+  return client.fetch<Project[]>(
+    `*[_type == "project"] | order(orderRank asc) {
+      title, "featured": featured == true, description, alt, live, source,
+      "stack": coalesce(stack, []),
+      "image": image.asset->{ "src": url, "width": metadata.dimensions.width, "height": metadata.dimensions.height }
+    }`,
+  );
+}
