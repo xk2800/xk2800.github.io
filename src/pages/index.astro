@@ -8,7 +8,7 @@ import { ArrowUpRight, ArrowRight, MapPin } from "lucide-react";
 
 import { email, headline, blurb } from "../content/contact";
 import { sections } from "../content/nav";
-import { experiences } from "../content/experience";
+import { getExperiences } from "../lib/sanity";
 import { projects } from "../content/projects";
 import { skillGroups } from "../content/skills";
 import { compiledContent } from "../content/about.md";
@@ -17,6 +17,7 @@ const pageTabTitle = "Xavier Khew";
 // about.md links open in a new tab, like the rest of the site
 const aboutHtml = (await compiledContent()).replaceAll("<a ", '<a target="_blank" rel="noopener noreferrer" ');
 
+const experiences = await getExperiences();
 const featured = projects.filter((p) => p.featured);
 const more = projects.filter((p) => !p.featured);
 
